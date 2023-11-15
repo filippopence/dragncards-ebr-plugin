@@ -1,8 +1,8 @@
 {
     "hotkeys": {
         "token": [
-            {"key": "1", "tokenType": "progress", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/progress.png)"},
-            {"key": "2", "tokenType": "harm", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/harm.png)"},
+            {"key": "1", "tokenType": "harm", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/harm.png)"},
+            {"key": "2", "tokenType": "progress", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/progress.png)"},
             {"key": "3", "tokenType": "general", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/general_token.png)"},
             {"key": "6", "tokenType": "awareness", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/awareness.png)"},
             {"key": "7", "tokenType": "spirit", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/spirit.png)"},
