@@ -1,0 +1,25 @@
+{
+    "phases": {
+        "Setup": {
+            "label": "id:setup",
+            "height" : "30%"
+        },
+        "PathCards": {
+            "label": "id:pathCards",
+            "height" : "17.5%"
+        },
+        "RangerPhase": {
+            "label": "id:rangerPhase",
+            "height" : "17.5%"
+        },
+        "Travel": {
+            "label": "id:travel",
+            "height" : "17.5%"
+        },
+        "Refresh": {
+            "label": "id:refresh",
+            "height" : "17.5%"
+        }
+    },
+    "phaseOrder": ["Setup", "PathCards", "RangerPhase", "Travel", "Refresh"]
+}

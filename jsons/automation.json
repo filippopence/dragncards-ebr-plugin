@@ -1,0 +1,331 @@
+{
+    "automation": {
+        "postLoadActionList": [
+            ["DEFINE", "$LOADED_PLAYER_DECK", false],
+            ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
+                ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
+                ["COND",  
+                    ["AND", 
+                        ["EQUAL", "$CARD.sides.A.type", "Location"], 
+                        ["EQUAL", "$CARD.sides.A.pivotal", "0"] 
+                    ],
+                    [
+                        ["MOVE_CARD", "$CARD_ID", "sharedLocation", 0],
+                        ["SET", "/cardById/$CARD_ID/currentSide", "B"],
+                        ["LOG", "├── ", "Rangers have arrived at ", "$CARD.sides.A.name", "."],
+                        ["COND",
+                            ["OR",
+                                ["EQUAL", "$CARD.sides.A.name", "Bowl of the Sun"],
+                                ["EQUAL", "$CARD.sides.A.name", "Archeological Outpost"]
+                            ],
+                            [   ["FOR_EACH_START_STOP_STEP", "$i", 0, 2, 1,[
+                                    ["VAR", "$CARDS_IN_THE_VALLEY", ["LENGTH", "$GAME.groupById.sharedPathDeck3.stackIds"]],
+                                    ["VAR", "$RANDOM_CARD", ["RANDOM_INT", 0, ["SUBTRACT", "$CARDS_IN_THE_VALLEY", 1]]],
+                                    ["MOVE_CARD", ["GET_CARD_ID", "sharedPathDeck3", "$RANDOM_CARD", 0], "sharedPathDeck", 0]]],
+                                ["SHUFFLE_GROUP", "sharedPathDeck"],
+                                ["LOG", "├── ", "Shuffled 2 cards from The Valley set into the Path Deck."] 
+                            ],
+                        true,
+                            [["FOR_EACH_START_STOP_STEP", "$i", 0, 3, 1,[
+                                ["VAR", "$CARDS_IN_THE_VALLEY", ["LENGTH", "$GAME.groupById.sharedPathDeck3.stackIds"]],
+                                ["VAR", "$RANDOM_CARD", ["RANDOM_INT", 0, ["SUBTRACT", "$CARDS_IN_THE_VALLEY", 1]]],
+                                ["MOVE_CARD", ["GET_CARD_ID", "sharedPathDeck3", "$RANDOM_CARD", 0], "sharedPathDeck", 0]]],
+                            ["SHUFFLE_GROUP", "sharedPathDeck"],
+                            ["LOG", "├── ", "Shuffled 3 cards from The Valley set into the Path Deck."] ] 
+                        ]
+                    ]
+                ],
+                ["COND",  
+                    ["AND", 
+                        ["EQUAL", "$CARD.sides.A.type", "Location"], 
+                        ["EQUAL", "$CARD.sides.A.pivotal", "1"] 
+                    ],
+                    [
+                        ["MOVE_CARD", "$CARD_ID", "sharedLocation", 0],
+                        ["SET", "/cardById/$CARD_ID/currentSide", "B"],
+                        ["LOG", "├── ", "Rangers have arrived at ", "$CARD.sides.A.name", "."]
+                    ]
+                ],
+                ["COND", 
+                    ["AND", 
+                        ["EQUAL", "$CARD.sides.A.type", "Role"],
+                        ["EQUAL", "$CARD.inPlay", true]
+                    ],
+                    [
+                        ["DEFINE", "$LOADED_PLAYER_DECK", true]
+                    ]
+                ],
+                ["COND",
+                    ["EQUAL", "$CARD.sides.A.type", "Aspect"],
+                    [
+                        ["VAR", "$AWA_VALUE", "$CARD.sides.A.AWA"],
+                        ["VAR", "$SPI_VALUE", "$CARD.sides.A.SPI"],
+                        ["VAR", "$FIT_VALUE", "$CARD.sides.A.FIT"],
+                        ["VAR", "$FOC_VALUE", "$CARD.sides.A.FOC"],
+                        ["SET", "/cardById/$CARD_ID/tokens/awareness", "$AWA_VALUE"],
+                        ["SET", "/cardById/$CARD_ID/tokens/spirit", "$SPI_VALUE"],
+                        ["SET", "/cardById/$CARD_ID/tokens/fitness", "$FIT_VALUE"],
+                        ["SET", "/cardById/$CARD_ID/tokens/focus", "$FOC_VALUE"],
+                        ["LOG", "{{$ALIAS_N}} recharged their energy tokens."]
+                    ]
+                ],
+                ["COND",
+                    ["EQUAL", "$CARD.sides.A.type", "Location"],
+                    ["SET", "/stepId", "3.5"]
+                ],
+                ["COND", 
+                    ["EQUAL", "$CARD.sides.A.name", "Howling Winds"],
+                    [
+                        ["LOAD_CARDS", "CerberusianCyclone"]
+                    ]
+                ],
+                ["COND", 
+                    ["EQUAL", "$CARD.sides.A.name", "Electric Fog"],
+                    [
+                        ["LOAD_CARDS", "BallLightning"]
+                    ]
+                ]
+            ]],
+            ["DEFINE", "$PLAYER_N_HAND_GROUP_ID", ["JOIN_STRING", "$PLAYER_N", "Hand"]],
+            ["COND",
+                ["AND", "$LOADED_PLAYER_DECK", ["EQUAL", "$GAME.roundNumber", 0], ["EQUAL", ["LENGTH", "$GAME.groupById.$PLAYER_N_HAND_GROUP_ID.stackIds"], 0]],
+                [
+                    ["LOG", "└── ", "$PLAYER_N", " draws 6 cards."],
+                    ["DRAW_CARD", 6]
+                ]
+            ]
+        ],
+        "gameRules": [
+            { 
+                "_comment": "Add general tokens when card enters play.",
+                "type": "trigger", 
+                "listenTo": ["/cardById/*/inPlay", "/cardById/*/currentSide"],
+                "condition": ["AND", 
+                                "$TARGET.inPlay",
+                                ["GREATER_EQUAL", "$TARGET.currentFace.generic_token", 0], 
+                                ["PREV", ["NOT", "$TARGET.inPlay"]]
+                            ],
+                "then": ["COND",
+                                ["EQUAL", "$TARGET.currentSide", "A"],
+                                ["COND", 
+                                    ["EQUAL", "$TARGET.currentFace.scaleGenericTokenPerPlayer", true],
+                                    ["SET", "/cardById/$TARGET_ID/tokens/general", ["MULTIPLY", "$TARGET.currentFace.generic_token", "$GAME.numPlayers"]],
+                                true,
+                                    ["SET", "/cardById/$TARGET_ID/tokens/general", "$TARGET.currentFace.generic_token"]
+                                ]
+                        ]
+            },
+            { 
+                "_comment": "Turn cards blue when they have enought progress tokens on them.",
+                "type": "passive", 
+                "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens"],
+                "condition": ["COND", 
+                    ["EQUAL", "$TARGET.currentFace.scaleProgressThresholdPerPlayer", true],
+                    ["GREATER_EQUAL", "$TARGET.tokens.progress", ["MULTIPLY", "$TARGET.currentFace.progress_threshold", "$GAME.numPlayers"]],
+                    true,
+                    ["GREATER_EQUAL", "$TARGET.tokens.progress", "$TARGET.currentFace.progress_threshold"]
+                ],
+                "onDo": [
+                    ["LOG", "└── ", "$TARGET.currentFace.name", " is cleared by progress."],
+                    ["SET", "/cardById/$TARGET_ID/borderColor", "blue"]
+                ],
+                "offDo": [
+                    ["SET", "/cardById/$TARGET_ID/borderColor", null]
+                ]
+            },
+            { 
+                "_comment": "Turn cards red when they have enought harm tokens on them.",
+                "type": "passive", 
+                "listenTo": ["/cardById/*/tokens/harm", "/cardById/*/tokens"],
+                "condition": ["COND", 
+                ["EQUAL", "$TARGET.currentFace.scaleHarmThresholdPerPlayer", true],
+                ["GREATER_EQUAL", "$TARGET.tokens.harm", ["MULTIPLY", "$TARGET.currentFace.harm_threshold", "$GAME.numPlayers"]],
+                true,
+                ["GREATER_EQUAL", "$TARGET.tokens.harm", "$TARGET.currentFace.harm_threshold"]
+                ],
+                "onDo": [
+                    ["LOG", "└── ", "$TARGET.currentFace.name", " is cleared by harm."],
+                    ["SET", "/cardById/$TARGET_ID/borderColor", "red"]
+                ],
+                "offDo": [
+                    ["SET", "/cardById/$TARGET_ID/borderColor", null]
+                ]
+            }
+        ],
+        "cards": {
+            "02023": {"_comment": "Cloudhive Swarm",
+                "rules": [
+                    {    "_comment": "Add generic token on Refresh.",
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"]],
+                        "then": [["COND",
+                                    ["EQUAL", "$THIS.currentSide", "A"],
+                                    [
+                                        ["LOG", "└── ", "Added 1 Bee to ", "$THIS.currentFace.name", "."],
+                                        ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/general", 1]
+                                    ]
+                                ]]
+                    },
+                    {   "_comment": "Set harm threshold equal to Bees on it.",
+                        "type": "passive",
+                        "listenTo": ["/cardById/$THIS_ID/tokens/harm", "/cardById/$THIS_ID/tokens"],
+                        "condition": [
+                        ["GREATER_EQUAL", "$THIS.tokens.harm", "$THIS.tokens.general"]
+                        ],
+                        "onDo": [
+                            ["LOG", "└── ", "$THIS.currentFace.name", " is cleared by harm."],
+                            ["SET", "/cardById/$THIS_ID/borderColor", "red"]
+                        ],
+                        "offDo": [
+                            ["SET", "/cardById/$THIS_ID/borderColor", null]
+                        ]
+                    }
+                ]
+            },
+            "04001": {"_comment": "A Perfect Day / Midday Sun",
+                "rules": [
+                    {    "_comment": "Trigger for A Perfect Day.",
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "A"]],
+                        "then": [[
+                                    ["LOG", "└── ", "Removed 1 cloud from ", "$THIS.currentFace.name", "."],
+                                    ["DECREASE_VAL", "/cardById/$THIS_ID/tokens/general", 1]
+                                ],
+                                ["COND",
+                                    ["LESS_EQUAL", "$THIS.tokens.general", 1],
+                                    [["SET", "/cardById/$THIS_ID/currentSide", "B"],
+                                    ["LOG", "└── The weather has changed!"]]
+                                ]]
+                    },
+                    {    "_comment": "Trigger for Midday Sun.",
+                    "type": "trigger",
+                    "listenTo": ["/stepId"],
+                    "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "B"]],
+                    "then": [[
+                                ["LOG", "└── ", "Added 1 cloud to ", "$THIS.currentFace.name", "."],
+                                ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/general", 1]
+                            ],
+                            ["COND",
+                                ["GREATER_EQUAL", "$THIS.tokens.general", 2],
+                                [["SET", "/cardById/$THIS_ID/currentSide", "A"],
+                                ["LOG", "└── The weather has changed!"]]
+                            ]]
+                    }
+                ]
+            },
+            "04002": {"_comment": "Gathering Storm",
+                "rules": [
+                    {    "_comment": "Trigger for Gathering Storm.",
+                    "type": "trigger",
+                    "listenTo": ["/stepId"],
+                    "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "1"], ["EQUAL", "$THIS.currentSide", "B"]],
+                    "then": [[
+                                ["LOG", "└── ", "Added 2 rain to ", "$THIS.currentFace.name", "."],
+                                ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/general", 2]
+                            ],
+                            ["COND",
+                                ["GREATER_EQUAL", "$THIS.tokens.general", 2],   
+                                [["SET", "/cardById/$THIS_ID/currentSide", "A"],
+                                ["LOG", "└── The weather has changed!"],
+                                ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                                    ["COND",
+                                        ["AND", "$CARD.inPlay", ["IN_STRING", "$CARD.currentFace.type", "Role"]],
+                                        ["SET", "/cardById/$CARD_ID/rotation", 90]
+                                    ],
+                                    ["COND",
+                                        ["AND", "$CARD.inPlay", ["IN_STRING", "$CARD.currentFace.traits", "Prey"]],
+                                        ["MOVE_CARD", "$CARD_ID", "sharedAlongTheWay", -1]
+                                    ]
+                                    ]]
+                                ]
+                            ]]
+                    }
+                ]
+            },
+            "04003": {"_comment": "Howling Winds / Thunderhead",
+                "rules": [
+                    {    "_comment": "Refresh for Howling Winds.",
+                    "type": "trigger",
+                    "listenTo": ["/stepId"],
+                    "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "A"]],
+                    "then": [["COND",
+                                ["GREATER_EQUAL", "$THIS.tokens.general", ["MULTIPLY", 3 , "$GAME.numPlayers"]],
+                                [["LOG", "└── The weather has changed!"],
+                                ["SET", "/cardById/$THIS_ID/currentSide", "B"],
+                                ["SET", "/cardById/$THIS_ID/tokens/general", 0],
+                                ["ACTION_LIST", "revealPathFaceup", true, "sharedPathDeck", "$GAME.firstPlayer"]]
+                            ]]
+                    },
+                    {   "_comment": "Arrival Setup for Howling Winds.",
+                    "type": "trigger",
+                    "listenTo": ["/stepId"],
+                    "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "3.5"], ["EQUAL", "$THIS.currentSide", "A"]],
+                    "then": [
+                        ["VAR", "$CERBERUSIAN_CYCLONE_IN_GAME", false],
+                        ["FOR_EACH_KEY_VAL", "$TARGET_ID", "$TARGET", "$GAME.cardById", [
+                            ["COND",
+                                ["EQUAL", "$TARGET.sides.A.name", "Cerberusian Cyclone"],
+                                ["VAR", "$CERBERUSIAN_CYCLONE_IN_GAME", true]
+                            ]]],
+                        ["COND", 
+                            ["EQUAL", "$CERBERUSIAN_CYCLONE_IN_GAME", false],
+                            [
+                                ["LOAD_CARDS", "CerberusianCyclone"],
+                                ["LOG", "Cerberusian Cyclone shuffled in the path deck."]
+                            ]
+                        ]]
+                    },
+                    {    "_comment": "Trigger for Thunderhead.",
+                    "type": "trigger",
+                    "listenTo": ["/stepId"],
+                    "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "B"]],
+                    "then": [
+                                [["LOG", "└── The weather has changed!"],
+                                ["SET", "/cardById/$THIS_ID/currentSide", "A"]]
+                            ]
+                    }
+                ]
+            },
+            "04004": {"_comment": "Clinging Mist",
+                "rules": [
+                    {    "_comment": "Refresh for Clinging Mist.",
+                    "type": "trigger",
+                    "listenTo": ["/stepId"],
+                    "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "B"]],
+                    "then": [[
+                                ["LOG", "└── ", "Added 2 fog to ", "$THIS.currentFace.name", "."],
+                                ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/general", 2]
+                            ],
+                            ["COND",
+                                ["GREATER_EQUAL", "$THIS.tokens.general", 2],   
+                                [["SET", "/cardById/$THIS_ID/currentSide", "A"],
+                                ["LOG", "└── The weather has changed!"]
+                                ]
+                            ]]
+                    },
+                    {   "_comment": "Arrival Setup for Electric Fog.",
+                    "type": "trigger",
+                    "listenTo": ["/stepId"],
+                    "condition": ["AND", ["EQUAL", "$GAME.stepId", "3.5"], ["EQUAL", "$THIS.currentSide", "A"]],
+                    "then": [
+                        ["VAR", "$BALL_LIGHTNING_IN_GAME", false],
+                        ["FOR_EACH_KEY_VAL", "$TARGET_ID", "$TARGET", "$GAME.cardById", [
+                            ["COND",
+                                ["EQUAL", "$TARGET.sides.A.name", "Ball Lightning"],
+                                ["VAR", "$BALL_LIGHTNING_IN_GAME", true]
+                            ]]],
+                        ["COND", 
+                            ["EQUAL", "$BALL_LIGHTNING_IN_GAME", false],
+                            [
+                                ["LOAD_CARDS", "BallLightning"],
+                                ["LOG", "Ball Lightning shuffled in the path deck."]
+                            ]
+                        ]]
+                    }
+                ]
+            }
+        }
+    }
+}

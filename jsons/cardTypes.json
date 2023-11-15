@@ -1,0 +1,18 @@
+{
+    "cardTypes": {
+        "Attachment": {"width": 0.72, "height": 1.0, "tokens": ["progress","harm","general","ranger1","ranger2","ranger3","ranger4"]},
+        "Attribute":  {"width": 0.72, "height": 1.0, "tokens": ["progress","harm","general","ranger1","ranger2","ranger3","ranger4"]},
+        "Being":      {"width": 0.72, "height": 1.0, "tokens": ["progress","harm","general","ranger1","ranger2","ranger3","ranger4"]},
+        "Feature":    {"width": 0.72, "height": 1.0, "tokens": ["progress","harm","general","ranger1","ranger2","ranger3","ranger4"]},
+        "Gear":       {"width": 0.72, "height": 1.0, "tokens": ["progress","harm","general","ranger1","ranger2","ranger3","ranger4"]},
+        "Moment":     {"width": 0.72, "height": 1.0, "tokens": ["progress","harm","general","ranger1","ranger2","ranger3","ranger4"]},
+        "Role":       {"width": 0.72, "height": 1.0, "tokens": ["progress","harm","general","ranger1","ranger2","ranger3","ranger4"]},
+        "Location":   {"width": 1.3, "height": 0.95, "tokens": ["progress","harm","general","ranger1","ranger2","ranger3","ranger4"]},
+        "Weather":    {"width": 0.72, "height": 1.0, "tokens": ["progress","harm","general","ranger1","ranger2","ranger3","ranger4"]},
+        "Mission":    {"width": 0.72, "height": 1.0, "tokens": ["progress","harm","general","ranger1","ranger2","ranger3","ranger4"]},
+        "Challenge":  {"width": 0.72, "height": 1.0, "tokens": ["progress","harm","general","ranger1","ranger2","ranger3","ranger4"]},
+        "Aspect":     {"width": 0.72, "height": 1.0, "tokens": ["awareness","spirit","fitness","focus"]},
+        "Reference":  {"width": 0.72, "height": 1.0, "tokens": []},
+        "Map":        {"width": 1.0, "height": 1.0, "tokens": [], "zoomFactor": 1.0}
+    }
+}

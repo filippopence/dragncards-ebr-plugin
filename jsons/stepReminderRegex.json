@@ -1,0 +1,6 @@
+{
+    "stepReminderRegex": [
+        {"faceProperty": "text", "regex": "Arrival Setup", "stepId": "3.5"},
+        {"faceProperty": "text", "regex": "Refresh", "stepId": "4.1"}
+      ]
+}

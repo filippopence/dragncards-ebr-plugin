@@ -1,0 +1,15 @@
+{
+    "cardMenu": {
+        "moveToGroupIds": ["sharedPathDeck", "sharedPathDeck2", "sharedLocation"],
+        "options": [
+            {
+                "label": "id:toggleExhaust",
+                "actionList": "toggleExhaust"
+            },
+            {
+                "label": "id:preventRefresh",
+                "actionList": "preventRefresh"
+            }
+        ]
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "browse": {
+        "filterPropertySideA": "type",
+        "filterValuesSideA": ["Gear", "Attachment", "Moment", "Being", "Feature", "Attribute"],
+        "textPropertiesSideA": ["name", "traits", "text", 1] 
+    }
+}

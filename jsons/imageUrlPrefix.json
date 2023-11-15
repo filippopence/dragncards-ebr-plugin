@@ -1,0 +1,8 @@
+{
+    "imageUrlPrefix": {
+        "Default": "https://earthborne-rangers-bucket.s3.eu-west-3.amazonaws.com/cards/",
+        "English": "https://earthborne-rangers-bucket.s3.eu-west-3.amazonaws.com/cards/",
+        "French": "",
+        "Spanish": ""
+    }
+}

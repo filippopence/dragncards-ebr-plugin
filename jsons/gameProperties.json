@@ -1,0 +1,7 @@
+{
+    "gameProperties": {
+      "stagingThreat": {"type": "integer", "default": 0},
+      "questProgress": {"type": "integer", "default": 0},
+      "questingStat": {"type": "string", "default": "willpower"}
+    } 
+}

@@ -1,0 +1,332 @@
+{
+    "actionLists": {
+        "newRound": ["COND",
+            ["EQUAL", "$PLAYER_N", "$GAME.firstPlayer"],
+            [   ["LOG", "├── ", "Rangers are resting..."],
+                ["INCREASE_VAL", "/roundNumber", 1],
+                ["SET", "/phaseId", "PathCards"],
+                ["SET", "/stepId", "1"],
+                ["FOR_EACH_VAL", "$PLAYER", "$PLAYER_ORDER", [
+                    [
+                        ["sufferFatigueForInjury", "$PLAYER"],
+                        ["ACTION_LIST", "refresh"]
+                    ]
+                ]]
+            ],
+            true,
+            ["LOG", "{{$ALIAS_N}} you're not the Lead Ranger."]],
+        "refresh": [
+            ["COND",
+                ["EQUAL", "$PLAYER_N", "$GAME.firstPlayer"],
+                [
+                    ["SET", "/phaseId", "Refresh"],
+                    ["SET", "/stepId", "4.1"]
+                ]
+            ],
+            [
+            ["DRAW_ONE_CARD", "$PLAYER"],
+            ["LOG", "$GAME.playerInfo.$PLAYER.alias", " drew 1 card."]
+            ],
+            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
+                    "COND", 
+                    ["EQUAL", "$CARD.inPlay", true],
+                    [   
+                        ["SET", "/cardById/$CARD_ID/rotation", 0],
+                        ["SET", "/cardById/$CARD_ID/exhausted", false],
+                        ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
+                        ["COND",
+                        ["AND",
+                            ["EQUAL", "$CARD.sides.A.type", "Aspect"],
+                            ["EQUAL", "$CARD_ID", ["GET_CARD_ID", "{{$PLAYER}}Aspect", 0, 0]]],
+                            [
+                                ["VAR", "$AWA_VALUE", "$CARD.sides.A.AWA"],
+                                ["VAR", "$SPI_VALUE", "$CARD.sides.A.SPI"],
+                                ["VAR", "$FIT_VALUE", "$CARD.sides.A.FIT"],
+                                ["VAR", "$FOC_VALUE", "$CARD.sides.A.FOC"],
+                                ["SET", "/cardById/$CARD_ID/tokens/awareness", "$AWA_VALUE"],
+                                ["SET", "/cardById/$CARD_ID/tokens/spirit", "$SPI_VALUE"],
+                                ["SET", "/cardById/$CARD_ID/tokens/fitness", "$FIT_VALUE"],
+                                ["SET", "/cardById/$CARD_ID/tokens/focus", "$FOC_VALUE"],
+                                ["LOG", "{{$GAME.playerInfo.$PLAYER.alias}} recharged their energy tokens."]
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+            ["SET", "/playerData/$PLAYER/refreshed", true],
+            ["LOG", "$GAME.playerInfo.$PLAYER.alias", " refreshed."]
+        ],
+        "revealPathFaceup": ["DEAL_PATH_CARD", true],
+        "revealPathFacedown": ["DEAL_PATH_CARD", false],
+        "revealSecondaryFaceup": ["DEAL_PATH_CARD", true, "sharedPathDeck2"],
+        "revealSecondaryFacedown": ["DEAL_PATH_CARD", false, "sharedPathDeck2"],
+        "revealChallenge": [
+            ["COND",
+                ["EQUAL", ["LENGTH", "$GAME.groupById.sharedChallengeDeck.stackIds"], 0],
+                ["LOG", "$ALIAS_N", " tried to reveal a card from the second encounter deck, but it's empty."],
+                true,
+                [
+                    ["DEFINE", "$CARD_ID", ["GET_CARD_ID", "sharedChallengeDeck", 0, 0]],
+                    ["MOVE_CARD", "$CARD_ID", "sharedChallengeDiscard", 0, 0],
+                    ["LOG", "{{$ALIAS_N}} revealed a Challenge card."]
+                ]
+            ]
+        ],
+        "shuffleChallenge": [
+            ["LOG", "$ALIAS_N", " shuffled Challenge discard into Challenge deck."],
+            ["MOVE_STACKS", "sharedChallengeDiscard", "sharedChallengeDeck"]
+        ],
+        "makePersistent": [
+            ["COND",
+            ["NOT_EQUAL", "$ACTIVE_CARD.controller", "persistent"],
+            [
+                ["SET", "/cardById/$ACTIVE_CARD_ID/controller", "persistent"],
+                ["LOG", "$ACTIVE_FACE.name", " has the 'Persistent' keyword."]
+            ],
+            true,
+            [
+                ["SET", "/cardById/$ACTIVE_CARD_ID/controller", "shared"],
+                ["LOG", "$ACTIVE_FACE.name", " loses the 'Persistent' keyword."]
+            ]
+            ]
+        ],
+        "drawCard": [
+            ["DRAW_CARD"],
+            ["LOG", "$ALIAS_N", " drew 1 card."]
+        ],
+        "drawNextSeat": [
+            ["DEFINE", "$PLAYER_N", ["NEXT_PLAYER", "$PLAYER_N"]],
+            ["LOG", "$ALIAS_N", " drew 1 card."],
+            ["DRAW_CARD"]
+        ],
+        "zeroTokens": [
+            ["SET", "/cardById/$ACTIVE_CARD_ID/tokens", {}],
+            ["LOG", "$ALIAS_N", " removed all tokens from ", "$ACTIVE_FACE.name", "."]
+        ],
+        "toggleExhaust": [
+            ["COND",
+                ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 90], "$ACTIVE_CARD.inPlay"],
+                [
+                    ["LOG", "$ALIAS_N", " readied ", "$ACTIVE_FACE.name", "."],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 0],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", false]
+                ],
+                ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 0], "$ACTIVE_CARD.inPlay"],
+                [
+                    ["LOG", "$ALIAS_N", " exhausted ", "$ACTIVE_FACE.name", "."],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 90],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", true]
+                ],
+                ["AND", "$ACTIVE_CARD.inPlay"],
+                [
+                    ["LOG", "$ALIAS_N", " straightened ", "$ACTIVE_FACE.name", "."],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 0],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", false]
+                ]
+            ]
+        ],
+        "flipCard": [
+            ["COND",
+                ["EQUAL", "$ACTIVE_CARD.currentSide", "A"],
+                [
+                    ["LOG", "$ALIAS_N", " flipped ", "$ACTIVE_FACE.name", " facedown."],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/currentSide", "B"]    
+                ],
+                true,
+                [
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/currentSide", "A"],
+                    ["LOG", "$ALIAS_N", " flipped ", "$ACTIVE_FACE.name", " faceup."]
+                ]
+            ]
+        ],
+        "rangerToken": [
+            ["COND",
+                ["EQUAL", "$GAME.playerUi.playerN", "player1"], 
+                ["COND",
+                    ["EQUAL", "$ACTIVE_CARD.tokens.ranger1", 1],
+                    [
+                        ["LOG", "├── ", "{{$ALIAS_N}}", " removed their Ranger token from ", "$ACTIVE_CARD.sides.A.name", "."],
+                        ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/ranger1", 0]
+                    ],
+                true,
+                    [
+                        ["LOG", "├── ", "{{$ALIAS_N}}", " moved their Ranger token to ", "$ACTIVE_CARD.sides.A.name", "."],
+                        ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/ranger1", 1]
+                    ]
+                ]
+            ],
+            ["COND",
+                ["EQUAL", "$GAME.playerUi.playerN", "player2"], 
+                ["COND",
+                    ["EQUAL", "$ACTIVE_CARD.tokens.ranger2", 1],
+                    [
+                        ["LOG", "├── ", "{{$ALIAS_N}}", " removed their Ranger token from ", "$ACTIVE_CARD.sides.A.name", "."],
+                        ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/ranger2", 0]
+                    ],
+                true,
+                    [
+                        ["LOG", "├── ", "{{$ALIAS_N}}", " moved their Ranger token to ", "$ACTIVE_CARD.sides.A.name", "."],
+                        ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/ranger2", 1]
+                    ]
+                ]
+            ],
+            ["COND",
+                ["EQUAL", "$GAME.playerUi.playerN", "player3"], 
+                ["COND",
+                    ["EQUAL", "$ACTIVE_CARD.tokens.ranger3", 1],
+                    [
+                        ["LOG", "├── ", "{{$ALIAS_N}}", " removed their Ranger token from ", "$ACTIVE_CARD.sides.A.name", "."],
+                        ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/ranger3", 0]
+                    ],
+                true,
+                    [
+                        ["LOG", "├── ", "{{$ALIAS_N}}", " moved their Ranger token to ", "$ACTIVE_CARD.sides.A.name", "."],
+                        ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/ranger3", 1]
+                    ]
+                ]
+            ],
+            ["COND",
+                ["EQUAL", "$GAME.playerUi.playerN", "player4"], 
+                ["COND",
+                    ["EQUAL", "$ACTIVE_CARD.tokens.ranger4", 1],
+                    [
+                        ["LOG", "├── ", "{{$ALIAS_N}}", " removed their Ranger token from ", "$ACTIVE_CARD.sides.A.name", "."],
+                        ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/ranger4", 0]
+                    ],
+                true,
+                    [
+                        ["LOG", "├── ", "{{$ALIAS_N}}", " moved their Ranger token to ", "$ACTIVE_CARD.sides.A.name", "."],
+                        ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/ranger4", 1]
+                    ]
+                ]
+            ]
+        ],
+        "addToVictoryDisplay": [
+            ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedRewards", 0],
+            ["LOG", "$ALIAS_N", " added ", "$ACTIVE_FACE.name", " to the victory display."]
+        ],
+        "setAside": [
+            ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedSetAside", 0],
+            ["LOG", "$ALIAS_N", " set aside ", "$ACTIVE_FACE.name", "."]
+        ],
+        "discardCard": [
+            ["COND",
+                ["EQUAL", "$ACTIVE_CARD.cardIndex", 0],
+                [
+                    ["DEFINE", "$STACK_ID", ["GET_STACK_ID", "$ACTIVE_CARD.groupId", "$ACTIVE_CARD.stackIndex"]],
+                    ["DEFINE", "$CARD_IDS", "$GAME.stackById.$STACK_ID.cardIds"],
+                    ["FOR_EACH_VAL", "$CARD_ID", "$CARD_IDS",
+                        [
+                            ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
+                            ["COND",
+                                ["EQUAL", "$CARD.discardGroupId", null], 
+                                ["LOG", "$ALIAS_N", " failed to discard ", "$CARD.currentFace.name", " because it is not associated with a discard pile. Please drag the card instead."],
+                                true,
+                                [
+                                    ["DEFINE", "$CURRENT_SIDE", "$CARD.currentSide"],
+                                    ["LOG", "$ALIAS_N", " discarded ", "$CARD.sides.A.name", "."],
+                                    ["MOVE_CARD", "$CARD_ID", "$CARD.discardGroupId", 0]
+                                ]
+                            ]
+                        ]
+                    ]
+                ],
+                true,
+                [
+                    ["COND",
+                        ["EQUAL", "$ACTIVE_CARD.discardGroupId", null],
+                        ["LOG", "$ALIAS_N", " failed to discard ", "$ACTIVE_FACE.name", " because it is not associated with a discard pile. Please drag the card instead."],
+                        true,
+                        [
+                            ["LOG", "$ALIAS_N", " discarded ", "$ACTIVE_CARD.sides.A.name", "."],
+                            ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.discardGroupId", 0]
+                        ]
+                    ]
+                ]
+            ],
+            ["COND",
+                ["EQUAL", "$ACTIVE_CARD.currentFace.type", "Quest"],
+                ["COND", 
+                    ["EQUAL", ["LENGTH", "$GAME.groupById.sharedLocation.stackIds"], 0],
+                    ["LOG", "The players won the game!"],
+                    true,
+                    [
+                        ["MOVE_STACK", ["GET_STACK_ID", "sharedLocation", 0], "sharedLocation", 0],
+                        ["LOG", "$ALIAS_N", " advanced the quest."]
+                    ]
+                ]
+            ]
+        ],
+        "shuffleIntoDeck": [
+            ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.deckGroupId", 0],
+            ["DEFINE", "$GROUP_ID", "$ACTIVE_CARD.deckGroupId"],
+            ["SHUFFLE_GROUP", "$GROUP_ID"],
+            ["LOG", "$ALIAS_N", " shuffled ", "$ACTIVE_FACE.name", " into ", "$GAME.groupById.$GROUP_ID.label", "."]
+        ],
+        "detach": [
+            ["COND",
+                ["GREATER_THAN", "$ACTIVE_CARD.cardIndex", 0],
+                [
+                    ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.groupId", ["ADD", "$ACTIVE_CARD.stackIndex", 1]],
+                    ["LOG", "$ALIAS_N", " detached ", "$ACTIVE_FACE.name", "."]
+                ]
+            ]
+        ],
+        "swapSide": [
+            ["COND",
+                ["GREATER_THAN", "$ACTIVE_CARD.cardIndex", 0],
+                ["COND",
+                    ["EQUAL", "$ACTIVE_CARD.attachmentDirection", -1],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/attachmentDirection", 1],
+                    true,
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/attachmentDirection", -1]
+                ]
+            ]
+        ],
+        "swapWithTop": [
+            ["VAR", "$ORIG_GROUP_ID", "$ACTIVE_CARD.groupId"],
+            ["VAR", "$DECK_GROUP_ID", "$ACTIVE_CARD.deckGroupId"],
+            ["VAR", "$TOP_STACK_ID", "$GAME.groupById.$DECK_GROUP_ID.stackIds.[0]"],
+            ["VAR", "$TOP_CARD_ID", "$GAME.stackById.$TOP_STACK_ID.cardIds.[0]"],
+            ["VAR", "$TOP_CARD", "$GAME.cardById.$TOP_CARD_ID"],
+            ["VAR", "$ACTIVE_STACK_INDEX", "$ACTIVE_CARD.stackIndex"],
+            ["VAR", "$ACTIVE_CARD_INDEX", "$ACTIVE_CARD.cardIndex"],
+            ["MOVE_CARD", "$ACTIVE_CARD_ID", "$TOP_CARD.deckGroupId", "$TOP_CARD.stackIndex", "$TOP_CARD.cardIndex"],
+            ["MOVE_CARD", "$TOP_CARD_ID", "$ORIG_GROUP_ID", "$ACTIVE_STACK_INDEX", "$ACTIVE_CARD_INDEX"],
+            ["LOG", "{{$ALIAS_N}} swapped {{$ACTIVE_CARD.currentFace.name}} with the top card of {{$GAME.groupById.$DECK_GROUP_ID.label}}."]
+        ],
+        "sufferFatigue": [
+            ["MOVE_CARD", ["GET_CARD_ID", "{{$PLAYER_N}}Deck", 0, 0], "{{$PLAYER_N}}Fatigue", 0],
+            ["LOG", "{{$ALIAS_N}} suffered 1 Fatigue."]
+        ],
+        "sootheFatigue": [
+            ["MOVE_CARD", ["GET_CARD_ID", "{{$PLAYER_N}}Fatigue", 0, 0], "{{$PLAYER_N}}Hand", -1],
+            ["LOG", "{{$ALIAS_N}} soothed 1 Fatigue."]
+        ],
+        "setCardsDrawn": [
+            ["LOG", "$ALIAS_N", " set number of cards drawn during the Resource Phase to ", "$VAL", "."],
+            ["INPUT", "integer", "$VAL", "Set the number of cards drawn during resource phase:", 1],
+            ["SET", "/playerData/$PLAYER_N/cardsDrawn", "$VAL"]
+        ],
+        "shuffleGroupIntoDeck": [
+            ["DEFINE", "$DEST_GROUP_ID", "$ACTIVE_GROUP.onCardEnter.deckGroupId"],
+            ["DEFINE", "$DEST_GROUP", "$GAME.groupById.$DEST_GROUP_ID"],
+            ["LOG", "$ALIAS_N", " shuffled ", "$ACTIVE_GROUP.label", " into ", "$DEST_GROUP.label", "."],
+            ["MOVE_STACKS", "$ACTIVE_GROUP_ID", "$DEST_GROUP_ID"]
+        ],
+        "togglePreventRefresh": [
+            ["COND",
+                ["EQUAL", "$ACTIVE_CARD.preventRefresh", true],
+                [
+                    ["LOG", "$ALIAS_N", " unlocked ", "$ACTIVE_FACE.name", "."],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/preventRefresh", false]
+                ],
+                true,
+                [
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/preventRefresh", true],
+                    ["LOG", "$ALIAS_N", " preventRefresh ", "$ACTIVE_FACE.name", "."]
+                ]
+            ]
+        ]
+    }
+}

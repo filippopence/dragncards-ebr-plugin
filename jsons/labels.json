@@ -1,0 +1,902 @@
+
+{
+    "labels": {
+        "drawACard": {
+            "English": "Draw a card"
+        },
+        "sufferFatigue": {
+            "English": "Suffer one fatigue"
+        },
+        "sootheFatigue": {
+            "English": "Soothe one fatigue"
+        },
+        "reshuffleChallengeDiscard": {
+            "English": "Reshuffle Challenge discard into deck"
+        },
+        "revealPathCard": {
+            "English": "Reveal path card"
+        },
+        "revealPathFacedown": {
+            "English": "Reveal path card facedown"
+        },
+        "revealPathFaceup": {
+            "English": "Reveal path card faceup"
+        },
+        "revealFacedownEncounterCard": {
+            "English": "Reveal facedown encounter card"
+        },
+        "revealCardFromSecondDeck": {
+            "English": "Reveal card from second shared deck"
+        },
+        "revealSecondaryFacedown": {
+            "English": "Reveal card from second shared deck facedown"
+        },
+        "revealSecondaryFaceup": {
+            "English": "Reveal card from second shared deck faceup"
+        },
+        "revealCardFromChallengeDeck": {
+            "English": "Reveal card from challenge deck"
+        },
+        "revealChallenge": {
+            "English": "Reveal Challenge"
+        },
+        "shuffleChallenge": {
+            "English": "Reshuffle Challenge"
+        },
+        "revealFacedownCardFromSecondEncounterDeck": {
+            "English": "Reveal facedown card from second encounter deck"
+        },
+        "makePersistent": {
+            "English": "Add / Remove 'Persistent' keyword"
+        },
+        "drawCardAndGainResourcesIfHostIncrementRound": {
+            "English": "Draw card and gain resources. If host, increment round."
+        },
+        "calculateScore": {
+            "English": "Calculate score"
+        },
+        "saveGame": {
+            "English": "Save game"
+        },
+        "clearTargetsArrows": {
+            "English": "Clear targets/arrows"
+        },
+        "undoOneAction": {
+            "English": "Undo one action"
+        },
+        "redoOneAction": {
+            "English": "Redo one action"
+        },
+        "moveToPreviousGameStep": {
+            "English": "Move to previous game step"
+        },
+        "moveToNextGameStep": {
+            "English": "Move to next game step"
+        },
+        "moveToPreviousPhase": {
+            "English": "Move to previous phase"
+        },
+        "moveToNextPhase": {
+            "English": "Move to next phase"
+        },
+        "ifHostEnableMultiplayerHotkeys": {
+            "English": "If host, enable multiplayer hotkeys"
+        },
+        "pressShiftNForAllPlayers": {
+            "English": "Press Shift+N for all players"
+        },
+        "pressShiftRForAllPlayers": {
+            "English": "Press Shift+R for all players"
+        },
+        "drawCardOnBehalfOfNextEmptySeat": {
+            "English": "Draw card on behalf of next empty seat"
+        },
+        "exhaustReadyIfLocationMakeActive": {
+            "English": "Exhaust / Ready."
+        },
+        "detach": {
+            "English": "Detach"
+        },
+        "flip": {
+            "English": "Flip"
+        },
+        "shuffleIntoOwnerSDeck": {
+            "English": "Shuffle into owner's deck"
+        },
+        "targetCard": {
+            "English": "Target card"
+        },
+        "addToVictoryDisplay": {
+            "English": "Add to victory display"
+        },
+        "setAside": {
+            "English": "Set aside"
+        },
+        "discard": {
+            "English": "Discard"
+        },        
+        "fatigue": {
+            "English": "Fatigue"
+        },
+        "discardOrAdvance": {
+            "English": "Discard"
+        },
+        "discardAllOtherCardsInThisCardSStack": {
+            "English": "Discard all other cards in this card's stack"
+        },
+        "sendAttachmentToBackOfStack": {
+            "English": "Send attachment to back of stack"
+        },
+        "layout1Player": {
+            "English": "1 player"
+        },
+        "layout2Player": {
+            "English": "2 players"
+        },
+        "layout3Player": {
+            "English": "3 players"
+        },
+        "layout4Player": {
+            "English": "4 players"
+        },
+        "challengeDeck": {
+            "English": "Challenge Deck"
+        },
+        "Challenge Deck": {
+            "English": "Challenge Deck"
+        },
+        "pathDeck": {
+            "English": "Path Deck"
+        },
+        "cardsPerRound": {
+            "English": "Cards Per Round"
+        },
+        "pathCards":{
+            "English": "Path Cards"
+        },
+        "setup": {
+            "English": "Setup"
+        },
+        "step-0.1": {
+            "English": "0.1 - Setup player areas"
+        },
+        "step-0.2": {
+            "English": "0.2 - Draw starting hand"
+        },
+        "step-0.3": {
+            "English": "0.3 - Elect the lead Ranger"
+        },
+        "step-0.4": {
+            "English": "0.4 - Shuffle the Challenge deck"
+        },
+        "step-0.5": {
+            "English": "0.5 - Set up the starting Location"
+        },
+        "step-0.6": {
+            "English": "0.6 - Set up the weather card"
+        },
+        "step-0.7": {
+            "English": "0.7 - Set up mission cards"
+        },
+        "step-0.8": {
+            "English": "0.8 - Build and shuffle the Path deck"
+        },
+        "step-0.9": {
+            "English": "0.9 - Resolve arrival setup"
+        },
+        "step-0.10": {
+            "English": "0.10 - Finishing touches"
+        },
+        "step-1": {
+            "English": "1 - Each Ranger draws 1 Path card"
+        },
+        "rangerPhase": {
+            "English": "Ranger Phase"
+        },
+        "step-2": {
+            "English": "2 - Rangers take turns until they have all rested"
+        },
+        "travel": {
+            "English": "Travel"
+        },
+        "step-3.1": {
+            "English": "3.1 - Clear play area"
+        },
+        "step-3.2": {
+            "English": "3.2 - Travel to a new location"
+        },
+        "step-3.3": {
+            "English": "3.3 - Decide to camp"
+        },
+        "step-3.4": {
+            "English": "3.4 - Build the Path Deck"
+        },
+        "step-3.5": {
+            "English": "3.5 - Arrival setup"
+        },
+        "refresh": {
+            "English": "Refresh"
+        },
+        "step-4.1": {
+            "English": "4.1 - Draw 1 Ranger card"
+        },
+        "step-4.2": {
+            "English": "4.2 - Refill energy pools"
+        },
+        "step-4.3": {
+            "English": "4.3 - Ready all cards in play"
+        },
+        "progressToken": {
+            "English": "Progress"
+        },
+        "harmToken": {
+            "English": "Harm"
+        },
+        "generalToken": {
+            "English": "General"
+        },
+        "ranger1Token": {
+            "English": "Ranger 1"
+        },
+        "ranger2Token": {
+            "English": "Ranger 2"
+        },
+        "ranger3Token": {
+            "English": "Ranger 3"
+        },
+        "ranger4Token": {
+            "English": "Ranger 4"
+        },
+        "addRangerToken": {
+            "English" : "Add your Ranger token to the card"
+        },
+        "addRangerToken2": {
+            "English" : "Add your Ranger token"
+        },
+        "awarenessToken": {
+            "English": "Awareness"
+        },
+        "spiritToken": {
+            "English": "Spirit"
+        },
+        "fitnessToken": {
+            "English": "Fitness"
+        },
+        "focusToken": {
+            "English": "Focus"
+        },
+        "round": {
+            "English": "Round"
+        },
+        "stagingProgress": {
+            "English": "Staging Progress"
+        },
+        "removeTokens": {
+            "English": "Remove Tokens"
+        },
+        "exhautReady": {
+            "English": "Exhaust Ready"
+        },
+        "commit": {    
+            "English": "Commit"
+        },
+        "shuffle": {    
+            "English": "Shuffle"
+        },
+        "flipTouchButton": {    
+            "English": "Flip"
+        },
+        "discardTouchButton": {    
+            "English": "Discard"
+        },
+        "target": {    
+            "English": "Target"
+        },
+        "victory": {    
+            "English": "Victory"
+        },
+        "drawArrow": {    
+            "English": "Draw Arrow"
+        },
+        "draw": {    
+            "English": "Draw"
+        },
+        "reveal": {    
+            "English": "Reveal"
+        },
+        "refreshTouchButton": {    
+            "English": "Refresh"
+        },
+        "newRound": {    
+            "English": "New round for all Rangers"
+        },
+        "clearTargets": {    
+            "English": "Clear Targets"
+        },
+        "undo": {    
+            "English": "Undo"
+        },
+        "undoMany": {    
+            "English": "Undo many"
+        },
+        "nextStep": {    
+            "English": "Next step"
+        },
+        "save": {    
+            "English": "Save"
+        },
+        "reveal2": {    
+            "English": "Reveal #2"
+        },
+        "reveal2down": {    
+            "English": "Reveal #2 Facedown"
+        },
+        "toggleExhaust": {    
+            "English": "Exhaust/Ready"
+        },
+        "labelMarkAsVictory": {
+            "English": "Rangers camped after traveling (or completed their mission for the day)."
+        },
+        "labelMarkAsDefeat": {
+            "English": "One or more Rangers defeated due to fatigue, injury or forced to end the day."
+        },
+        "labelMarkAsIncomplete": {
+            "English": "Mark as Incomplete"
+        },
+        "myDeck": {
+            "English": "My Deck"
+        },
+        "player1Deck": {
+            "English": "Player 1 Deck"
+        },
+        "player2Deck": {
+            "English": "Player 2 Deck"
+        },
+        "player3Deck": {
+            "English": "Player 3 Deck"
+        },
+        "player4Deck": {
+            "English": "Player 4 Deck"
+        },
+        "sharedMissions": {
+            "English": "Missions"
+        },
+        "sharedPathDeck": {
+            "English": "Path Deck"
+        },
+        "sharedChallengeDeck": {
+            "English": "Challenge Deck"
+        },
+        "sharedPathDeck2": {
+            "English": "Path Deck 2"
+        },
+        "sharedPathDeck3": {
+            "English": "Path Deck 3"
+        },
+        "sharedExtra1": {
+            "English": "Extra1"
+        },
+        "sharedExtra2": {
+            "English": "Extra2"
+        },
+        "sharedExtra3": {
+            "English": "Extra3"
+        },
+        "sharedExtra4": {
+            "English": "Extra4"
+        },
+        "damage": {
+            "English": "damage"
+        },
+        "add to VD": {
+            "English": "add to VD"
+        },
+        "progress": {
+            "English": "progress"
+        },
+        "exhaust": {
+            "English": "exhaust"
+        },
+        "ready": {
+            "English": "ready"
+        },
+        "The Core Set": {
+            "English": "The Core Set"
+        },
+        "name": {
+            "English": "Name"
+        },
+        "sphere_code": {
+            "English": "Aspect Req."
+        },
+        "type": {
+            "English": "Type"
+        },
+        "traits": {
+            "English": "Traits"
+        },
+        "set": {
+            "English": "Set"
+        },
+        "quantity": {
+            "English": "Quantity"
+        },
+        "myPlayArea": {
+            "English": "My Play Area"
+        },
+        "myRole": {
+            "English": "My Role"
+        },
+        "myAspect": {
+            "English": "My Aspect"
+        },
+        "shuffleGroupIntoDeck": {
+            "English": "Shuffle Into Deck"
+        },
+        "sharedPathDiscard": {
+            "English": "Path Discard"
+        },
+        "sharedChallengeDiscard": {
+            "English": "Challenge Discard"
+        },
+        "sharedPathDiscard2": {
+            "English": "Path Discard 2"
+        },
+        "sharedPathDiscard3": {
+            "English": "Path Discard 3"
+        },
+        "sharedOther": {
+            "English": "Other"
+        },
+        "sharedSetAside": {
+            "English": "Set Aside"
+        },
+        "sharedRewards": {
+            "English": "Obtained Rewards"
+        },
+        "sharedRewardsTable": {
+            "English": "Rewards"
+        },
+        "staging": {
+            "English": "Missions"
+        },
+        "active": {
+            "English": "Weather"
+        },
+        "player1Hand": {
+            "English": "Player 1 Hand"
+        },
+        "hand": {
+            "English": "Hand"
+        },
+        "deck": {
+            "English": "Deck"
+        },
+        "player1Discard": {
+            "English": "Player 1 Discard"
+        },
+        "player1Fatigue": {
+            "English": "Player 1 Fatigue"
+        },
+        "player1Play": {
+            "English": "Player 1 Play Area"
+        },
+        "player1Play1": {
+            "English": "Player 1 Play Area"
+        },
+        "playArea": {
+            "English": "Player Area"
+        },
+        "player1WithinReach": {
+            "English": "Within Reach"
+        },
+        "player1WithinReach1": {
+            "English": "Within Reach Player 1"
+        },
+        "player1Play2": {
+            "English": "Player 1 Play Area"
+        },
+        "player1Play3": {
+            "English": "Player 1 Play Area"
+        },
+        "player1Play4": {
+            "English": "Player 1 Play Area"
+        },
+        "player1Engaged": {
+            "English": "Player 1 Engaged"
+        },
+        "sideboard": {
+            "English": "Sideboard"
+        },
+        "player1Sideboard": {
+            "English": "Player 1 Sideboard"
+        },
+        "player2Sideboard": {
+            "English": "Player 2 Sideboard"
+        },
+        "player3Sideboard": {
+            "English": "Player 3 Sideboard"
+        },
+        "player4Sideboard": {
+            "English": "Player 4 Sideboard"
+        },
+        "engaged": {
+            "English": "Along the Way"
+        },
+        "sharedAlongTheWay": {
+            "English": "Along the Way"
+        },
+        "player1Role": {
+            "English": "Player 1 Role"
+        },
+        "player1Aspect": {
+            "English": "Player 1 Aspect"
+        },
+        "role": {
+            "English": "Role"
+        },
+        "aspect": {
+            "English": "Aspect"
+        },
+        "player2Hand": {
+            "English": "Player 2 Hand"
+        },
+        "player2Discard": {
+            "English": "Player 2 Discard"
+        },
+        "player2Fatigue": {
+            "English": "Player 2 Fatigue"
+        },
+        "player2Play": {
+            "English": "Player 2 Play Area"
+        },
+        "player2WithinReach": {
+            "English": "Within Reach Player 2"
+        },
+        "player2Play1": {
+            "English": "Player 2 Play Area"
+        },
+        "player2Play2": {
+            "English": "Player 2 Play Area"
+        },
+        "player2Play3": {
+            "English": "Player 2 Play Area"
+        },
+        "player2Play4": {
+            "English": "Player 2 Play Area"
+        },
+        "player2Engaged": {
+            "English": "Player 2 Engaged"
+        },
+        "player2Role": {
+            "English": "Player 2 Role"
+        },
+        "player2Aspect": {
+            "English": "Player 2 Aspect"
+        },
+        "player3Hand": {
+            "English": "Player 3 Hand"
+        },
+        "player3Discard": {
+            "English": "Player 3 Discard"
+        },
+        "player3Fatigue": {
+            "English": "Player 3 Fatigue"
+        },
+        "player3WithinReach": {
+            "English": "Within Reach Player 3"
+        },
+        "player3Play": {
+            "English": "Player 3 Play Area"
+        },
+        "player3Play1": {
+            "English": "Player 3 Play Area"
+        },
+        "player3Play2": {
+            "English": "Player 3 Play Area"
+        },
+        "player3Play3": {
+            "English": "Player 3 Play Area"
+        },
+        "player3Play4": {
+            "English": "Player 3 Play Area"
+        },
+        "player3Engaged": {
+            "English": "Player 3 Engaged"
+        },
+        "player3Role": {
+            "English": "Player 3 Role"
+        },
+        "player3Aspect": {
+            "English": "Player 3 Aspect"
+        },
+        "player4Hand": {
+            "English": "Player 4 Hand"
+        },
+        "player4Discard": {
+            "English": "Player 4 Discard"
+        },
+        "player4Fatigue": {
+            "English": "Player 4 Fatigue"
+        },
+        "player4WithinReach": {
+            "English": "Within Reach Player 4"
+        },
+        "player4Play": {
+            "English": "Player 4 Play Area"
+        },
+        "player4Play1": {
+            "English": "Player 4 Play Area"
+        },
+        "player4Play2": {
+            "English": "Player 4 Play Area"
+        },
+        "player4Play3": {
+            "English": "Player 4 Play Area"
+        },
+        "player4Play4": {
+            "English": "Player 4 Play Area"
+        },
+        "player4Engaged": {
+            "English": "Player 4 Engaged"
+        },
+        "player4Role": {
+            "English": "Player 4 Role"
+        },
+        "player4Aspect": {
+            "English": "Player 4 Aspect"
+        },
+        "sharedLocation": {
+            "English": "Location"
+        },
+        "Location": {
+            "English": "Location"
+        },
+        "sharedWeather": {
+            "English": "Weather"
+        },
+        "player1Deck2": {
+            "English": "Player1 Deck2"
+        },
+        "player2Deck2": {
+            "English": "Player2 Deck2"
+        },
+        "player3Deck2": {
+            "English": "Player3 Deck2"
+        },
+        "player4Deck2": {
+            "English": "Player4 Deck2"
+        },
+        "exhaustReady": {
+            "English": "Exhaust/Ready"
+        },
+        "topBarStagingProgress": {
+            "English": "Progress"
+        },
+        "woodsSet": {
+            "English": "12 Path Card Set - Woods"
+        },
+        "Woods": {
+            "English": "Woods"
+        },
+        "mountainSet": {
+            "English": "12 Path Card Set - Mountain"
+        },
+        "MountainPass": {
+            "English": "Mountain Pass"
+        },
+        "lakeshoreSet": {
+            "English": "12 Path Card Set - Lakeshore"
+        },
+        "Lakeshore": {
+            "English": "Lakeshore"
+        },
+        "oldGrowthSet": {
+            "English": "12 Path Card Set - Old-Growth"
+        },
+        "Old-Growth": {
+            "English": "Old-Growth"
+        },
+        "grasslandSet": {
+            "English": "12 Path Card Set - Grassland"
+        },
+        "Grassland": {
+            "English": "Grassland"
+        },
+        "ravineSet": {
+            "English": "12 Path Card Set - Ravine"
+        },
+        "Ravine": {
+            "English": "Ravine"
+        },
+        "swampSet": {
+            "English": "12 Path Card Set - Swamp"
+        },
+        "Swamp": {
+            "English": "Swamp"
+        },
+        "riverSet": {
+            "English": "12 Path Card Set - River"
+        },
+        "River": {
+            "English": "River"
+        },
+        "Spire": {
+            "English": "Spire"
+        },
+        "WhiteSky": {
+            "English": "White Sky"
+        },
+        "NorthernOutpost": {
+            "English": "Northern Outpost"
+        },
+        "LoneTreeStation": {
+            "English": "Lone Tree Station"
+        },
+        "FracturedWall": {
+            "English": "Fractured Wall"
+        },
+        "Meadow": {
+            "English": "Meadow"
+        },
+        "MarshofRebirth": {
+            "English": "Marsh of Rebirth"
+        },
+        "Branch": {
+            "English": "Branch"
+        },
+        "Tumbledown": {
+            "English": "Tumbledown"
+        },
+        "AtroxMountain": {
+            "English": "Atrox Mountain"
+        },
+        "GoldenShore": {
+            "English": "Golden Shore"
+        },
+        "MountNim": {
+            "English": "Mount Nim"
+        },
+        "BoulderFields": {
+            "English": "Boulder Fields"
+        },
+        "AncestorsGrove": {
+            "English": "Ancestor's Grove"
+        },
+        "KobosMarket": {
+            "English": "Kobo's Market"
+        },
+        "StoneweaverBridge": {
+            "English": "Stoneweaver Bridge"
+        },
+        "ThePhilosophersGarden": {
+            "English": "The Philosophers Garden"
+        },
+        "TheHighBasin": {
+            "English": "The High Basin"
+        },
+        "TheFurrow": {
+            "English": "The Furrow"
+        },
+        "BiologicalOutpost": {
+            "English": "Biological Outpost"
+        },
+        "ThePlummet": {
+            "English": "The Plummet"
+        },
+        "GreenbriarKnoll": {
+            "English": "Greenbriar Knoll"
+        },
+        "HeadwatersStation": {
+            "English": "Headwaters Station"
+        },
+        "TheConcordantZiggurats": {
+            "English": "The Concordant Ziggurats"
+        },
+        "CrossroadsStation": {
+            "English": "Crossroads Station"
+        },
+        "RingsoftheMoon": {
+            "English": "Rings of the Moon"
+        },
+        "ArcheologicalOutpost": {
+            "English": "Archeological Outpost"
+        },
+        "MoundoftheNavigator": {
+            "English": "Mound of the Navigator"
+        },
+        "Terravore": {
+            "English": "Terravore"
+        },
+        "TheGreenbridge": {
+            "English": "The Greenbridge"
+        },
+        "MichaelsBog": {
+            "English": "Michael's Bog"
+        },
+        "TheCypressCitadel": {
+            "English": "The Cypress Citadel"
+        },
+        "TheFrowningGate": {
+            "English": "The Frowning Gate"
+        },
+        "SunkenOutpost": {
+            "English": "Sunken Outpost"
+        },
+        "AlluvialRuins": {
+            "English": "Alluvial Ruins"
+        },
+        "BowloftheSun": {
+            "English": "Bowl of the Sun"
+        },
+        "WatchersRock": {
+            "English": "Watcher's Rock"
+        },
+        "Pivotal Location": {
+            "English": "Pivotal Location"
+        },
+        "Path Sets": {
+            "English": "Path Sets"
+        },
+        "GeneralSet": {
+            "English": "General Set"
+        },
+        "TheValleySet": {
+            "English": "The Valley Set"
+        },
+        "The Lure of the Valley": {
+            "English": "The Lure of the Valley"
+        },
+        "preventRefresh": {
+            "English": "Prevent Refresh"
+        },
+        "swapWithTop": {
+            "English": "Swap with top card in deck of origin"
+        },
+        "discardUntilFeature": {
+            "English": "Discard Until Feature"
+        },
+        "discardUntilBeing": {
+            "English": "Discard Until Being"
+        },
+        "Weather": {
+            "English": "Weather"
+        },
+        "APerfectDay": {
+            "English": "A Perfect Day"
+        },
+        "Downpour": {
+            "English": "Downpour"
+        },
+        "HowlingWinds": {
+            "English": "Howling Winds"
+        },
+        "ElectricFog": {
+            "English": "Electric Fog"
+        },
+        "PremadeRangerDecks": {
+            "English": "Premade Ranger Decks"
+        },
+        "UndauntedSeeker": {
+            "English": "Undaunted Seeker"
+        },
+        "VoiceoftheElders": {
+            "English": "Voice of the Elders"
+        },
+        "MasterfulEngineer": {
+            "English": "Masterful Engineer"
+        },
+        "AdherentoftheFirstIdeal": {
+            "English": "Adherent of the First Ideal"
+        },
+        "Map&Reference": {
+            "English": "Map & Reference"
+        },
+        "CerberusianCyclone": {
+            "English": "Cerberusian Cyclone"
+        },
+        "BallLightning": {
+            "English": "Ball Lightning"
+        }
+    }
+}

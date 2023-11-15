@@ -1,0 +1,37 @@
+{
+    "hotkeys": {
+        "token": [
+            {"key": "1", "tokenType": "progress", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/progress.png)"},
+            {"key": "2", "tokenType": "harm", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/harm.png)"},
+            {"key": "3", "tokenType": "general", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/general_token.png)"},
+            {"key": "6", "tokenType": "awareness", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/awareness.png)"},
+            {"key": "7", "tokenType": "spirit", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/spirit.png)"},
+            {"key": "8", "tokenType": "fitness", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/fitness.png)"},
+            {"key": "9", "tokenType": "focus", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/focus.png)"}
+        ],
+        "game": [
+            {"key": "D", "actionList": "drawCard", "label": "id:drawACard"},
+            {"key": "E", "actionList": "revealPathFaceup", "label": "id:revealPathFaceup"},
+            {"key": "Shift+E", "actionList": "revealPathFacedown", "label": "id:revealPathFacedown"},
+            {"key": "K", "actionList": "revealSecondaryFaceup", "label": "id:revealSecondaryFaceup"},
+            {"key": "Shift+K", "actionList": "revealSecondaryFacedown", "label": "id:revealSecondaryFacedown"},
+            {"key": "Q", "actionList": "revealChallenge", "label": "id:revealCardFromChallengeDeck"},
+            {"key": "Shift+Q", "actionList": "shuffleChallenge", "label": "id:reshuffleChallengeDiscard"},
+            {"key": "S", "actionList": "sufferFatigue", "label": "id:sufferFatigue"},
+            {"key": "Shift+S", "actionList": "sootheFatigue", "label": "id:sootheFatigue"},
+            {"key": "Shift+N", "actionList": "newRound", "label": "id:newRound"}
+        ],
+        "card": [
+            {"key": "A", "actionList": "toggleExhaust", "label": "id:exhaustReadyIfLocationMakeActive"},
+            {"key": "C", "actionList": "detach", "label": "id:detach"},
+            {"key": "F", "actionList": "flipCard", "label": "id:flip"},
+            {"key": "H", "actionList": "shuffleIntoDeck", "label": "id:shuffleIntoOwnerSDeck"},
+            {"key": "X", "actionList": "discardCard", "label": "id:discardOrAdvance"},
+            {"key": "Shift+C", "actionList": "discardOtherCardsInStack", "label": "id:discardAllOtherCardsInThisCardSStack"},
+            {"key": "B", "actionList": "sendToBack", "label": "id:sendAttachmentToBackOfStack"},
+            {"key": "Shift+T", "actionList": "swapWithTop", "label": "id:swapWithTop"},
+            {"key": "P", "actionList": "makePersistent", "label": "id:makePersistent"},
+            {"key": "5", "actionList": "rangerToken", "label": "id:addRangerToken"}
+        ]
+    }
+}

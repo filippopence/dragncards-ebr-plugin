@@ -1,0 +1,19 @@
+{
+    "groupMenu": {
+        "moveToGroupIds": ["sharedPathDeck", "sharedPathDiscard", "sharedPathDeck2", "sharedPathDiscard2", "player1Deck", "player2Deck", "player3Deck", "player4Deck"],
+        "options": [
+            {
+                "label": "id:shuffleGroupIntoDeck",
+                "actionList": "shuffleGroupIntoDeck"
+            },
+            {
+                "label": "id:discardUntilBeing",
+                "actionList": ["DISCARD_UNTIL", "$ACTIVE_GROUP_ID", "Being"]
+            },
+            {
+                "label": "id:discardUntilFeature",
+                "actionList": ["DISCARD_UNTIL", "$ACTIVE_GROUP_ID", "Feature"]
+            }
+        ]
+    }
+}

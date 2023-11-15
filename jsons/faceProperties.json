@@ -1,0 +1,25 @@
+{
+    "faceProperties": {
+        "pack_name" : {"type": "string", "default": ""},
+        "quantity" : {"type": "integer", "default": 0},
+        "position" : {"type": "string", "default": null},
+        "set" : {"type": "string", "default": ""},
+        "is_unique" : {"type": "boolean", "default": false},
+        "sphere_name" : {"type": "string", "default": ""},
+        "traits" : {"type": "string", "default": ""},
+        "cost" : {"type": "integer", "default": null},
+        "presence" : {"type": "integer", "default": null},
+        "text" : {"type": "string", "default": null},
+        "AWA" : {"type": "integer", "default": null},
+        "SPI" : {"type": "integer", "default": null},
+        "FIT" : {"type": "integer", "default": null},
+        "FOC" : {"type": "integer", "default": null},
+        "progress_threshold" : {"type": "integer", "default": null},
+        "harm_threshold" : {"type": "integer", "default": null},
+        "generic_token" : {"type": "integer", "default": null},
+        "scaleProgressThresholdPerPlayer": {"type": "boolean", "default": false},
+        "scaleHarmThresholdPerPlayer": {"type": "boolean", "default": false},
+        "scaleGenericTokenPerPlayer": {"type": "boolean", "default": false},
+        "reveal": {"type": "string", "default": null}
+    }
+}

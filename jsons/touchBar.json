@@ -1,0 +1,150 @@
+{
+    "touchBar": [
+        [
+            {"id": "removeTokens",
+              "label": "id:removeTokens",
+              "actionType": "card",
+              "actionList": "zeroTokens"
+            },
+            {"id": "incrementProgress",
+              "label": "",
+              "imageUrl": "https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/progress.png",
+              "actionType": "token",
+              "tokenType": "progress"
+            },
+            { "id": "incrementHarm",
+              "label": "",
+              "imageUrl": "https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/harm.png",
+              "actionType": "token",
+              "tokenType": "harm"
+            },
+            { "id": "incrementGeneral",
+              "label": "",
+              "imageUrl": "https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/general_token.png",
+              "actionType": "token",
+              "tokenType": "general"
+            },
+            {"id": "addRangerToken",
+            "label": "id:addRangerToken2",
+            "actionType": "card",
+            "actionList": "rangerToken"
+            },
+            { "id": "incrementAwareness",
+              "label": "",
+              "imageUrl": "https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/awareness.png",
+              "actionType": "token",
+              "tokenType": "awareness"
+            },
+            { "id": "incrementSpirit",
+              "label": "",
+              "imageUrl": "https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/spirit.png",
+              "actionType": "token",
+              "tokenType": "spirit"
+            },
+            { "id": "incrementFitness",
+              "label": "",
+              "imageUrl": "https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/fitness.png",
+              "actionType": "token",
+              "tokenType": "fitness"
+            },
+            { "id": "incrementFocus",
+              "label": "",
+              "imageUrl": "https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/focus.png",
+              "actionType": "token",
+              "tokenType": "focus"
+            },
+            { "id": "toggleExhaust",
+              "label": "id:exhaustReady",
+              "actionType": "card",
+              "actionList": "toggleExhaust"
+            },
+            { "id": "shuffleIntoDeck",
+              "label": "id:shuffle",
+              "actionType": "card",
+              "actionList": "shuffleIntoDeck"
+            },
+            { "id": "flipTouchButton",
+              "label": "id:flip",
+              "actionType": "card",
+              "actionList": "flipCard"
+            },
+            { "id": "discardTouchButton",
+              "label": "id:discard",
+              "actionType": "card",
+              "actionList": "discardCard"
+            },
+            { "id": "setAside",
+              "label": "id:setAside",
+              "actionType": "card",
+              "actionList": "SetAside"
+            }
+        ],
+        [
+            { "id": "drawCard",
+              "label": "id:draw",
+              "actionType": "game",
+              "actionList": "drawCard"
+            },
+            { "id": "detach",
+              "label": "id:detach",
+              "actionType": "card",
+              "actionList": "detach"
+            },
+            { "id": "revealPathCard",
+              "label": "id:revealPathCard",
+              "actionType": "game",
+              "actionList": "revealPathFaceup"
+            },
+            { "id": "revealPathFacedown",
+              "label": "id:revealPathFacedown",
+              "actionType": "game",
+              "actionList": "revealPathFacedown"
+            },
+            { "id": "newRound",
+              "label": "id:newRound",
+              "actionType": "game",
+              "actionList": "newRound"
+            },
+            { "id": "undo",
+              "label": "id:undo",
+              "actionType": "engine",
+              "actionList": "undo"
+            },
+            { "id": "revealDeck2",
+              "label": "id:reveal2",
+              "actionType": "game",
+              "actionList": "revealSecondaryFaceup"
+            },
+            { "id": "revealDeck2",
+              "label": "id:reveal2down",
+              "actionType": "game",
+              "actionList": "revealSecondaryFacedown"
+            },
+            { "id": "sufferFatigue",
+              "label": "id:sufferFatigue",
+              "actionType": "game",
+              "actionList": "sufferFatigue"
+            },
+            { "id": "sootheFatigue",
+              "label": "id:sootheFatigue",
+              "actionType": "game",
+              "actionList": "sootheFatigue"
+            },
+            { "id": "makePersistent",
+              "label": "id:makePersistent",
+              "actionType": "card",
+              "actionList": "makePersistent"
+            },
+            { "id": "revealChallenge",
+              "label": "id:revealChallenge",
+              "actionType": "game",
+              "actionList": "revealChallenge"
+            },
+            { "id": "shuffleChallenge",
+              "label": "id:shuffleChallenge",
+              "actionType": "game",
+              "actionList": "shuffleChallenge"
+            }
+        ]
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "pluginMenu": {
+        "options": [
+            { 
+                "label": "id:cardsPerRound",
+                "actionList": "setCardsDrawn"
+            }
+        ]
+    }
+}

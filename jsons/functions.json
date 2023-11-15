@@ -1,0 +1,110 @@
+{
+    "functions": {
+        "DISCARD_UNTIL": {
+            "args": ["$GROUP_ID", "$TYPE"],
+            "code": [
+                ["LOG", "{{$PLAYER_N}} began discarding until {{$TYPE}}."],
+                ["WHILE",
+                  ["NOT_EQUAL", "$GAME.groupById.$GROUP_ID.parentCards.[0].sides.A.type", "$TYPE"],
+                  [
+                    ["DEFINE", "$ACTIVE_CARD_ID", "$GAME.groupById.$GROUP_ID.parentCardIds.[0]"],
+                    ["ACTION_LIST", "discardCard"]
+                  ]
+                ],
+                ["VAR", "$TOP_CARD", "$GAME.groupById.$GROUP_ID.parentCards.[0]"],
+                ["LOG", "{{$PLAYER_N}} discarded {{$TOP_CARD.sides.A.name}} and added it to the staging area."],
+                ["COND",
+                    ["EQUAL", "$TOP_CARD.sides.A.reveal", "along_the_way"],
+                    ["MOVE_CARD", "$TOP_CARD.id", "sharedAlongTheWay", -1, 0],
+                    true,
+                    ["MOVE_CARD", "$TOP_CARD.id", "{{$PLAYER_N}}WithinReach", -1, 0]]
+            ]
+        },
+        "DEAL_PATH_CARD": {
+          "args": [
+            {"$FACE_UP": false},
+            {"$GROUP_ID": "sharedPathDeck"},
+            {"$PLAYER": "$PLAYER_N"},
+            {"$CONTROLLER": "$ALIAS_N"}
+          ],
+          "code": ["COND",
+            ["EQUAL", "$GAME.roundNumber", 0],
+            [["INCREASE_VAL", "/roundNumber", 1],
+            ["VAR", "$GROUP", "$GAME.groupById.$GROUP_ID"],
+            ["COND",
+              ["EQUAL", ["LENGTH", "$GROUP.stackIds"], 0],
+              ["LOG", "{{$GROUP.label}} is empty."],
+              true,
+              [
+                ["DEFINE", "$CARD_ID", ["GET_CARD_ID", "$GROUP_ID", 0, 0]],
+                ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
+                ["COND", 
+                ["EQUAL", "$FACE_UP", false],
+                [["MOVE_CARD", "$CARD_ID", "sharedAlongTheWay", -1, 0, ["PROCESS_MAP", {"allowFlip": "$FACE_UP"}]],
+                ["LOG", "{{$ALIAS_N}} revealed a facedown Path card."]],
+                true,
+                [["COND",
+                    ["EQUAL", "$CARD.sides.A.reveal", "along_the_way"],
+                    ["MOVE_CARD", "$CARD_ID", "sharedAlongTheWay", -1, 0],
+                    true,
+                    ["MOVE_CARD", "$CARD_ID", "{{$PLAYER_N}}WithinReach", -1, 0]],
+                ["COND",
+                  ["DEFINED", "$CONTROLLER"],
+                  ["LOG", "{{$ALIAS_N}} revealed {{$CARD.sides.A.name}}."]]
+                ]]
+              ]
+            ]],
+            true,
+            [["VAR", "$GROUP", "$GAME.groupById.$GROUP_ID"],
+            ["COND",
+              ["EQUAL", ["LENGTH", "$GROUP.stackIds"], 0],
+              ["LOG", "{{$GROUP.label}} is empty."],
+              true,
+              [
+                ["DEFINE", "$CARD_ID", ["GET_CARD_ID", "$GROUP_ID", 0, 0]],
+                ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
+                ["COND", 
+                ["EQUAL", "$FACE_UP", false],
+                [["MOVE_CARD", "$CARD_ID", "sharedAlongTheWay", -1, 0, ["PROCESS_MAP", {"allowFlip": "$FACE_UP"}]],
+                ["LOG", "{{$ALIAS_N}} revealed a facedown Path card."]],
+                true,
+                [["COND",
+                    ["EQUAL", "$CARD.sides.A.reveal", "along_the_way"],
+                    ["MOVE_CARD", "$CARD_ID", "sharedAlongTheWay", -1, 0],
+                    true,
+                    ["MOVE_CARD", "$CARD_ID", "{{$PLAYER_N}}WithinReach", -1, 0]],
+                ["COND",
+                  ["DEFINED", "$CONTROLLER"],
+                  ["LOG", "{{$ALIAS_N}} revealed {{$CARD.sides.A.name}}."]]
+                ]]
+              ]
+            ]]
+          ]
+        },
+        "sufferFatigueForInjury": {
+          "args": [
+            "$PLAYER"
+            ],
+          "code": [
+              ["DEFINE", "$ROLE_ID", ["GET_CARD_ID", "{{$PLAYER}}Role", 0, 0]],
+              ["DEFINE", "$ROLE", "$GAME.cardById.$ROLE_ID"],
+              ["COND",
+                  ["GREATER_THAN", "$ROLE.tokens.harm", 0],
+                  [["FOR_EACH_START_STOP_STEP", "$i", 0, "$ROLE.tokens.harm", 1,
+                  [
+                      ["MOVE_CARD", ["GET_CARD_ID", "{{$PLAYER}}Deck", 0, 0], "{{$PLAYER}}Fatigue", 0]
+                  ]],
+                  ["LOG", "{{$GAME.playerInfo.$PLAYER.alias}} suffered ", "$ROLE.tokens.harm", " fatigue."]]
+              ]
+            ]
+        },
+        "DRAW_ONE_CARD": {
+          "args": [
+            "$PLAYER",
+            {"$CONTROLLER": "$GAME.playerInfo.$PLAYER.alias"}],
+          "code": [
+            ["MOVE_CARD", ["GET_CARD_ID", "{{$PLAYER}}Deck", 0, 0], "{{$PLAYER}}Hand", -1]
+          ]
+        }
+    }
+}

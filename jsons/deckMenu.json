@@ -1,0 +1,100 @@
+{
+    "deckMenu": {
+        "subMenus": [
+            {
+                "label": "id:The Lure of the Valley",
+                "subMenus": [
+                {"label": "id:Location",
+                    "deckLists": [
+                        {"label": "id:Spire", "deckListId": "Spire"},
+                        {"label": "id:NorthernOutpost", "deckListId": "NorthernOutpost"},
+                        {"label": "id:LoneTreeStation", "deckListId": "LoneTreeStation"},
+                        {"label": "id:WhiteSky", "deckListId": "WhiteSky"},
+                        {"label": "id:FracturedWall", "deckListId": "FracturedWall"},
+                        {"label": "id:Branch", "deckListId": "Branch"},
+                        {"label": "id:Meadow", "deckListId": "Meadow"},
+                        {"label": "id:MarshofRebirth", "deckListId": "MarshofRebirth"},
+                        {"label": "id:Tumbledown", "deckListId": "Tumbledown"},
+                        {"label": "id:AtroxMountain", "deckListId": "AtroxMountain"},
+                        {"label": "id:GoldenShore", "deckListId": "GoldenShore"},
+                        {"label": "id:MountNim", "deckListId": "MountNim"},
+                        {"label": "id:BoulderFields", "deckListId": "BoulderFields"},
+                        {"label": "id:AncestorsGrove", "deckListId": "AncestorsGrove"},
+                        {"label": "id:KobosMarket", "deckListId": "KobosMarket"},
+                        {"label": "id:StoneweaverBridge", "deckListId": "StoneweaverBridge"},
+                        {"label": "id:ThePhilosophersGarden", "deckListId": "ThePhilosophersGarden"},
+                        {"label": "id:TheHighBasin", "deckListId": "TheHighBasin"},
+                        {"label": "id:TheFurrow", "deckListId": "TheFurrow"},
+                        {"label": "id:BiologicalOutpost", "deckListId": "BiologicalOutpost"},
+                        {"label": "id:ThePlummet", "deckListId": "ThePlummet"},
+                        {"label": "id:GreenbriarKnoll", "deckListId": "GreenbriarKnoll"},
+                        {"label": "id:HeadwatersStation", "deckListId": "HeadwatersStation"},
+                        {"label": "id:TheConcordantZiggurats", "deckListId": "TheConcordantZiggurats"},
+                        {"label": "id:RingsoftheMoon", "deckListId": "RingsoftheMoon"},
+                        {"label": "id:ArcheologicalOutpost", "deckListId": "ArcheologicalOutpost"},
+                        {"label": "id:MoundoftheNavigator", "deckListId": "MoundoftheNavigator"},
+                        {"label": "id:Terravore", "deckListId": "Terravore"},
+                        {"label": "id:TheGreenbridge", "deckListId": "TheGreenbridge"},
+                        {"label": "id:MichaelsBog", "deckListId": "MichaelsBog"},
+                        {"label": "id:TheCypressCitadel", "deckListId": "TheCypressCitadel"},
+                        {"label": "id:TheFrowningGate", "deckListId": "TheFrowningGate"},
+                        {"label": "id:SunkenOutpost", "deckListId": "SunkenOutpost"},
+                        {"label": "id:AlluvialRuins", "deckListId": "AlluvialRuins"},
+                        {"label": "id:BowloftheSun", "deckListId": "BowloftheSun"},
+                        {"label": "id:WatchersRock", "deckListId": "WatchersRock"}
+                    ]
+                },
+                {"label": "id:GeneralSet",
+                    "deckLists": [
+                        {"label": "id:GeneralSet", "deckListId": "GeneralSet"}
+                    ]
+                },
+                {"label": "id:TheValleySet",
+                    "deckLists": [
+                        {"label": "id:TheValleySet", "deckListId": "TheValleySet"}
+                    ]
+                },
+                {"label": "id:Path Sets",
+                    "deckLists": [
+                        {"label": "id:Woods", "deckListId": "woodsSet"},
+                        {"label": "id:Lakeshore", "deckListId": "lakeshoreSet"},
+                        {"label": "id:MountainPass", "deckListId": "mountainSet"},
+                        {"label": "id:Old-Growth", "deckListId": "oldGrowthSet"},
+                        {"label": "id:Grassland", "deckListId": "grasslandSet"},
+                        {"label": "id:Ravine", "deckListId": "ravineSet"},
+                        {"label": "id:Swamp", "deckListId": "swampSet"},
+                        {"label": "id:River", "deckListId": "riverSet"}
+                    ]
+                },
+                {"label": "id:Weather",
+                    "deckLists": [
+                        {"label": "id:APerfectDay", "deckListId": "APerfectDay"},
+                        {"label": "id:Downpour", "deckListId": "Downpour"},
+                        {"label": "id:HowlingWinds", "deckListId": "HowlingWinds"},
+                        {"label": "id:ElectricFog", "deckListId": "ElectricFog"}
+                    ]
+                },
+                {"label": "id:PremadeRangerDecks",
+                    "deckLists": [
+                        {"label": "id:UndauntedSeeker", "deckListId": "UndauntedSeeker"},
+                        {"label": "id:VoiceoftheElders", "deckListId": "VoiceoftheElders"},
+                        {"label": "id:MasterfulEngineer", "deckListId": "MasterfulEngineer"},
+                        {"label": "id:AdherentoftheFirstIdeal", "deckListId": "AdherentoftheFirstIdeal"}
+                    ]
+                },
+                {"label": "id:Map&Reference",
+                    "deckLists": [
+                        {"label": "id:Map&Reference", "deckListId": "Map&Reference"}
+                    ]
+                }
+            ]
+        },  
+            {
+                "label": "id:Challenge Deck",
+                    "deckLists": [
+                        {"label": "id:Challenge Deck", "deckListId": "challengeDeck"}
+                                ]
+            }
+                    ]
+                }
+}
