@@ -3,26 +3,21 @@
         "newRound": ["COND",
             ["EQUAL", "$PLAYER_N", "$GAME.firstPlayer"],
             [   ["LOG", "├── ", "Rangers are resting..."],
-                ["INCREASE_VAL", "/roundNumber", 1],
-                ["SET", "/phaseId", "PathCards"],
-                ["SET", "/stepId", "1"],
                 ["FOR_EACH_VAL", "$PLAYER", "$PLAYER_ORDER", [
                     [
                         ["sufferFatigueForInjury", "$PLAYER"],
                         ["ACTION_LIST", "refresh"]
                     ]
-                ]]
+                ]],
+                ["SET", "/phaseId", "Refresh"],
+                ["SET", "/stepId", "4.1"],
+                ["INCREASE_VAL", "/roundNumber", 1],
+                ["SET", "/phaseId", "PathCards"],
+                ["SET", "/stepId", "1"]
             ],
             true,
             ["LOG", "{{$ALIAS_N}} you're not the Lead Ranger."]],
         "refresh": [
-            ["COND",
-                ["EQUAL", "$PLAYER_N", "$GAME.firstPlayer"],
-                [
-                    ["SET", "/phaseId", "Refresh"],
-                    ["SET", "/stepId", "4.1"]
-                ]
-            ],
             [
             ["DRAW_ONE_CARD", "$PLAYER"],
             ["LOG", "$GAME.playerInfo.$PLAYER.alias", " drew 1 card."]
@@ -81,12 +76,14 @@
             ["NOT_EQUAL", "$ACTIVE_CARD.controller", "persistent"],
             [
                 ["SET", "/cardById/$ACTIVE_CARD_ID/controller", "persistent"],
-                ["LOG", "$ACTIVE_FACE.name", " has the 'Persistent' keyword."]
+                ["LOG", "$ACTIVE_FACE.name", " has the 'Persistent' keyword."],
+                ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/persistent", 1]
             ],
             true,
             [
                 ["SET", "/cardById/$ACTIVE_CARD_ID/controller", "shared"],
-                ["LOG", "$ACTIVE_FACE.name", " loses the 'Persistent' keyword."]
+                ["LOG", "$ACTIVE_FACE.name", " loses the 'Persistent' keyword."],
+                ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/persistent", 0]
             ]
             ]
         ],

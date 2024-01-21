@@ -4,6 +4,7 @@
             {"key": "1", "tokenType": "harm", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/harm.png)"},
             {"key": "2", "tokenType": "progress", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/progress.png)"},
             {"key": "3", "tokenType": "general", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/general_token.png)"},
+            {"key": "4", "tokenType": "general2", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/general_token_2.png)"},
             {"key": "6", "tokenType": "awareness", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/awareness.png)"},
             {"key": "7", "tokenType": "spirit", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/spirit.png)"},
             {"key": "8", "tokenType": "fitness", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/fitness.png)"},

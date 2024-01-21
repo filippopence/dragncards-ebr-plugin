@@ -235,6 +235,12 @@
         "generalToken": {
             "English": "General"
         },
+        "general2Token": {
+            "English": "Unique  "
+        },
+        "persistentToken": {
+            "English": "Persistent Keyword" 
+        },
         "ranger1Token": {
             "English": "Ranger 1"
         },
@@ -757,8 +763,8 @@
         "MountNim": {
             "English": "Mount Nim"
         },
-        "BoulderFields": {
-            "English": "Boulder Fields"
+        "BoulderField": {
+            "English": "Boulder Field"
         },
         "AncestorsGrove": {
             "English": "Ancestor's Grove"
@@ -770,7 +776,7 @@
             "English": "Stoneweaver Bridge"
         },
         "ThePhilosophersGarden": {
-            "English": "The Philosophers Garden"
+            "English": "The Philosopher's Garden"
         },
         "TheHighBasin": {
             "English": "The High Basin"
@@ -799,8 +805,8 @@
         "RingsoftheMoon": {
             "English": "Rings of the Moon"
         },
-        "ArcheologicalOutpost": {
-            "English": "Archeological Outpost"
+        "ArchaeologicalOutpost": {
+            "English": "Archaeological Outpost"
         },
         "MoundoftheNavigator": {
             "English": "Mound of the Navigator"
@@ -897,6 +903,9 @@
         },
         "BallLightning": {
             "English": "Ball Lightning"
+        },
+        "committedEffort": {
+            "English": "Committed Effort"
         }
     }
 }

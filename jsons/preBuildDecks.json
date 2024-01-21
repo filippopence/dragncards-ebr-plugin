@@ -1045,8 +1045,8 @@
           }
         ]
       },
-      "BoulderFields": {
-        "label": "id:BoulderFields",
+      "BoulderField": {
+        "label": "id:BoulderField",
         "cards": [
           {
             "databaseId": "05007",
@@ -2095,8 +2095,8 @@
           }
         ]
       },
-      "ArcheologicalOutpost": {
-        "label": "id:ArcheologicalOutpost",
+      "ArchaeologicalOutpost": {
+        "label": "id:ArchaeologicalOutpost",
         "cards": [
           {
             "databaseId": "05025",
@@ -3174,7 +3174,7 @@
             "loadGroupId": "playerNRole"
           },
           {
-            "databaseId": "01254",
+            "databaseId": "01258",
             "quantity": 1,
             "loadGroupId": "playerNAspect"
           },
@@ -3264,7 +3264,7 @@
             "loadGroupId": "playerNRole"
           },
           {
-            "databaseId": "01259",
+            "databaseId": "01253",
             "quantity": 1,
             "loadGroupId": "playerNAspect"
           },
@@ -3354,7 +3354,7 @@
             "loadGroupId": "playerNRole"
           },
           {
-            "databaseId": "01253",
+            "databaseId": "01261",
             "quantity": 1,
             "loadGroupId": "playerNAspect"
           },
@@ -3444,7 +3444,7 @@
             "loadGroupId": "playerNRole"
           },
           {
-            "databaseId": "01252",
+            "databaseId": "01250",
             "quantity": 1,
             "loadGroupId": "playerNAspect"
           },

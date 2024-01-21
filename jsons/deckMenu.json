@@ -18,7 +18,7 @@
                         {"label": "id:AtroxMountain", "deckListId": "AtroxMountain"},
                         {"label": "id:GoldenShore", "deckListId": "GoldenShore"},
                         {"label": "id:MountNim", "deckListId": "MountNim"},
-                        {"label": "id:BoulderFields", "deckListId": "BoulderFields"},
+                        {"label": "id:BoulderField", "deckListId": "BoulderField"},
                         {"label": "id:AncestorsGrove", "deckListId": "AncestorsGrove"},
                         {"label": "id:KobosMarket", "deckListId": "KobosMarket"},
                         {"label": "id:StoneweaverBridge", "deckListId": "StoneweaverBridge"},
@@ -31,7 +31,7 @@
                         {"label": "id:HeadwatersStation", "deckListId": "HeadwatersStation"},
                         {"label": "id:TheConcordantZiggurats", "deckListId": "TheConcordantZiggurats"},
                         {"label": "id:RingsoftheMoon", "deckListId": "RingsoftheMoon"},
-                        {"label": "id:ArcheologicalOutpost", "deckListId": "ArcheologicalOutpost"},
+                        {"label": "id:ArchaeologicalOutpost", "deckListId": "ArchaeologicalOutpost"},
                         {"label": "id:MoundoftheNavigator", "deckListId": "MoundoftheNavigator"},
                         {"label": "id:Terravore", "deckListId": "Terravore"},
                         {"label": "id:TheGreenbridge", "deckListId": "TheGreenbridge"},
@@ -41,7 +41,8 @@
                         {"label": "id:SunkenOutpost", "deckListId": "SunkenOutpost"},
                         {"label": "id:AlluvialRuins", "deckListId": "AlluvialRuins"},
                         {"label": "id:BowloftheSun", "deckListId": "BowloftheSun"},
-                        {"label": "id:WatchersRock", "deckListId": "WatchersRock"}
+                        {"label": "id:WatchersRock", "deckListId": "WatchersRock"},
+                        {"label": "id:CrossroadsStation", "deckListId": "CrossroadsStation"}
                     ]
                 },
                 {"label": "id:GeneralSet",
