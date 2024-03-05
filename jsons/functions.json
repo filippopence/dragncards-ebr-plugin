@@ -1,5 +1,12 @@
 {
     "functions": {
+        "SET_SIDE_REGION": {
+          "args": ["$SIDE_GROUP_ID"],
+          "code": [
+            ["LOG", "{{$PLAYER_N}} updated their layout to display {{$GAME.groupById.$SIDE_GROUP_ID.label}}."],
+            ["SET", "/playerData/$PLAYER_N/layout/regions/sideRegion/groupId", "$SIDE_GROUP_ID"]
+          ]
+        },
         "DISCARD_UNTIL": {
             "args": ["$GROUP_ID", "$TYPE"],
             "code": [
