@@ -25,6 +25,7 @@
             "label": "id:sharedChallengeDeck", 
             "tableLabel": "id:sharedChallengeDeck",
             "onCardEnter": {
+                "controller": "playerNull",
                 "deckGroupId": "sharedChallengeDeck",
                 "discardGroupId": "sharedChallengeDiscard"
             }
@@ -34,6 +35,7 @@
             "label": "id:sharedChallengeDiscard", 
             "tableLabel": "id:sharedChallengeDiscard",
             "onCardEnter": {
+                "controller": "playerNull",
                 "deckGroupId": "sharedChallengeDeck",
                 "discardGroupId": "sharedChallengeDiscard"
             }
@@ -91,6 +93,7 @@
             "label": "id:sharedSetAside", 
             "tableLabel": "id:sharedSetAside",
             "onCardEnter": {
+                "controller": "playerNull"
             }
         },
         "sharedRewards": {
@@ -98,6 +101,7 @@
             "label": "id:sharedRewards", 
             "tableLabel": "id:sharedRewardsTable",
             "onCardEnter": {
+                "controller": "playerNull"
             }
         },
         "sharedMissions": {
@@ -106,6 +110,7 @@
             "tableLabel": "id:staging",
             "canHaveAttachments": true,
             "onCardEnter": {
+                "controller": "playerNull"
             }
         },
         "sharedAlongTheWay": {
@@ -122,6 +127,7 @@
             "tableLabel": "id:sharedWeather",
             "canHaveAttachments": true,
             "onCardEnter": {
+                "controller": "playerNull"
             }
         },
         "sharedLocation": {
@@ -130,7 +136,7 @@
             "tableLabel": "id:sharedLocation",
             "canHaveAttachments": true,
             "onCardEnter": {
-                "controller": "shared"
+                "controller": "playerNull"
             }
         },
         "sharedExtra1": {

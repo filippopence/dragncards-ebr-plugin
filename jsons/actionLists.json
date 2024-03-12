@@ -73,9 +73,9 @@
         ],
         "makePersistent": [
             ["COND",
-            ["NOT_EQUAL", "$ACTIVE_CARD.controller", "persistent"],
+            ["NOT_EQUAL", "$ACTIVE_CARD.controller", "playerNull"],
             [
-                ["SET", "/cardById/$ACTIVE_CARD_ID/controller", "persistent"],
+                ["SET", "/cardById/$ACTIVE_CARD_ID/controller", "playerNull"],
                 ["LOG", "$ACTIVE_FACE.name", " has the 'Persistent' keyword."],
                 ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/persistent", 1]
             ],
