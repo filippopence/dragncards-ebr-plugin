@@ -143,6 +143,36 @@
             ["LOAD_CARDS", "$LOCATION"],
             ["LOAD_CARDS", "$PATH_SET"]
           ]
-        }
+        },    
+        "TOGGLE_ENCOUNTER_2_DECK": {
+            "args": ["$VISIBILITY"],
+            "code": [
+              ["COND",
+                "$VISIBILITY",
+                [
+                  ["LOG", "{{$ALIAS_N}} updated the layout to display the second encounter deck."],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedPathDeck2/visible", true],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedPathDiscard2/visible", true],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedLocation/width", "15%"],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedMissions/left", "48%"],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedMissions/width", "14%"],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedPathDeck/left", "62%"],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedPathDiscard/left", "71.5%"]
+      
+                ],
+                true,
+                [
+                  ["LOG", "{{$ALIAS_N}} updated the layout to hide the second encounter deck."],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedPathDeck2/visible", false],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedPathDiscard2/visible", false],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedLocation/width", "17.5%"],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedMissions/left", "50.5%"],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedMissions/width", "28%"],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedPathDeck/left", "81%"],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedPathDiscard/left", "90.5%"]
+                ]
+              ]
+            ]
+          }
     }
 }

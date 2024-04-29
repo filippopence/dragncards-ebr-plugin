@@ -1,6 +1,6 @@
 {
     "automation": {
-    "postNewGameActionList": [
+        "postNewGameActionList": [
             ["DEFINE", "$PLAYER_N", "player1"],
             ["LOAD_CARDS", "challengeDeck"],
             ["LOAD_CARDS", "Map&Reference"]
@@ -15,6 +15,7 @@
                         ["EQUAL", "$CARD.sides.A.pivotal", "0"] 
                     ],
                     [
+                        ["TOGGLE_ENCOUNTER_2_DECK", false],
                         ["MOVE_CARD", "$CARD_ID", "sharedLocation", 0],
                         ["SET", "/cardById/$CARD_ID/currentSide", "B"],
                         ["LOG", "├── ", "Rangers arrived at ", "$CARD.sides.A.name", "."],
@@ -67,71 +68,10 @@
                         ["EQUAL", "$CARD.sides.A.pivotal", "1"] 
                     ],
                     [
+                        ["TOGGLE_ENCOUNTER_2_DECK", false],
                         ["MOVE_CARD", "$CARD_ID", "sharedLocation", 0],
                         ["SET", "/cardById/$CARD_ID/currentSide", "B"],
-                        ["LOG", "├── ", "Rangers have arrived at ", "$CARD.sides.A.name", "."]
-                    ]
-                ],
-                ["COND", 
-                    ["AND", 
-                        ["EQUAL", "$CARD.sides.A.type", "Role"],
-                        ["EQUAL", "$CARD.inPlay", true]
-                    ],
-                    [
-                        ["DEFINE", "$LOADED_PLAYER_DECK", true]
-                    ]
-                ],
-                ["COND",
-                    ["EQUAL", "$CARD.sides.A.type", "Aspect"],
-                    [
-                        ["VAR", "$AWA_VALUE", "$CARD.sides.A.AWA"],
-                        ["VAR", "$SPI_VALUE", "$CARD.sides.A.SPI"],
-                        ["VAR", "$FIT_VALUE", "$CARD.sides.A.FIT"],
-                        ["VAR", "$FOC_VALUE", "$CARD.sides.A.FOC"],
-                        ["SET", "/cardById/$CARD_ID/tokens/awareness", "$AWA_VALUE"],
-                        ["SET", "/cardById/$CARD_ID/tokens/spirit", "$SPI_VALUE"],
-                        ["SET", "/cardById/$CARD_ID/tokens/fitness", "$FIT_VALUE"],
-                        ["SET", "/cardById/$CARD_ID/tokens/focus", "$FOC_VALUE"],
-                        ["LOG", "{{$ALIAS_N}} recharged their energy tokens."]
-                    ]
-                ],
-                ["COND",
-                    ["EQUAL", "$CARD.sides.A.type", "Location"],
-                    ["SET", "/stepId", "3.5"]
-                ],
-                ["COND", 
-                    ["EQUAL", "$CARD.sides.A.name", "Howling Winds"],
-                    [
-                        ["LOAD_CARDS", "CerberusianCyclone"]
-                    ]
-                ],
-                ["COND", 
-                    ["EQUAL", "$CARD.sides.A.name", "Electric Fog"],
-                    [
-                        ["LOAD_CARDS", "BallLightning"]
-                    ]
-                ]
-            ]],
-            ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
-                ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
-                ["COND",  
-                    ["OR",
-                        ["EQUAL", "$CARD.sides.A.name", "Spire"],
-                        ["EQUAL", "$CARD.sides.A.name", "Alluvial Ruins"]
-                    ],
-                    [   
-                        ["LOG", "OK, layout for Spire coming soon"]
-                    ]
-                ],
-                ["COND",  
-                    ["AND", 
-                        ["EQUAL", "$CARD.sides.A.type", "Location"], 
-                        ["EQUAL", "$CARD.sides.A.pivotal", "1"] 
-                    ],
-                    [
-                        ["MOVE_CARD", "$CARD_ID", "sharedLocation", 0],
-                        ["SET", "/cardById/$CARD_ID/currentSide", "B"],
-                        ["LOG", "├── ", "Rangers have arrived at ", "$CARD.sides.A.name", "."]
+                        ["LOG", "├── ", "Rangers arrived at ", "$CARD.sides.A.name", "."]
                     ]
                 ],
                 ["COND", 
@@ -254,20 +194,6 @@
                                         ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/general", 1]
                                     ]
                                 ]]
-                    },
-                    {   "_comment": "Set harm threshold equal to Bees on it.",
-                        "type": "passive",
-                        "listenTo": ["/cardById/$THIS_ID/tokens/harm", "/cardById/$THIS_ID/tokens"],
-                        "condition": [
-                        ["GREATER_EQUAL", "$THIS.tokens.harm", "$THIS.tokens.general"]
-                        ],
-                        "onDo": [
-                            ["LOG", "└── ", "$THIS.currentFace.name", " is cleared by harm."],
-                            ["SET", "/cardById/$THIS_ID/borderColor", "red"]
-                        ],
-                        "offDo": [
-                            ["SET", "/cardById/$THIS_ID/borderColor", null]
-                        ]
                     }
                 ]
             },
@@ -411,6 +337,26 @@
                                 ["LOG", "Ball Lightning shuffled in the path deck."]
                             ]
                         ]]
+                    }
+                ]
+            }, 
+            "05009": {
+                "_comment": "Spire",
+                "rules": [
+                    {
+                        "type": "entersPlay",
+                        "side": "A",
+                        "then": ["TOGGLE_ENCOUNTER_2_DECK", true] 
+                    }
+                ]
+            }, 
+            "05034": {
+                "_comment": "Alluvial Ruins",
+                "rules": [
+                    {
+                        "type": "entersPlay",
+                        "side": "A",
+                        "then": ["TOGGLE_ENCOUNTER_2_DECK", true] 
                     }
                 ]
             }
