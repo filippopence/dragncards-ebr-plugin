@@ -20,6 +20,8 @@
         "scaleProgressThresholdPerPlayer": {"type": "boolean", "default": false},
         "scaleHarmThresholdPerPlayer": {"type": "boolean", "default": false},
         "scaleGenericTokenPerPlayer": {"type": "boolean", "default": false},
-        "reveal": {"type": "string", "default": null}
+        "reveal": {"type": "string", "default": null},
+        "connectedLocations": {"type": "list", "default": null},
+        "connectedPaths": {"type": "list", "default": null}
     }
 }

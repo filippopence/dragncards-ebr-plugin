@@ -136,7 +136,7 @@
             "tableLabel": "id:sharedLocation",
             "canHaveAttachments": true,
             "onCardEnter": {
-                "controller": "playerNull"
+                "controller": "shared"
             }
         },
         "sharedExtra1": {

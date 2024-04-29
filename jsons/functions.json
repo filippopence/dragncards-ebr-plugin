@@ -112,6 +112,37 @@
           "code": [
             ["MOVE_CARD", ["GET_CARD_ID", "{{$PLAYER}}Deck", 0, 0], "{{$PLAYER}}Hand", -1]
           ]
+        },
+        "CHECK_IF_COPY_IN_PLAY": {
+          "args": ["$OUT_OF_PLAY_CARD"],
+          "code": [["VAR", "$COPY_IN_PLAY", 
+                ["ONE_CARD", "$CARD", 
+                  ["AND", 
+                    "$CARD.inPlay", 
+                    ["EQUAL", "$CARD.sides.A.name", "$OUT_OF_PLAY_CARD.sides.A.name"]
+                  ]
+                ]
+              ],
+              ["NOT_EQUAL", "$COPY_IN_PLAY", null]
+            ]  
+      },
+        "UNLOAD_SHARED_CARDS": {
+          "args": [],
+          "code": [
+            "FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", 
+            ["COND",
+              ["EQUAL", "$CARD.controller", "shared"],
+              ["DELETE_CARD", "$CARD_ID"]
+            ]
+          ]
+        },
+        "TRAVEL_TO": {
+          "args": ["$LOCATION", "$PATH_SET"],
+          "code": [
+            ["UNLOAD_SHARED_CARDS"],
+            ["LOAD_CARDS", "$LOCATION"],
+            ["LOAD_CARDS", "$PATH_SET"]
+          ]
         }
     }
 }

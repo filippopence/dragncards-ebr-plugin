@@ -199,6 +199,9 @@
         "travel": {
             "English": "Travel"
         },
+        "travelPhase": {
+            "English": "Travel to a nearby location"
+        },
         "step-3.1": {
             "English": "3.1 - Clear play area"
         },
@@ -377,7 +380,7 @@
             "English": "Path Deck 2"
         },
         "sharedPathDeck3": {
-            "English": "Path Deck 3"
+            "English": "My Valley Set"
         },
         "sharedExtra1": {
             "English": "Extra1"
@@ -740,7 +743,7 @@
             "English": "Lone Tree Station"
         },
         "FracturedWall": {
-            "English": "Fractured Wall"
+            "English": "The Fractured Wall"
         },
         "Meadow": {
             "English": "Meadow"
@@ -906,6 +909,21 @@
         },
         "committedEffort": {
             "English": "Committed Effort"
+        },
+        "lookAtTop1": {
+            "English": "Look at the top card of selected deck"
+        },
+        "lookAtTop2": {
+            "English": "Look at the top 2 cards of selected deck"
+        },
+        "lookAtTop3": {
+            "English": "Look at the top 3 cards of selected deck"
+        },
+        "sendToBottom": {
+            "English": "Move to bottom"
+        },
+        "sendToTop": {
+            "English": "Move on top"
         }
     }
 }

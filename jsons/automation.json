@@ -1,5 +1,10 @@
 {
     "automation": {
+    "postNewGameActionList": [
+            ["DEFINE", "$PLAYER_N", "player1"],
+            ["LOAD_CARDS", "challengeDeck"],
+            ["LOAD_CARDS", "Map&Reference"]
+        ],
         "postLoadActionList": [
             ["DEFINE", "$LOADED_PLAYER_DECK", false],
             ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
@@ -12,27 +17,110 @@
                     [
                         ["MOVE_CARD", "$CARD_ID", "sharedLocation", 0],
                         ["SET", "/cardById/$CARD_ID/currentSide", "B"],
-                        ["LOG", "├── ", "Rangers have arrived at ", "$CARD.sides.A.name", "."],
+                        ["LOG", "├── ", "Rangers arrived at ", "$CARD.sides.A.name", "."],
                         ["COND",
                             ["OR",
                                 ["EQUAL", "$CARD.sides.A.name", "Bowl of the Sun"],
-                                ["EQUAL", "$CARD.sides.A.name", "Archeological Outpost"]
+                                ["EQUAL", "$CARD.sides.A.name", "Archaeological Outpost"]
                             ],
-                            [   ["FOR_EACH_START_STOP_STEP", "$i", 0, 2, 1,[
-                                    ["VAR", "$CARDS_IN_THE_VALLEY", ["LENGTH", "$GAME.groupById.sharedPathDeck3.stackIds"]],
-                                    ["VAR", "$RANDOM_CARD", ["RANDOM_INT", 0, ["SUBTRACT", "$CARDS_IN_THE_VALLEY", 1]]],
-                                    ["MOVE_CARD", ["GET_CARD_ID", "sharedPathDeck3", "$RANDOM_CARD", 0], "sharedPathDeck", 0]]],
+                            [   
+                                ["SHUFFLE_GROUP", "sharedPathDeck3"],
+                                ["VAR", "$i", 0],
+                                ["FOR_EACH_VAL", "$iCARD", "$GAME.groupById.sharedPathDeck3.parentCards", [
+                                    ["COND",
+                                        ["AND", 
+                                        ["LESS_THAN", "$i", 2],
+                                        ["NOT", ["CHECK_IF_COPY_IN_PLAY", "$iCARD"]]],
+                                        [
+                                        ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0],
+                                        ["INCREASE_VAR", "$i", 1]
+                                        ]
+                                    ]
+                                    ]],
                                 ["SHUFFLE_GROUP", "sharedPathDeck"],
-                                ["LOG", "├── ", "Shuffled 2 cards from The Valley set into the Path Deck."] 
+                                ["LOG", "├── ", "Shuffled {{$i}} cards from The Valley set into the Path Deck."]
                             ],
                         true,
-                            [["FOR_EACH_START_STOP_STEP", "$i", 0, 3, 1,[
-                                ["VAR", "$CARDS_IN_THE_VALLEY", ["LENGTH", "$GAME.groupById.sharedPathDeck3.stackIds"]],
-                                ["VAR", "$RANDOM_CARD", ["RANDOM_INT", 0, ["SUBTRACT", "$CARDS_IN_THE_VALLEY", 1]]],
-                                ["MOVE_CARD", ["GET_CARD_ID", "sharedPathDeck3", "$RANDOM_CARD", 0], "sharedPathDeck", 0]]],
-                            ["SHUFFLE_GROUP", "sharedPathDeck"],
-                            ["LOG", "├── ", "Shuffled 3 cards from The Valley set into the Path Deck."] ] 
+                            [
+                                ["SHUFFLE_GROUP", "sharedPathDeck3"],
+                                ["VAR", "$i", 0],
+                                ["FOR_EACH_VAL", "$iCARD", "$GAME.groupById.sharedPathDeck3.parentCards", [
+                                    ["COND",
+                                        ["AND", 
+                                        ["LESS_THAN", "$i", 3],
+                                        ["NOT", ["CHECK_IF_COPY_IN_PLAY", "$iCARD"]]],
+                                        [
+                                        ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0],
+                                        ["INCREASE_VAR", "$i", 1]
+                                        ]
+                                    ]
+                                    ]],
+                                ["SHUFFLE_GROUP", "sharedPathDeck"],
+                                ["LOG", "├── ", "Shuffled {{$i}} cards from The Valley set into the Path Deck."]
+                            ]
                         ]
+                    ]
+                ],
+                ["COND",  
+                    ["AND", 
+                        ["EQUAL", "$CARD.sides.A.type", "Location"], 
+                        ["EQUAL", "$CARD.sides.A.pivotal", "1"] 
+                    ],
+                    [
+                        ["MOVE_CARD", "$CARD_ID", "sharedLocation", 0],
+                        ["SET", "/cardById/$CARD_ID/currentSide", "B"],
+                        ["LOG", "├── ", "Rangers have arrived at ", "$CARD.sides.A.name", "."]
+                    ]
+                ],
+                ["COND", 
+                    ["AND", 
+                        ["EQUAL", "$CARD.sides.A.type", "Role"],
+                        ["EQUAL", "$CARD.inPlay", true]
+                    ],
+                    [
+                        ["DEFINE", "$LOADED_PLAYER_DECK", true]
+                    ]
+                ],
+                ["COND",
+                    ["EQUAL", "$CARD.sides.A.type", "Aspect"],
+                    [
+                        ["VAR", "$AWA_VALUE", "$CARD.sides.A.AWA"],
+                        ["VAR", "$SPI_VALUE", "$CARD.sides.A.SPI"],
+                        ["VAR", "$FIT_VALUE", "$CARD.sides.A.FIT"],
+                        ["VAR", "$FOC_VALUE", "$CARD.sides.A.FOC"],
+                        ["SET", "/cardById/$CARD_ID/tokens/awareness", "$AWA_VALUE"],
+                        ["SET", "/cardById/$CARD_ID/tokens/spirit", "$SPI_VALUE"],
+                        ["SET", "/cardById/$CARD_ID/tokens/fitness", "$FIT_VALUE"],
+                        ["SET", "/cardById/$CARD_ID/tokens/focus", "$FOC_VALUE"],
+                        ["LOG", "{{$ALIAS_N}} recharged their energy tokens."]
+                    ]
+                ],
+                ["COND",
+                    ["EQUAL", "$CARD.sides.A.type", "Location"],
+                    ["SET", "/stepId", "3.5"]
+                ],
+                ["COND", 
+                    ["EQUAL", "$CARD.sides.A.name", "Howling Winds"],
+                    [
+                        ["LOAD_CARDS", "CerberusianCyclone"]
+                    ]
+                ],
+                ["COND", 
+                    ["EQUAL", "$CARD.sides.A.name", "Electric Fog"],
+                    [
+                        ["LOAD_CARDS", "BallLightning"]
+                    ]
+                ]
+            ]],
+            ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
+                ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
+                ["COND",  
+                    ["OR",
+                        ["EQUAL", "$CARD.sides.A.name", "Spire"],
+                        ["EQUAL", "$CARD.sides.A.name", "Alluvial Ruins"]
+                    ],
+                    [   
+                        ["LOG", "OK, layout for Spire coming soon"]
                     ]
                 ],
                 ["COND",  

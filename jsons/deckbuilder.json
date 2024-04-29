@@ -18,33 +18,12 @@
         ],
         "spawnGroups": [
             {"loadGroupId": "sharedMissions", "label": "id:sharedMissions"},
-            {"loadGroupId": "sharedRewards", "label": "id:sharedRewards"},
+            {"loadGroupId": "sharedPathDeck3", "label": "id:sharedPathDeck3"},
+            {"loadGroupId": "sharedLocation","label": "id:sharedLocation"},
             {"loadGroupId": "playerNPlay", "label": "id:myPlayArea"},
             {"loadGroupId": "playerNDeck", "label": "id:myDeck"},
             {"loadGroupId": "playerNRole", "label": "id:myRole"},
-            {"loadGroupId": "playerNAspect", "label": "id:myAspect"},
-            {"loadGroupId": "player1Play1", "label": "id:player1Play1"},
-            {"loadGroupId": "player1Deck", "label": "id:player1Deck"},
-            {"loadGroupId": "player2Play1", "label": "id:player2Play1"},
-            {"loadGroupId": "player2Deck", "label": "id:player2Deck"},
-            {"loadGroupId": "player3Play1", "label": "id:player3Play1"},
-            {"loadGroupId": "player3Deck", "label": "id:player3Deck"},
-            {"loadGroupId": "player4Play1", "label": "id:player4Play1"},
-            {"loadGroupId": "player4Deck", "label": "id:player4Deck"},
-            {"loadGroupId": "sharedLocation","label": "id:sharedLocation"},
-            {"loadGroupId": "sharedWeather", "label": "id:sharedWeather"},
-            {"loadGroupId": "sharedAlongTheWay", "label": "id:sharedAlongTheWay"},
-            {"loadGroupId": "player1WithinReach", "label": "id:player1WithinReach1"},
-            {"loadGroupId": "player2WithinReach", "label": "id:player2WithinReach"},
-            {"loadGroupId": "player3WithinReach", "label": "id:player3WithinReach"},
-            {"loadGroupId": "player4WithinReach", "label": "id:player4WithinReach"},
-            {"loadGroupId": "sharedPathDeck", "label": "id:sharedPathDeck"},
-            {"loadGroupId": "sharedPathDeck2", "label": "id:sharedPathDeck2"},
-            {"loadGroupId": "sharedPathDeck3", "label": "id:sharedPathDeck3"},
-            {"loadGroupId": "sharedExtra1", "label": "id:sharedExtra1"},
-            {"loadGroupId": "sharedExtra2", "label": "id:sharedExtra2"},
-            {"loadGroupId": "sharedExtra3", "label": "id:sharedExtra3"},
-            {"loadGroupId": "sharedExtra4", "label": "id:sharedExtra4"}
+            {"loadGroupId": "playerNAspect", "label": "id:myAspect"}
         ]
     }
 }
