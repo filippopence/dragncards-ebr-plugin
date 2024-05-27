@@ -20,14 +20,37 @@
                         ["SET", "/cardById/$CARD_ID/currentSide", "B"],
                         ["LOG", "├── ", "Rangers arrived at ", "$CARD.sides.A.name", "."],
                         ["COND",
-                            ["OR",
-                                ["EQUAL", "$CARD.sides.A.name", "Bowl of the Sun"],
-                                ["EQUAL", "$CARD.sides.A.name", "Archaeological Outpost"]
-                            ],
+                            ["EQUAL", "$CARD.sides.A.name", "Bowl of the Sun"],
                             [   
                                 ["SHUFFLE_GROUP", "sharedPathDeck3"],
                                 ["VAR", "$i", 0],
                                 ["FOR_EACH_VAL", "$iCARD", "$GAME.groupById.sharedPathDeck3.parentCards", [
+                                    ["COND", 
+                                        ["EQUAL", "$iCARD.sides.A.name", "The Fundamentalist"],
+                                        ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0]
+                                    ],
+                                    ["COND",
+                                        ["AND", 
+                                        ["LESS_THAN", "$i", 2],
+                                        ["NOT", ["CHECK_IF_COPY_IN_PLAY", "$iCARD"]]],
+                                        [
+                                        ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0],
+                                        ["INCREASE_VAR", "$i", 1]
+                                        ]
+                                    ]
+                                    ]],
+                                ["SHUFFLE_GROUP", "sharedPathDeck"],
+                                ["LOG", "├── ", "Shuffled {{$i}} cards from The Valley set into the Path Deck."]
+                            ],
+                            ["EQUAL", "$CARD.sides.A.name", "Archaeological Outpost"],
+                            [   
+                                ["SHUFFLE_GROUP", "sharedPathDeck3"],
+                                ["VAR", "$i", 0],
+                                ["FOR_EACH_VAL", "$iCARD", "$GAME.groupById.sharedPathDeck3.parentCards", [
+                                    ["COND", 
+                                        ["EQUAL", "$iCARD.sides.A.name", "Arcology Sinkhole"],
+                                        ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0]
+                                    ],
                                     ["COND",
                                         ["AND", 
                                         ["LESS_THAN", "$i", 2],
@@ -340,8 +363,7 @@
                     }
                 ]
             }, 
-            "05009": {
-                "_comment": "Spire",
+            "05009": {"_comment": "Spire",
                 "rules": [
                     {
                         "type": "entersPlay",
@@ -350,13 +372,117 @@
                     }
                 ]
             }, 
-            "05034": {
-                "_comment": "Alluvial Ruins",
+            "05034": {"_comment": "Alluvial Ruins",
                 "rules": [
                     {
                         "type": "entersPlay",
                         "side": "A",
-                        "then": ["TOGGLE_ENCOUNTER_2_DECK", true] 
+                        "then": [   
+                                    ["TOGGLE_ENCOUNTER_2_DECK", true],
+                                    ["LOAD_CARDS", ["LIST",
+                                                        {
+                                                        "databaseId": "02014",
+                                                        "quantity": 1,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02015",
+                                                        "quantity": 4,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02016",
+                                                        "quantity": 1,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02017",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02018",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02019",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02048",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02049",
+                                                        "quantity": 3,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02050",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02051",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02052",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02053",
+                                                        "quantity": 1,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02020",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02021",
+                                                        "quantity": 1,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02022",
+                                                        "quantity": 1,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02023",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02024",
+                                                        "quantity": 1,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02025",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02026",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02027",
+                                                        "quantity": 1,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        }
+                                                    ]
+                                    ]
+                        ]  
                     }
                 ]
             }
