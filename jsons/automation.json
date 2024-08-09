@@ -220,6 +220,34 @@
                     }
                 ]
             },
+            "03002": {
+                "_comment": "Helping Hand",
+                "rules": [
+                    { 
+                        "_comment": "Add/remove persisten to attached Human.",
+                        "type": "passive", 
+                        "listenTo": ["/cardById/$THIS_ID/inPlay"],
+                        "condition": 
+                        [
+                            "AND", 
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["EQUAL", "$THIS.parentCardId.trait", "Human"]
+                        ],
+                        "onDo": [
+                            ["LOG", "└── ", "$THIS.parentCardId.name", " gains Persistent."],
+                            [
+                                ["SET", "/cardById/$THIS/parentCardId/controller", "playerNull"],
+                                ["SET", "/cardById/$THIS/parentCardId/tokens/persistent", 1]
+                            ]
+                        ],
+                        "offDo": [
+                            ["LOG", "└── ", "$THIS.parentCardId.name", " loses Persistent."],
+                            [
+                                ["SET", "/cardById/$THIS/parentCardId/controller", "shared"],
+                                ["SET", "/cardById/$THIS/parentCardId/tokens/persistent", 0]
+                            ]
+                        ]
+                    },
             "04001": {"_comment": "A Perfect Day / Midday Sun",
                 "rules": [
                     {    "_comment": "Trigger for A Perfect Day.",
