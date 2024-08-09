@@ -247,7 +247,9 @@
                                 ["SET", "/cardById/$THIS/parentCardId/tokens/persistent", 0]
                             ]
                         ]
-                    },
+                    }
+                  ]
+                },
             "04001": {"_comment": "A Perfect Day / Midday Sun",
                 "rules": [
                     {    "_comment": "Trigger for A Perfect Day.",
