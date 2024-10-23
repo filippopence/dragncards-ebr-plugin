@@ -146,8 +146,8 @@
                 ]
             ]
         ],
-        "gameRules": [
-            { 
+        "gameRules":
+            { "AddGeneralToken": {
                 "_comment": "Add general tokens when card enters play.",
                 "type": "trigger", 
                 "listenTo": ["/cardById/*/inPlay", "/cardById/*/currentSide"],
@@ -166,7 +166,7 @@
                                 ]
                         ]
             },
-            { 
+            "ColorBorderBlue": {
                 "_comment": "Turn cards blue when they have enought progress tokens on them.",
                 "type": "passive", 
                 "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens"],
@@ -184,7 +184,7 @@
                     ["SET", "/cardById/$TARGET_ID/borderColor", null]
                 ]
             },
-            { 
+            "ColorBorderRed": {
                 "_comment": "Turn cards red when they have enought harm tokens on them.",
                 "type": "passive", 
                 "listenTo": ["/cardById/*/tokens/harm", "/cardById/*/tokens"],
@@ -202,11 +202,11 @@
                     ["SET", "/cardById/$TARGET_ID/borderColor", null]
                 ]
             }
-        ],
+        },
         "cards": {
             "02023": {"_comment": "Cloudhive Swarm",
-                "rules": [
-                    {    "_comment": "Add generic token on Refresh.",
+                "rules": {
+                    "AddABee": {    "_comment": "Add generic token on Refresh.",
                         "type": "trigger",
                         "listenTo": ["/stepId"],
                         "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"]],
@@ -217,14 +217,13 @@
                                         ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/general", 1]
                                     ]
                                 ]]
+                        }
                     }
-                ]
             },
-            "03002": {
-                "_comment": "Helping Hand",
-                "rules": [
-                    { 
-                        "_comment": "Add/remove persisten to attached Human.",
+            "03002": {"_comment": "Helping Hand",
+                "rules":
+                    {
+                        "PersistenKeyword": {"_comment": "Add/remove persisten to attached Human.",
                         "type": "passive", 
                         "listenTo": ["/cardById/$THIS_ID/inPlay"],
                         "condition": 
@@ -246,13 +245,12 @@
                                 ["SET", "/cardById/$THIS/parentCardId/controller", "shared"],
                                 ["SET", "/cardById/$THIS/parentCardId/tokens/persistent", 0]
                             ]
-                        ]
+                        ]}
                     }
-                  ]
                 },
             "04001": {"_comment": "A Perfect Day / Midday Sun",
-                "rules": [
-                    {    "_comment": "Trigger for A Perfect Day.",
+                "rules": {
+                    "Trigger1": {    "_comment": "Trigger for A Perfect Day.",
                         "type": "trigger",
                         "listenTo": ["/stepId"],
                         "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "A"]],
@@ -266,7 +264,7 @@
                                     ["LOG", "└── The weather has changed!"]]
                                 ]]
                     },
-                    {    "_comment": "Trigger for Midday Sun.",
+                    "Trigger2": {    "_comment": "Trigger for Midday Sun.",
                     "type": "trigger",
                     "listenTo": ["/stepId"],
                     "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "B"]],
@@ -280,11 +278,11 @@
                                 ["LOG", "└── The weather has changed!"]]
                             ]]
                     }
-                ]
+                }
             },
             "04002": {"_comment": "Gathering Storm",
-                "rules": [
-                    {    "_comment": "Trigger for Gathering Storm.",
+                "rules":
+                    {    "Trigger": {"_comment": "Trigger for Gathering Storm.",
                     "type": "trigger",
                     "listenTo": ["/stepId"],
                     "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "1"], ["EQUAL", "$THIS.currentSide", "B"]],
@@ -307,13 +305,12 @@
                                     ]
                                     ]]
                                 ]
-                            ]]
+                            ]]}
                     }
-                ]
             },
             "04003": {"_comment": "Howling Winds / Thunderhead",
-                "rules": [
-                    {    "_comment": "Refresh for Howling Winds.",
+                "rules": {
+                    "Trigger1": {    "_comment": "Refresh for Howling Winds.",
                     "type": "trigger",
                     "listenTo": ["/stepId"],
                     "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "A"]],
@@ -325,7 +322,7 @@
                                 ["ACTION_LIST", "revealPathFaceup", true, "sharedPathDeck", "$GAME.firstPlayer"]]
                             ]]
                     },
-                    {   "_comment": "Arrival Setup for Howling Winds.",
+                    "Trigger2": {   "_comment": "Arrival Setup for Howling Winds.",
                     "type": "trigger",
                     "listenTo": ["/stepId"],
                     "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "3.5"], ["EQUAL", "$THIS.currentSide", "A"]],
@@ -344,7 +341,7 @@
                             ]
                         ]]
                     },
-                    {    "_comment": "Trigger for Thunderhead.",
+                    "Trigger3": {    "_comment": "Trigger for Thunderhead.",
                     "type": "trigger",
                     "listenTo": ["/stepId"],
                     "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "B"]],
@@ -353,11 +350,11 @@
                                 ["SET", "/cardById/$THIS_ID/currentSide", "A"]]
                             ]
                     }
-                ]
+                }
             },
             "04004": {"_comment": "Clinging Mist",
-                "rules": [
-                    {    "_comment": "Refresh for Clinging Mist.",
+                "rules": {
+                    "Trigger1": {    "_comment": "Refresh for Clinging Mist.",
                     "type": "trigger",
                     "listenTo": ["/stepId"],
                     "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "B"]],
@@ -372,7 +369,7 @@
                                 ]
                             ]]
                     },
-                    {   "_comment": "Arrival Setup for Electric Fog.",
+                    "Trigger2": {   "_comment": "Arrival Setup for Electric Fog.",
                     "type": "trigger",
                     "listenTo": ["/stepId"],
                     "condition": ["AND", ["EQUAL", "$GAME.stepId", "3.5"], ["EQUAL", "$THIS.currentSide", "A"]],
@@ -391,22 +388,22 @@
                             ]
                         ]]
                     }
-                ]
+                }
             }, 
             "05009": {"_comment": "Spire",
-                "rules": [
+                "rules":
                     {
-                        "type": "entersPlay",
+                        "Trigger": {"type": "entersPlay",
                         "side": "A",
-                        "then": ["TOGGLE_ENCOUNTER_2_DECK", true] 
+                        "then": ["TOGGLE_ENCOUNTER_2_DECK", true]}
                     }
-                ]
-            }, 
+            },
             "05034": {"_comment": "Alluvial Ruins",
-                "rules": [
-                    {
+                "rules": {
+                    "Trigger": {
                         "type": "entersPlay",
-                        "side": "A",
+                        "side": "B",
+                        "condition":["AND", ["GREATER_EQUAL", ["LENGTH", "sharedPathDeck2"], 0], ["EQUAL", "$TARGET.groupId", "sharedLocation"]],
                         "then": [   
                                     ["TOGGLE_ENCOUNTER_2_DECK", true],
                                     ["LOAD_CARDS", ["LIST",
@@ -513,8 +510,7 @@
                                                     ]
                                     ]
                         ]  
-                    }
-                ]
+                    }}
             }
         }
     }
