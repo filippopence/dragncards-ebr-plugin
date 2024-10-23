@@ -8,7 +8,11 @@
             {"key": "6", "tokenType": "awareness", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/awareness.png)"},
             {"key": "7", "tokenType": "spirit", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/spirit.png)"},
             {"key": "8", "tokenType": "fitness", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/fitness.png)"},
-            {"key": "9", "tokenType": "focus", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/focus.png)"}
+            {"key": "9", "tokenType": "focus", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/focus.png)"},
+            {"key": "6", "tokenType": "awareness2", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/awareness.png)"},
+            {"key": "7", "tokenType": "spirit2", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/spirit.png)"},
+            {"key": "8", "tokenType": "fitness2", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/fitness.png)"},
+            {"key": "9", "tokenType": "focus2", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/focus.png)"}
         ],
         "game": [
             {"key": "D", "actionList": "drawCard", "label": "id:drawACard"},

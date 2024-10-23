@@ -144,6 +144,11 @@
               "label": "id:shuffleChallenge",
               "actionType": "game",
               "actionList": "shuffleChallenge"
+            },
+            { "id": "travelTouchButton",
+              "label": "id:travel",
+              "actionType": "game",
+              "actionList": "travelPhase"
             }
         ]
     ]
