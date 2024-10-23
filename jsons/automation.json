@@ -405,8 +405,9 @@
             "05034": {"_comment": "Alluvial Ruins",
                 "rules": [
                     {
-                        "type": "entersPlay",
-                        "side": "A",
+                        "type": "trigger",
+                        "listenTo": ["/cardById/$THIS_ID/inPlay"],
+                        "condition": ["EQUAL", "/cardById/$THIS_ID/controller", "shared"],
                         "then": [   
                                     ["TOGGLE_ENCOUNTER_2_DECK", true],
                                     ["LOAD_CARDS", ["LIST",
