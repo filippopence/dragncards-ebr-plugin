@@ -390,19 +390,21 @@
                     }
                 }
             }, 
-            "05009": {"_comment": "Spire",
-                "rules":
-                    {
-                        "Trigger": {"type": "entersPlay",
-                        "side": "A",
-                        "then": ["TOGGLE_ENCOUNTER_2_DECK", true]}
-                    }
-            },
+            "05009": {
+                "_comment": "Spire",
+                "rules": {
+                        "showSecondaryDeck": {
+                            "type": "trigger",
+                            "listenTo": ["/cardById/*/inPlay"],
+                            "condition": "$THIS.inPlay",
+                            "then": ["TOGGLE_ENCOUNTER_2_DECK", true]
+                        }
+                    }},
             "05034": {"_comment": "Alluvial Ruins",
                 "rules": {
-                    "Trigger": {
-                        "type": "entersPlay",
-                        "side": "B",
+                    "pathDeckAssembly": {
+                        "type": "trigger",
+                        "listenTo": ["/cardById/*/inPlay"],
                         "condition":["AND", ["GREATER_EQUAL", ["LENGTH", "sharedPathDeck2"], 0], ["EQUAL", "$TARGET.groupId", "sharedLocation"]],
                         "then": [   
                                     ["TOGGLE_ENCOUNTER_2_DECK", true],
