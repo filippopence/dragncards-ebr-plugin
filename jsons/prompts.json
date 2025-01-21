@@ -1,0 +1,162 @@
+{
+    "prompts": {
+        "from_LoneTreeStation_To": {
+            "args": [],
+            "message": "Where do you want to travel?",
+            "options": [
+                {
+                    "label": "Ancestor's Grove",
+                    "hotkey": "1",
+                    "code": [
+                        ["LOAD_CARDS", "AncestorsGrove"],
+                        ["LOAD_CARDS", "oldGrowthSet"]
+                    ]
+                },
+                {
+                    "label": "Boulder Field",
+                    "hotkey": "2",
+                    "code": [
+                        ["LOAD_CARDS", "BoulderField"],
+                        ["LOAD_CARDS", "woodsSet"]
+                    ]
+                },
+                {
+                    "label": "White Sky",
+                    "hotkey": "3",
+                    "code": [
+                        ["LOAD_CARDS", "WhiteSky"],
+                        ["LOAD_CARDS", "lakeshoreSet"]
+                    ]
+                },
+                {
+                    "label": "Atrox Mountain",
+                    "hotkey": "4",
+                    "code": [
+                        ["LOAD_CARDS", "AtroxMountain"],
+                        ["LOAD_CARDS", "mountainSet"]
+                    ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "0"
+                }
+            ] 
+        },
+        "from_WhiteSky_To": {
+            "args": [],
+            "message": "Where do you want to travel?",
+            "options": [
+                {
+                    "label": "Lone Tree Station",
+                    "hotkey": "1",
+                    "code": [
+                        ["LOAD_CARDS", "LoneTreeStation"],
+                        ["LOAD_CARDS", "lakeshoreSet"]
+                    ]
+                },
+                {
+                    "label": "Boulder Field",
+                    "hotkey": "2",
+                    "code": [
+                        ["LOAD_CARDS", "BoulderField"],
+                        ["LOAD_CARDS", "woodsSet"]
+                    ]
+                },
+                {
+                    "label": "Mount Nim",
+                    "hotkey": "3",
+                    "code": [
+                        ["LOAD_CARDS", "MountNim"],
+                        ["LOAD_CARDS", "mountainSet"]
+                    ]
+                },
+                {
+                    "label": "Spire",
+                    "hotkey": "4",
+                    "code": [
+                        ["LOAD_CARDS", "Spire"],
+                        ["LOAD_CARDS", "riverSet"]
+                    ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "0"
+                }
+            ] 
+        },
+        "from_NorthernOutpost_To": {
+            "args": [],
+            "message": "Where do you want to travel?",
+            "options": [
+                {
+                    "label": "Atrox Mountain",
+                    "hotkey": "1",
+                    "code": [
+                        ["LOAD_CARDS", "AtroxMountain"],
+                        ["LOAD_CARDS", "woodsSet"]
+                    ]
+                },
+                {
+                    "label": "Golden Shore",
+                    "hotkey": "2",
+                    "code": [
+                        ["LOAD_CARDS", "GoldenShore"],
+                        ["LOAD_CARDS", "woodsSet"]
+                    ]
+                },
+                {
+                    "label": "Mount Nim",
+                    "hotkey": "3",
+                    "code": [
+                        ["LOAD_CARDS", "MountNim"],
+                        ["LOAD_CARDS", "mountainSet"]
+                    ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "0"
+                }
+            ] 
+        },
+        "from_AtroxMountain_To": {
+            "args": [],
+            "message": "Where do you want to travel?",
+            "options": [
+                {
+                    "label": "Northern Outpost",
+                    "hotkey": "1",
+                    "code": [
+                        ["LOAD_CARDS", "NorthernOutpost"],
+                        ["LOAD_CARDS", "woodsSet"]
+                    ]
+                },
+                {
+                    "label": "Golden Shore",
+                    "hotkey": "2",
+                    "code": [
+                        ["LOAD_CARDS", "GoldenShore"],
+                        ["LOAD_CARDS", "lakeshoreSet"]
+                    ]
+                },
+                {
+                    "label": "Lone Tree Station",
+                    "hotkey": "3",
+                    "code": [
+                        ["LOAD_CARDS", "LoneTreeStation"],
+                        ["LOAD_CARDS", "mountainSet"]
+                    ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "0"
+                }
+            ] 
+        },
+        "EMPTY_PROMPT": {
+            "args": [],
+            "message": "Where do you want to travel?",
+            "options": [
+            ]
+        }
+    }
+}

@@ -8,7 +8,11 @@
             {"key": "6", "tokenType": "awareness", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/awareness.png)"},
             {"key": "7", "tokenType": "spirit", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/spirit.png)"},
             {"key": "8", "tokenType": "fitness", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/fitness.png)"},
-            {"key": "9", "tokenType": "focus", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/focus.png)"}
+            {"key": "9", "tokenType": "focus", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/focus.png)"},
+            {"key": "6", "tokenType": "awareness2", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/awareness.png)"},
+            {"key": "7", "tokenType": "spirit2", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/spirit.png)"},
+            {"key": "8", "tokenType": "fitness2", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/fitness.png)"},
+            {"key": "9", "tokenType": "focus2", "label": "icon(https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/focus.png)"}
         ],
         "game": [
             {"key": "D", "actionList": "drawCard", "label": "id:drawACard"},
@@ -20,7 +24,8 @@
             {"key": "Shift+Q", "actionList": "shuffleChallenge", "label": "id:reshuffleChallengeDiscard"},
             {"key": "S", "actionList": "sufferFatigue", "label": "id:sufferFatigue"},
             {"key": "Shift+S", "actionList": "sootheFatigue", "label": "id:sootheFatigue"},
-            {"key": "Shift+N", "actionList": "newRound", "label": "id:newRound"}
+            {"key": "Shift+N", "actionList": "newRound", "label": "id:newRound"},
+            {"key": "Shift+T", "actionList": "travelPhase", "label": "id:travelPhase"}
         ],
         "card": [
             {"key": "A", "actionList": "toggleExhaust", "label": "id:exhaustReadyIfLocationMakeActive"},
@@ -29,9 +34,12 @@
             {"key": "H", "actionList": "shuffleIntoDeck", "label": "id:shuffleIntoOwnerSDeck"},
             {"key": "X", "actionList": "discardCard", "label": "id:discardOrAdvance"},
             {"key": "Shift+C", "actionList": "discardOtherCardsInStack", "label": "id:discardAllOtherCardsInThisCardSStack"},
-            {"key": "B", "actionList": "sendToBack", "label": "id:sendAttachmentToBackOfStack"},
-            {"key": "Shift+T", "actionList": "swapWithTop", "label": "id:swapWithTop"},
             {"key": "P", "actionList": "makePersistent", "label": "id:makePersistent"},
+            {"key": "Alt+1", "actionList": "lookAtTop1", "label": "id:lookAtTop1"},
+            {"key": "Alt+2", "actionList": "lookAtTop2", "label": "id:lookAtTop2"},
+            {"key": "Alt+3", "actionList": "lookAtTop3", "label": "id:lookAtTop3"},
+            {"key": "Shift+U", "actionList": "sendToTop", "label": "id:sendToTop"},
+            {"key": "B", "actionList": "sendToBottom", "label": "id:sendToBottom"},
             {"key": "5", "actionList": "rangerToken", "label": "id:addRangerToken"}
         ]
     }

@@ -654,12 +654,12 @@
         "label": "id:MarshofRebirth",
         "cards": [
           {
-            "databaseId": "02106",
+            "databaseId": "02107",
             "quantity": 1,
             "loadGroupId": "sharedPathDeck"
           },
           {
-            "databaseId": "02107",
+            "databaseId": "02108",
             "quantity": 1,
             "loadGroupId": "sharedPathDeck"
           },
@@ -2129,9 +2129,9 @@
             "loadGroupId": "sharedPathDeck3"
           },
           {
-            "databaseId": "02059",
-            "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
+          "databaseId": "02059",
+          "quantity": 1,
+          "loadGroupId": "sharedPathDeck"
           },
           {
             "databaseId": "02060",
@@ -2812,106 +2812,6 @@
             "databaseId": "02067",
             "quantity": 1,
             "loadGroupId": "sharedPathDeck3"
-          },
-          {
-            "databaseId": "02014",
-            "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
-          },
-          {
-            "databaseId": "02015",
-            "quantity": 4,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02016",
-            "quantity": 1,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02017",
-            "quantity": 2,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02018",
-            "quantity": 2,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02019",
-            "quantity": 2,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02048",
-            "quantity": 2,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02049",
-            "quantity": 3,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02050",
-            "quantity": 2,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02051",
-            "quantity": 2,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02052",
-            "quantity": 2,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02053",
-            "quantity": 1,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02020",
-            "quantity": 2,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02021",
-            "quantity": 1,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02022",
-            "quantity": 1,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02023",
-            "quantity": 2,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02024",
-            "quantity": 1,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02025",
-            "quantity": 2,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02026",
-            "quantity": 2,
-            "loadGroupId": "sharedPathDeck2"
-          },
-          {
-            "databaseId": "02027",
-            "quantity": 1,
-            "loadGroupId": "sharedPathDeck2"
           }
         ]
       },
@@ -2969,9 +2869,9 @@
             "loadGroupId": "sharedPathDeck3"
           },
           {
-            "databaseId": "02063",
-            "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
+          "databaseId": "02063",
+          "quantity": 1,
+          "loadGroupId": "sharedPathDeck"
           },
           {
             "databaseId": "02064",

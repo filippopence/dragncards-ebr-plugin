@@ -1,5 +1,10 @@
 {
     "automation": {
+        "postNewGameActionList": [
+            ["DEFINE", "$PLAYER_N", "player1"],
+            ["LOAD_CARDS", "challengeDeck"],
+            ["LOAD_CARDS", "Map&Reference"]
+        ],
         "postLoadActionList": [
             ["DEFINE", "$LOADED_PLAYER_DECK", false],
             ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
@@ -10,28 +15,73 @@
                         ["EQUAL", "$CARD.sides.A.pivotal", "0"] 
                     ],
                     [
+                        ["TOGGLE_ENCOUNTER_2_DECK", false],
                         ["MOVE_CARD", "$CARD_ID", "sharedLocation", 0],
                         ["SET", "/cardById/$CARD_ID/currentSide", "B"],
-                        ["LOG", "├── ", "Rangers have arrived at ", "$CARD.sides.A.name", "."],
+                        ["LOG", "├── ", "Rangers arrived at ", "$CARD.sides.A.name", "."],
                         ["COND",
-                            ["OR",
-                                ["EQUAL", "$CARD.sides.A.name", "Bowl of the Sun"],
-                                ["EQUAL", "$CARD.sides.A.name", "Archeological Outpost"]
-                            ],
-                            [   ["FOR_EACH_START_STOP_STEP", "$i", 0, 2, 1,[
-                                    ["VAR", "$CARDS_IN_THE_VALLEY", ["LENGTH", "$GAME.groupById.sharedPathDeck3.stackIds"]],
-                                    ["VAR", "$RANDOM_CARD", ["RANDOM_INT", 0, ["SUBTRACT", "$CARDS_IN_THE_VALLEY", 1]]],
-                                    ["MOVE_CARD", ["GET_CARD_ID", "sharedPathDeck3", "$RANDOM_CARD", 0], "sharedPathDeck", 0]]],
+                            ["EQUAL", "$CARD.sides.A.name", "Bowl of the Sun"],
+                            [   
+                                ["SHUFFLE_GROUP", "sharedPathDeck3"],
+                                ["VAR", "$i", 0],
+                                ["FOR_EACH_VAL", "$iCARD", "$GAME.groupById.sharedPathDeck3.parentCards", [
+                                    ["COND", 
+                                        ["EQUAL", "$iCARD.sides.A.name", "The Fundamentalist"],
+                                        ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0]
+                                    ],
+                                    ["COND",
+                                        ["AND", 
+                                        ["LESS_THAN", "$i", 2],
+                                        ["NOT", ["CHECK_IF_COPY_IN_PLAY", "$iCARD"]]],
+                                        [
+                                        ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0],
+                                        ["INCREASE_VAR", "$i", 1]
+                                        ]
+                                    ]
+                                    ]],
                                 ["SHUFFLE_GROUP", "sharedPathDeck"],
-                                ["LOG", "├── ", "Shuffled 2 cards from The Valley set into the Path Deck."] 
+                                ["LOG", "├── ", "Shuffled {{$i}} cards from The Valley set into the Path Deck."]
+                            ],
+                            ["EQUAL", "$CARD.sides.A.name", "Archaeological Outpost"],
+                            [   
+                                ["SHUFFLE_GROUP", "sharedPathDeck3"],
+                                ["VAR", "$i", 0],
+                                ["FOR_EACH_VAL", "$iCARD", "$GAME.groupById.sharedPathDeck3.parentCards", [
+                                    ["COND", 
+                                        ["EQUAL", "$iCARD.sides.A.name", "Arcology Sinkhole"],
+                                        ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0]
+                                    ],
+                                    ["COND",
+                                        ["AND", 
+                                        ["LESS_THAN", "$i", 2],
+                                        ["NOT", ["CHECK_IF_COPY_IN_PLAY", "$iCARD"]]],
+                                        [
+                                        ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0],
+                                        ["INCREASE_VAR", "$i", 1]
+                                        ]
+                                    ]
+                                    ]],
+                                ["SHUFFLE_GROUP", "sharedPathDeck"],
+                                ["LOG", "├── ", "Shuffled {{$i}} cards from The Valley set into the Path Deck."]
                             ],
                         true,
-                            [["FOR_EACH_START_STOP_STEP", "$i", 0, 3, 1,[
-                                ["VAR", "$CARDS_IN_THE_VALLEY", ["LENGTH", "$GAME.groupById.sharedPathDeck3.stackIds"]],
-                                ["VAR", "$RANDOM_CARD", ["RANDOM_INT", 0, ["SUBTRACT", "$CARDS_IN_THE_VALLEY", 1]]],
-                                ["MOVE_CARD", ["GET_CARD_ID", "sharedPathDeck3", "$RANDOM_CARD", 0], "sharedPathDeck", 0]]],
-                            ["SHUFFLE_GROUP", "sharedPathDeck"],
-                            ["LOG", "├── ", "Shuffled 3 cards from The Valley set into the Path Deck."] ] 
+                            [
+                                ["SHUFFLE_GROUP", "sharedPathDeck3"],
+                                ["VAR", "$i", 0],
+                                ["FOR_EACH_VAL", "$iCARD", "$GAME.groupById.sharedPathDeck3.parentCards", [
+                                    ["COND",
+                                        ["AND", 
+                                        ["LESS_THAN", "$i", 3],
+                                        ["NOT", ["CHECK_IF_COPY_IN_PLAY", "$iCARD"]]],
+                                        [
+                                        ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0],
+                                        ["INCREASE_VAR", "$i", 1]
+                                        ]
+                                    ]
+                                    ]],
+                                ["SHUFFLE_GROUP", "sharedPathDeck"],
+                                ["LOG", "├── ", "Shuffled {{$i}} cards from The Valley set into the Path Deck."]
+                            ]
                         ]
                     ]
                 ],
@@ -41,9 +91,10 @@
                         ["EQUAL", "$CARD.sides.A.pivotal", "1"] 
                     ],
                     [
+                        ["TOGGLE_ENCOUNTER_2_DECK", false],
                         ["MOVE_CARD", "$CARD_ID", "sharedLocation", 0],
                         ["SET", "/cardById/$CARD_ID/currentSide", "B"],
-                        ["LOG", "├── ", "Rangers have arrived at ", "$CARD.sides.A.name", "."]
+                        ["LOG", "├── ", "Rangers arrived at ", "$CARD.sides.A.name", "."]
                     ]
                 ],
                 ["COND", 
@@ -95,8 +146,8 @@
                 ]
             ]
         ],
-        "gameRules": [
-            { 
+        "gameRules":
+            { "AddGeneralToken": {
                 "_comment": "Add general tokens when card enters play.",
                 "type": "trigger", 
                 "listenTo": ["/cardById/*/inPlay", "/cardById/*/currentSide"],
@@ -115,7 +166,7 @@
                                 ]
                         ]
             },
-            { 
+            "ColorBorderBlue": {
                 "_comment": "Turn cards blue when they have enought progress tokens on them.",
                 "type": "passive", 
                 "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens"],
@@ -133,7 +184,7 @@
                     ["SET", "/cardById/$TARGET_ID/borderColor", null]
                 ]
             },
-            { 
+            "ColorBorderRed": {
                 "_comment": "Turn cards red when they have enought harm tokens on them.",
                 "type": "passive", 
                 "listenTo": ["/cardById/*/tokens/harm", "/cardById/*/tokens"],
@@ -151,11 +202,11 @@
                     ["SET", "/cardById/$TARGET_ID/borderColor", null]
                 ]
             }
-        ],
+        },
         "cards": {
             "02023": {"_comment": "Cloudhive Swarm",
-                "rules": [
-                    {    "_comment": "Add generic token on Refresh.",
+                "rules": {
+                    "AddABee": {    "_comment": "Add generic token on Refresh.",
                         "type": "trigger",
                         "listenTo": ["/stepId"],
                         "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"]],
@@ -166,26 +217,40 @@
                                         ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/general", 1]
                                     ]
                                 ]]
-                    },
-                    {   "_comment": "Set harm threshold equal to Bees on it.",
-                        "type": "passive",
-                        "listenTo": ["/cardById/$THIS_ID/tokens/harm", "/cardById/$THIS_ID/tokens"],
-                        "condition": [
-                        ["GREATER_EQUAL", "$THIS.tokens.harm", "$THIS.tokens.general"]
+                        }
+                    }
+            },
+            "03002": {"_comment": "Helping Hand",
+                "rules":
+                    {
+                        "PersistenKeyword": {"_comment": "Add/remove persisten to attached Human.",
+                        "type": "passive", 
+                        "listenTo": ["/cardById/$THIS_ID/inPlay"],
+                        "condition": 
+                        [
+                            "AND", 
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["EQUAL", "$THIS.parentCardId.trait", "Human"]
                         ],
                         "onDo": [
-                            ["LOG", "└── ", "$THIS.currentFace.name", " is cleared by harm."],
-                            ["SET", "/cardById/$THIS_ID/borderColor", "red"]
+                            ["LOG", "└── ", "$THIS.parentCardId.name", " gains Persistent."],
+                            [
+                                ["SET", "/cardById/$THIS/parentCardId/controller", "playerNull"],
+                                ["SET", "/cardById/$THIS/parentCardId/tokens/persistent", 1]
+                            ]
                         ],
                         "offDo": [
-                            ["SET", "/cardById/$THIS_ID/borderColor", null]
-                        ]
+                            ["LOG", "└── ", "$THIS.parentCardId.name", " loses Persistent."],
+                            [
+                                ["SET", "/cardById/$THIS/parentCardId/controller", "shared"],
+                                ["SET", "/cardById/$THIS/parentCardId/tokens/persistent", 0]
+                            ]
+                        ]}
                     }
-                ]
-            },
+                },
             "04001": {"_comment": "A Perfect Day / Midday Sun",
-                "rules": [
-                    {    "_comment": "Trigger for A Perfect Day.",
+                "rules": {
+                    "Trigger1": {    "_comment": "Trigger for A Perfect Day.",
                         "type": "trigger",
                         "listenTo": ["/stepId"],
                         "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "A"]],
@@ -199,7 +264,7 @@
                                     ["LOG", "└── The weather has changed!"]]
                                 ]]
                     },
-                    {    "_comment": "Trigger for Midday Sun.",
+                    "Trigger2": {    "_comment": "Trigger for Midday Sun.",
                     "type": "trigger",
                     "listenTo": ["/stepId"],
                     "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "B"]],
@@ -213,11 +278,11 @@
                                 ["LOG", "└── The weather has changed!"]]
                             ]]
                     }
-                ]
+                }
             },
             "04002": {"_comment": "Gathering Storm",
-                "rules": [
-                    {    "_comment": "Trigger for Gathering Storm.",
+                "rules":
+                    {    "Trigger": {"_comment": "Trigger for Gathering Storm.",
                     "type": "trigger",
                     "listenTo": ["/stepId"],
                     "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "1"], ["EQUAL", "$THIS.currentSide", "B"]],
@@ -240,13 +305,12 @@
                                     ]
                                     ]]
                                 ]
-                            ]]
+                            ]]}
                     }
-                ]
             },
             "04003": {"_comment": "Howling Winds / Thunderhead",
-                "rules": [
-                    {    "_comment": "Refresh for Howling Winds.",
+                "rules": {
+                    "Trigger1": {    "_comment": "Refresh for Howling Winds.",
                     "type": "trigger",
                     "listenTo": ["/stepId"],
                     "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "A"]],
@@ -258,7 +322,7 @@
                                 ["ACTION_LIST", "revealPathFaceup", true, "sharedPathDeck", "$GAME.firstPlayer"]]
                             ]]
                     },
-                    {   "_comment": "Arrival Setup for Howling Winds.",
+                    "Trigger2": {   "_comment": "Arrival Setup for Howling Winds.",
                     "type": "trigger",
                     "listenTo": ["/stepId"],
                     "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "3.5"], ["EQUAL", "$THIS.currentSide", "A"]],
@@ -277,7 +341,7 @@
                             ]
                         ]]
                     },
-                    {    "_comment": "Trigger for Thunderhead.",
+                    "Trigger3": {    "_comment": "Trigger for Thunderhead.",
                     "type": "trigger",
                     "listenTo": ["/stepId"],
                     "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "B"]],
@@ -286,11 +350,11 @@
                                 ["SET", "/cardById/$THIS_ID/currentSide", "A"]]
                             ]
                     }
-                ]
+                }
             },
             "04004": {"_comment": "Clinging Mist",
-                "rules": [
-                    {    "_comment": "Refresh for Clinging Mist.",
+                "rules": {
+                    "Trigger1": {    "_comment": "Refresh for Clinging Mist.",
                     "type": "trigger",
                     "listenTo": ["/stepId"],
                     "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "B"]],
@@ -305,7 +369,7 @@
                                 ]
                             ]]
                     },
-                    {   "_comment": "Arrival Setup for Electric Fog.",
+                    "Trigger2": {   "_comment": "Arrival Setup for Electric Fog.",
                     "type": "trigger",
                     "listenTo": ["/stepId"],
                     "condition": ["AND", ["EQUAL", "$GAME.stepId", "3.5"], ["EQUAL", "$THIS.currentSide", "A"]],
@@ -324,7 +388,131 @@
                             ]
                         ]]
                     }
-                ]
+                }
+            }, 
+            "05009": {
+                "_comment": "Spire",
+                "rules": {
+                        "showSecondaryDeck": {
+                            "type": "trigger",
+                            "listenTo": ["/cardById/*/inPlay"],
+                            "condition": "$THIS.inPlay",
+                            "then": ["TOGGLE_ENCOUNTER_2_DECK", true]
+                        }
+                    }},
+            "05034": {"_comment": "Alluvial Ruins",
+                "rules": {
+                    "pathDeckAssembly": {
+                        "type": "trigger",
+                        "listenTo": ["/cardById/*/inPlay"],
+                        "condition":["AND", ["GREATER_EQUAL", ["LENGTH", "sharedPathDeck2"], 0], ["EQUAL", "$TARGET.groupId", "sharedLocation"]],
+                        "then": [   
+                                    ["TOGGLE_ENCOUNTER_2_DECK", true],
+                                    ["LOAD_CARDS", ["LIST",
+                                                        {
+                                                        "databaseId": "02014",
+                                                        "quantity": 1,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02015",
+                                                        "quantity": 4,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02016",
+                                                        "quantity": 1,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02017",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02018",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02019",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02048",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02049",
+                                                        "quantity": 3,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02050",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02051",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02052",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02053",
+                                                        "quantity": 1,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02020",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02021",
+                                                        "quantity": 1,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02022",
+                                                        "quantity": 1,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02023",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02024",
+                                                        "quantity": 1,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02025",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02026",
+                                                        "quantity": 2,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        },
+                                                        {
+                                                        "databaseId": "02027",
+                                                        "quantity": 1,
+                                                        "loadGroupId": "sharedPathDeck2"
+                                                        }
+                                                    ]
+                                    ]
+                        ]  
+                    }}
             }
         }
     }

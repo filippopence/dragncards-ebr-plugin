@@ -73,9 +73,9 @@
         ],
         "makePersistent": [
             ["COND",
-            ["NOT_EQUAL", "$ACTIVE_CARD.controller", "persistent"],
+            ["NOT_EQUAL", "$ACTIVE_CARD.controller", "playerNull"],
             [
-                ["SET", "/cardById/$ACTIVE_CARD_ID/controller", "persistent"],
+                ["SET", "/cardById/$ACTIVE_CARD_ID/controller", "playerNull"],
                 ["LOG", "$ACTIVE_FACE.name", " has the 'Persistent' keyword."],
                 ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/persistent", 1]
             ],
@@ -324,6 +324,42 @@
                     ["LOG", "$ALIAS_N", " preventRefresh ", "$ACTIVE_FACE.name", "."]
                 ]
             ]
+        ],
+        "travelPhase": [
+            ["VAR", "$ACTIVE_LOCATION", "$GAME.groupById.sharedLocation.parentCards.[0]"],
+            ["VAR", "$i", 0],
+            ["PROMPT", "$PLAYER_N", "EMPTY_PROMPT"],
+            ["FOR_EACH_VAL", "$CONNECTED_LOCATION", "$ACTIVE_LOCATION.sides.A.connectedLocations", [
+                ["VAR", "$PATH", "$ACTIVE_LOCATION.sides.A.connectedPaths.[$i]"],
+                ["UPDATE_VAR", "$i", ["ADD", "$i", 1]],
+                ["PROMPT_ADD_OPTION", "$PLAYER_N", "id:{{$CONNECTED_LOCATION}}", "{{$i}}", ["LIST", "TRAVEL_TO", "$CONNECTED_LOCATION", "$PATH"]]] 
+            ],
+            ["PROMPT_ADD_OPTION", "$PLAYER_N", "Cancel", "0", ["LIST", "LOG", ""]]
+        ],
+        "sendToBottom": [
+            ["VAR", "$DECK_GROUP_ID", "$ACTIVE_CARD.deckGroupId"],
+            ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.deckGroupId", -1],
+            ["LOG", "{{$ALIAS_N}} moved {{$ACTIVE_CARD.sides.A.name}} to the bottom of {{$GAME.groupById.$DECK_GROUP_ID.label}}."]
+        ],
+        "sendToTop": [
+            ["VAR", "$DECK_GROUP_ID", "$ACTIVE_CARD.deckGroupId"],
+            ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.deckGroupId", 0],
+            ["LOG", "{{$ALIAS_N}} moved {{$ACTIVE_CARD.sides.A.name}} to the top of {{$GAME.groupById.$DECK_GROUP_ID.label}}."]
+        ],
+        "lookAtTop1": [
+            ["VAR", "$MY_GROUP_ID", "$ACTIVE_CARD.deckGroupId"],
+            ["LOG", "{{$ALIAS_N}} is looking at the top card of {{$GAME.groupById.$MY_GROUP_ID.label}}."],
+            ["LOOK_AT", "$PLAYER_N", "$MY_GROUP_ID", 1, true]
+        ],
+        "lookAtTop2": [
+            ["VAR", "$MY_GROUP_ID", "$ACTIVE_CARD.deckGroupId"],
+            ["LOG", "{{$ALIAS_N}} is looking at the top 2 cards of {{$GAME.groupById.$MY_GROUP_ID.label}}."],
+            ["LOOK_AT", "$PLAYER_N", "$MY_GROUP_ID", 2, true]
+        ],
+        "lookAtTop3": [
+            ["VAR", "$MY_GROUP_ID", "$ACTIVE_CARD.deckGroupId"],
+            ["LOG", "{{$ALIAS_N}} is looking at the top 3 cards of {{$GAME.groupById.$MY_GROUP_ID.label}}."],
+            ["LOOK_AT", "$PLAYER_N", "$MY_GROUP_ID", 3, true]
         ]
     }
 }
