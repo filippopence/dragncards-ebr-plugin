@@ -170,11 +170,15 @@
                 "_comment": "Turn cards blue when they have enought progress tokens on them.",
                 "type": "passive", 
                 "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens"],
-                "condition": ["COND", 
-                    ["EQUAL", "$TARGET.currentFace.scaleProgressThresholdPerPlayer", true],
-                    ["GREATER_EQUAL", "$TARGET.tokens.progress", ["MULTIPLY", "$TARGET.currentFace.progress_threshold", "$GAME.numPlayers"]],
-                    true,
-                    ["GREATER_EQUAL", "$TARGET.tokens.progress", "$TARGET.currentFace.progress_threshold"]
+                "condition": ["AND", 
+                    ["NOT_EQUAL", "$TARGET.currentFace.progress", null],
+                    ["GREATER_THAN", "$TARGET.tokens.progress", 0],
+                    ["COND",
+                        ["EQUAL", "$TARGET.currentFace.scaleProgressThresholdPerPlayer", true],
+                        ["GREATER_EQUAL", "$TARGET.tokens.progress", ["MULTIPLY", "$TARGET.currentFace.progress_threshold", "$GAME.numPlayers"]],
+                        true,
+                        ["GREATER_EQUAL", "$TARGET.tokens.progress", "$TARGET.currentFace.progress_threshold"]
+                    ]
                 ],
                 "onDo": [
                     ["LOG", "└── ", "$TARGET.currentFace.name", " is cleared by progress."],
@@ -188,11 +192,15 @@
                 "_comment": "Turn cards red when they have enought harm tokens on them.",
                 "type": "passive", 
                 "listenTo": ["/cardById/*/tokens/harm", "/cardById/*/tokens"],
-                "condition": ["COND", 
-                ["EQUAL", "$TARGET.currentFace.scaleHarmThresholdPerPlayer", true],
-                ["GREATER_EQUAL", "$TARGET.tokens.harm", ["MULTIPLY", "$TARGET.currentFace.harm_threshold", "$GAME.numPlayers"]],
-                true,
-                ["GREATER_EQUAL", "$TARGET.tokens.harm", "$TARGET.currentFace.harm_threshold"]
+                "condition": ["AND", 
+                    ["NOT_EQUAL", "$TARGET.currentFace.harm", null],
+                    ["GREATER_THAN", "$TARGET.tokens.harm", 0],
+                    ["COND",
+                        ["EQUAL", "$TARGET.currentFace.scaleHarmThresholdPerPlayer", true],
+                        ["GREATER_EQUAL", "$TARGET.tokens.harm", ["MULTIPLY", "$TARGET.currentFace.harm_threshold", "$GAME.numPlayers"]],
+                        true,
+                        ["GREATER_EQUAL", "$TARGET.tokens.harm", "$TARGET.currentFace.harm_threshold"]
+                    ]
                 ],
                 "onDo": [
                     ["LOG", "└── ", "$TARGET.currentFace.name", " is cleared by harm."],
