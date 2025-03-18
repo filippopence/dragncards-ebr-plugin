@@ -442,6 +442,9 @@
         "shuffleGroupIntoDeck": {
             "English": "Shuffle Into Deck"
         },
+        "discardGroup": {
+            "English": "Discard this cards"
+        },
         "sharedPathDiscard": {
             "English": "Path Discard"
         },
@@ -867,6 +870,12 @@
         },
         "discardUntilBeing": {
             "English": "Discard Until Being"
+        },
+        "searchNextBeing": {
+            "English": "Search Next Being"
+        },
+        "searchNextFeature": {
+            "English": "Search Next Feature"
         },
         "Weather": {
             "English": "Weather"

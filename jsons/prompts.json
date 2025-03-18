@@ -1,161 +1,156 @@
 {
     "prompts": {
-        "from_LoneTreeStation_To": {
-            "args": [],
-            "message": "Where do you want to travel?",
-            "options": [
-                {
-                    "label": "Ancestor's Grove",
-                    "hotkey": "1",
-                    "code": [
-                        ["LOAD_CARDS", "AncestorsGrove"],
-                        ["LOAD_CARDS", "oldGrowthSet"]
-                    ]
-                },
-                {
-                    "label": "Boulder Field",
-                    "hotkey": "2",
-                    "code": [
-                        ["LOAD_CARDS", "BoulderField"],
-                        ["LOAD_CARDS", "woodsSet"]
-                    ]
-                },
-                {
-                    "label": "White Sky",
-                    "hotkey": "3",
-                    "code": [
-                        ["LOAD_CARDS", "WhiteSky"],
-                        ["LOAD_CARDS", "lakeshoreSet"]
-                    ]
-                },
-                {
-                    "label": "Atrox Mountain",
-                    "hotkey": "4",
-                    "code": [
-                        ["LOAD_CARDS", "AtroxMountain"],
-                        ["LOAD_CARDS", "mountainSet"]
-                    ]
-                },
-                {
-                    "label": "Cancel",
-                    "hotkey": "0"
-                }
-            ] 
-        },
-        "from_WhiteSky_To": {
-            "args": [],
-            "message": "Where do you want to travel?",
-            "options": [
-                {
-                    "label": "Lone Tree Station",
-                    "hotkey": "1",
-                    "code": [
-                        ["LOAD_CARDS", "LoneTreeStation"],
-                        ["LOAD_CARDS", "lakeshoreSet"]
-                    ]
-                },
-                {
-                    "label": "Boulder Field",
-                    "hotkey": "2",
-                    "code": [
-                        ["LOAD_CARDS", "BoulderField"],
-                        ["LOAD_CARDS", "woodsSet"]
-                    ]
-                },
-                {
-                    "label": "Mount Nim",
-                    "hotkey": "3",
-                    "code": [
-                        ["LOAD_CARDS", "MountNim"],
-                        ["LOAD_CARDS", "mountainSet"]
-                    ]
-                },
-                {
-                    "label": "Spire",
-                    "hotkey": "4",
-                    "code": [
-                        ["LOAD_CARDS", "Spire"],
-                        ["LOAD_CARDS", "riverSet"]
-                    ]
-                },
-                {
-                    "label": "Cancel",
-                    "hotkey": "0"
-                }
-            ] 
-        },
-        "from_NorthernOutpost_To": {
-            "args": [],
-            "message": "Where do you want to travel?",
-            "options": [
-                {
-                    "label": "Atrox Mountain",
-                    "hotkey": "1",
-                    "code": [
-                        ["LOAD_CARDS", "AtroxMountain"],
-                        ["LOAD_CARDS", "woodsSet"]
-                    ]
-                },
-                {
-                    "label": "Golden Shore",
-                    "hotkey": "2",
-                    "code": [
-                        ["LOAD_CARDS", "GoldenShore"],
-                        ["LOAD_CARDS", "woodsSet"]
-                    ]
-                },
-                {
-                    "label": "Mount Nim",
-                    "hotkey": "3",
-                    "code": [
-                        ["LOAD_CARDS", "MountNim"],
-                        ["LOAD_CARDS", "mountainSet"]
-                    ]
-                },
-                {
-                    "label": "Cancel",
-                    "hotkey": "0"
-                }
-            ] 
-        },
-        "from_AtroxMountain_To": {
-            "args": [],
-            "message": "Where do you want to travel?",
-            "options": [
-                {
-                    "label": "Northern Outpost",
-                    "hotkey": "1",
-                    "code": [
-                        ["LOAD_CARDS", "NorthernOutpost"],
-                        ["LOAD_CARDS", "woodsSet"]
-                    ]
-                },
-                {
-                    "label": "Golden Shore",
-                    "hotkey": "2",
-                    "code": [
-                        ["LOAD_CARDS", "GoldenShore"],
-                        ["LOAD_CARDS", "lakeshoreSet"]
-                    ]
-                },
-                {
-                    "label": "Lone Tree Station",
-                    "hotkey": "3",
-                    "code": [
-                        ["LOAD_CARDS", "LoneTreeStation"],
-                        ["LOAD_CARDS", "mountainSet"]
-                    ]
-                },
-                {
-                    "label": "Cancel",
-                    "hotkey": "0"
-                }
-            ] 
-        },
         "EMPTY_PROMPT": {
             "args": [],
             "message": "Where do you want to travel?",
             "options": [
+            ]
+        },
+        "RISING_WATERS": {
+            "args": [],
+            "message": "Check the number of days since you received Rising Waters:",
+            "options": [
+                {
+                    "label": "0",
+                    "hotkey": "0",
+                    "code": [
+                        ["LOAD_CARDS", ["LIST",
+                            {
+                            "databaseId": "02074",
+                            "quantity": 2,
+                            "loadGroupId": "sharedPathDeck"
+                            }]
+                        ], 
+                        ["LOG", "├── ", "2 Floods added into the path deck."]
+                    ]
+                },
+                {
+                    "label": "1",
+                    "hotkey": "1",
+                    "code": [
+                        ["LOAD_CARDS", ["LIST",
+                            {
+                            "databaseId": "02074",
+                            "quantity": 2,
+                            "loadGroupId": "sharedPathDeck"
+                            }]
+                        ], 
+                        [
+                            ["VAR", "$i", 0],
+                            ["FOR_EACH_VAL", "$iCARD", "$GAME.groupById.sharedPathDeck.parentCards", [
+                            ["COND", 
+                                ["AND", 
+                                    ["LESS_THAN", "$i", 1],
+                                    ["EQUAL", "$iCARD.sides.A.name", "Flood"]
+                                ],
+                                [["MOVE_CARD", "$iCARD.id", "sharedAlongTheWay", -1],
+                                ["INCREASE_VAR", "$i", 1]]
+                            ]]
+                        ]]
+                    ]
+                }
+            ]
+        },
+        "INVASION_STAGE1": {
+            "args": ["$TARGET"],
+            "message": "You are in a Ruin, Forest or Mountain Location.\n\nCheck the number of days since you received Invasion - Stage 1:",
+            "options": [
+                {
+                    "label": "0 - 2",
+                    "hotkey": "1",
+                    "code": [
+                        ["COND",  
+                        ["IN_STRING", "$TARGET.currentFace.traits", "Ruin"],
+                        [["LOAD_CARDS", ["LIST",
+                            {
+                            "databaseId": "02071",
+                            "quantity": 3,
+                            "loadGroupId": "sharedPathDeck"
+                            }]
+                        ], 
+                        ["LOG", "├── ", "3 Reclaimer Seekers shuffled into the path deck."]]
+                    ]]
+                },
+                {
+                    "label": "3 - 4",
+                    "hotkey": "2",
+                    "code": [
+                        ["COND",  
+                        ["OR", ["IN_STRING", "$TARGET.currentFace.traits", "Ruin"], ["IN_STRING", "$TARGET.currentFace.traits", "Forest"]],
+                        [["LOAD_CARDS", ["LIST",
+                            {
+                            "databaseId": "02071",
+                            "quantity": 3,
+                            "loadGroupId": "sharedPathDeck"
+                            }]
+                        ], 
+                        ["LOG", "├── ", "3 Reclaimer Seekers shuffled into the path deck."]]
+                    ]]
+                },
+                {
+                    "label": "5 - 6",
+                    "hotkey": "3",
+                    "code": [
+                        ["COND",  
+                        ["OR", ["IN_STRING", "$TARGET.currentFace.traits", "Ruin"], ["IN_STRING", "$TARGET.currentFace.traits", "Forest"], ["IN_STRING", "$TARGET.currentFace.traits", "Mountain"]],
+                        [["LOAD_CARDS", ["LIST",
+                            {
+                            "databaseId": "02071",
+                            "quantity": 3,
+                            "loadGroupId": "sharedPathDeck"
+                            }]
+                        ], 
+                        ["LOG", "├── ", "3 Reclaimer Seekers shuffled into the path deck."]]
+                    ]]
+                }
+            ]
+        },
+        "INVASION_STAGE2": {
+            "args": [],
+            "message": "Reclaimer Polyp shuffled into the path deck.\nNumber of days since you received Invasion - Stage 2:",
+            "options": [
+                {
+                    "label": "0 - 2",
+                    "hotkey": "1",
+                    "code": [
+                        ["LOAD_CARDS", ["LIST",
+                            {
+                            "databaseId": "02071",
+                            "quantity": 1,
+                            "loadGroupId": "sharedPathDeck"
+                            }]
+                        ], 
+                        ["LOG", "├── ", "1 Reclaimer Seeker shuffled into the path deck."]
+                    ]
+                },
+                {
+                    "label": "3 - 4",
+                    "hotkey": "2",
+                    "code": [
+                        ["LOAD_CARDS", ["LIST",
+                            {
+                            "databaseId": "02071",
+                            "quantity": 2,
+                            "loadGroupId": "sharedPathDeck"
+                            }]
+                        ], 
+                        ["LOG", "├── ", "2 Reclaimer Seekersf shuffled into the path deck."]
+                    ]
+                },
+                {
+                    "label": "5 - 6",
+                    "hotkey": "3",
+                    "code": [
+                        ["LOAD_CARDS", ["LIST",
+                            {
+                            "databaseId": "02071",
+                            "quantity": 3,
+                            "loadGroupId": "sharedPathDeck"
+                            }]
+                        ], 
+                        ["LOG", "├── ", "3 Reclaimer Seekers shuffled into the path deck."]
+                    ]
+                }
             ]
         }
     }

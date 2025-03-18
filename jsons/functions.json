@@ -27,6 +27,25 @@
                     ["MOVE_CARD", "$TOP_CARD.id", "{{$PLAYER_N}}WithinReach", -1, 0]]
             ]
         },
+        "SEARCH_NEXT_TYPE": {
+            "args": ["$GROUP_ID", "$TYPE"],
+            "code": [
+              ["VAR", "$i", 0],
+              ["FOR_EACH_VAL", "$iCARD", "$GAME.groupById.$GROUP_ID.parentCards", [
+              ["COND", 
+                  ["AND", 
+                      ["LESS_THAN", "$i", 1],
+                      ["EQUAL", "$iCARD.sides.A.type", "$TYPE"]
+                  ],
+                  [["COND",
+                    ["EQUAL", "$iCARD.sides.A.reveal", "along_the_way"],
+                    ["MOVE_CARD", "$iCARD.id", "sharedAlongTheWay", -1, 0],
+                     true,
+                    ["MOVE_CARD", "$iCARD.id", "{{$PLAYER_N}}WithinReach", -1, 0]],
+                  ["INCREASE_VAR", "$i", 1]]
+              ]]
+          ]]
+        },
         "DEAL_PATH_CARD": {
           "args": [
             {"$FACE_UP": false},

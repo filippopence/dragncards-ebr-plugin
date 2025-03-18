@@ -1,6 +1,17 @@
 {
     "automation": {
         "postNewGameActionList": [
+            // ["LOAD_CARDS", "Spire"],
+            // ["LOAD_CARDS", "APerfectDay"],
+            // ["LOAD_CARDS", "AdherentoftheFirstIdeal"],
+            // ["LOAD_CARDS", "mountainSet"],
+            // ["LOAD_CARDS", ["LIST",
+            //     {
+            //     "databaseId": "03007",
+            //     "quantity": 1,
+            //     "loadGroupId": "sharedMissions"
+            //     }]
+            // ],
             ["DEFINE", "$PLAYER_N", "player1"],
             ["LOAD_CARDS", "challengeDeck"],
             ["LOAD_CARDS", "Map&Reference"]
@@ -32,7 +43,10 @@
                                     ["COND",
                                         ["AND", 
                                         ["LESS_THAN", "$i", 2],
-                                        ["NOT", ["CHECK_IF_COPY_IN_PLAY", "$iCARD"]]],
+                                        ["OR",
+                                            ["NOT", ["CHECK_IF_COPY_IN_PLAY", "$iCARD"]], 
+                                            ["EQUAL", "$iCARD.sides.A.name", "Reclaimer Seeker"]
+                                        ]],
                                         [
                                         ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0],
                                         ["INCREASE_VAR", "$i", 1]
@@ -54,7 +68,10 @@
                                     ["COND",
                                         ["AND", 
                                         ["LESS_THAN", "$i", 2],
-                                        ["NOT", ["CHECK_IF_COPY_IN_PLAY", "$iCARD"]]],
+                                        ["OR",
+                                            ["NOT", ["CHECK_IF_COPY_IN_PLAY", "$iCARD"]], 
+                                            ["EQUAL", "$iCARD.sides.A.name", "Reclaimer Seeker"]
+                                        ]],
                                         [
                                         ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0],
                                         ["INCREASE_VAR", "$i", 1]
@@ -72,7 +89,10 @@
                                     ["COND",
                                         ["AND", 
                                         ["LESS_THAN", "$i", 3],
-                                        ["NOT", ["CHECK_IF_COPY_IN_PLAY", "$iCARD"]]],
+                                        ["OR",
+                                            ["NOT", ["CHECK_IF_COPY_IN_PLAY", "$iCARD"]], 
+                                            ["EQUAL", "$iCARD.sides.A.name", "Reclaimer Seeker"]
+                                        ]],
                                         [
                                         ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0],
                                         ["INCREASE_VAR", "$i", 1]
@@ -135,6 +155,12 @@
                     [
                         ["LOAD_CARDS", "BallLightning"]
                     ]
+                ],
+                ["COND", 
+                    ["EQUAL", "$CARD.sides.A.name", "Spire"],
+                    [
+                        ["TOGGLE_ENCOUNTER_2_DECK", true]
+                    ]
                 ]
             ]],
             ["DEFINE", "$PLAYER_N_HAND_GROUP_ID", ["JOIN_STRING", "$PLAYER_N", "Hand"]],
@@ -171,7 +197,7 @@
                 "type": "passive", 
                 "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens"],
                 "condition": ["AND", 
-                    ["NOT_EQUAL", "$TARGET.currentFace.progress", null],
+                    ["NOT_EQUAL", "$TARGET.currentFace.progress_threshold", null],
                     ["GREATER_THAN", "$TARGET.tokens.progress", 0],
                     ["COND",
                         ["EQUAL", "$TARGET.currentFace.scaleProgressThresholdPerPlayer", true],
@@ -193,7 +219,7 @@
                 "type": "passive", 
                 "listenTo": ["/cardById/*/tokens/harm", "/cardById/*/tokens"],
                 "condition": ["AND", 
-                    ["NOT_EQUAL", "$TARGET.currentFace.harm", null],
+                    ["NOT_EQUAL", "$TARGET.currentFace.harm_threshold", null],
                     ["GREATER_THAN", "$TARGET.tokens.harm", 0],
                     ["COND",
                         ["EQUAL", "$TARGET.currentFace.scaleHarmThresholdPerPlayer", true],
@@ -228,40 +254,71 @@
                         }
                     }
             },
-            "03002": {"_comment": "Helping Hand",
-                "rules":
-                    {
-                        "PersistenKeyword": {"_comment": "Add/remove persisten to attached Human.",
-                        "type": "passive", 
+            "02007": {
+                "rules": {
+                    "isPersistent": {    "_comment": "Circling Irix",
+                        "type": "trigger",
                         "listenTo": ["/cardById/$THIS_ID/inPlay"],
-                        "condition": 
-                        [
-                            "AND", 
-                            ["GREATER_THAN", "$THIS.cardIndex", 0],
-                            ["EQUAL", "$THIS.parentCardId.trait", "Human"]
+                        "condition": [
+                            "AND", "$THIS.inPlay"
                         ],
-                        "onDo": [
-                            ["LOG", "└── ", "$THIS.parentCardId.name", " gains Persistent."],
-                            [
-                                ["SET", "/cardById/$THIS/parentCardId/controller", "playerNull"],
-                                ["SET", "/cardById/$THIS/parentCardId/tokens/persistent", 1]
-                            ]
-                        ],
-                        "offDo": [
-                            ["LOG", "└── ", "$THIS.parentCardId.name", " loses Persistent."],
-                            [
-                                ["SET", "/cardById/$THIS/parentCardId/controller", "shared"],
-                                ["SET", "/cardById/$THIS/parentCardId/tokens/persistent", 0]
-                            ]
-                        ]}
+                        "then": [
+                            ["SET", "/cardById/$THIS_ID/controller", "playerNull"],
+                            ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/persistent", 1],
+                            ["LOG", "└── ", "$THIS.currentFace.name", " gains Persistent."]
+                        ]
+                        }
                     }
-                },
+            },
+            "02055": {
+                "_comment": "Quisi Vos, Rascal",
+                "inheritFrom": "02007"
+            },
+            "02056": {
+                "_comment": "Ren Kobo",
+                "inheritFrom": "02007"
+            },
+            "02065": {
+                "_comment": "Umbra",
+                "inheritFrom": "02007"
+            },
+            "03002": {
+                "rules": {
+                "PersistenKeyword": {"_comment": "Helping Hand",
+                    "type": "passive",
+                    "listenTo": [
+                        "/cardById/$THIS_ID/inPlay",
+                        "/cardById/$THIS_ID/cardIndex"  
+                    ],
+                    "condition": [
+                    "AND",
+                        "$THIS.inPlay",
+                        ["GREATER_THAN", "$THIS.cardIndex", 0]
+                    ],
+                    "onDo": [
+                        ["SET", "/cardById/$THIS.parentCardId/controller", "playerNull"],
+                        ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/persistent", 1],
+                        ["LOG", "└── ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", " gains Persistent."]
+                    ],
+                    "offDo": [
+                        ["VAR", "$PREV_PARENT_ID",["PREV","$THIS.parentCardId"]],
+                        ["SET", "/cardById/$PREV_PARENT_ID/controller", "shared"],
+                        ["DECREASE_VAL", "/cardById/$PREV_PARENT_ID/tokens/persistent", 1],
+                        ["LOG", "└── ", "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name", " loses Persistent."]
+                    ]
+                    }
+                }
+            },
+            "03003": {
+                "_comment": "Helping Hand",
+                "inheritFrom": "03002"
+            },
             "04001": {"_comment": "A Perfect Day / Midday Sun",
                 "rules": {
                     "Trigger1": {    "_comment": "Trigger for A Perfect Day.",
                         "type": "trigger",
                         "listenTo": ["/stepId"],
-                        "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "A"]],
+                        "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "A"], ["EQUAL", ["PREV", "$THIS.currentSide"], "A"]],
                         "then": [[
                                     ["LOG", "└── ", "Removed 1 cloud from ", "$THIS.currentFace.name", "."],
                                     ["DECREASE_VAL", "/cardById/$THIS_ID/tokens/general", 1]
@@ -276,15 +333,14 @@
                     "type": "trigger",
                     "listenTo": ["/stepId"],
                     "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "4.1"], ["EQUAL", "$THIS.currentSide", "B"]],
-                    "then": [[
+                    "then": [
                                 ["LOG", "└── ", "Added 1 cloud to ", "$THIS.currentFace.name", "."],
-                                ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/general", 1]
-                            ],
-                            ["COND",
-                                ["GREATER_EQUAL", "$THIS.tokens.general", 2],
-                                [["SET", "/cardById/$THIS_ID/currentSide", "A"],
-                                ["LOG", "└── The weather has changed!"]]
-                            ]]
+                                ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/general", 1],
+                                ["COND",
+                                    ["GREATER_EQUAL", "$THIS.tokens.general", 2],
+                                    [["SET", "/cardById/$THIS_ID/currentSide", "A"],
+                                    ["LOG", "└── The weather has changed!"]]]
+                            ]
                     }
                 }
             },
@@ -360,7 +416,7 @@
                     }
                 }
             },
-            "04004": {"_comment": "Clinging Mist",
+            "04004": {"_comment": "Clinging Mist / Electric Fog",
                 "rules": {
                     "Trigger1": {    "_comment": "Refresh for Clinging Mist.",
                     "type": "trigger",
@@ -398,16 +454,6 @@
                     }
                 }
             }, 
-            "05009": {
-                "_comment": "Spire",
-                "rules": {
-                        "showSecondaryDeck": {
-                            "type": "trigger",
-                            "listenTo": ["/cardById/*/inPlay"],
-                            "condition": "$THIS.inPlay",
-                            "then": ["TOGGLE_ENCOUNTER_2_DECK", true]
-                        }
-                    }},
             "05034": {"_comment": "Alluvial Ruins",
                 "rules": {
                     "pathDeckAssembly": {
@@ -521,7 +567,111 @@
                                     ]
                         ]  
                     }}
-            }
+            }, 
+            "03006": {"_comment": "Rising Waters / The Watcher in the Brush",
+                "rules": {
+                        "RisingWaters": {
+                            "type": "trigger",
+                            "listenTo": ["/cardById/*/inPlay"],
+                            "condition": [
+                                    "AND", 
+                                        "$THIS.inPlay", 
+                                        ["EQUAL", "$THIS.currentSide", "A"],
+                                        "$TARGET.inPlay", 
+                                        ["OR", ["EQUAL", "$TARGET.sides.A.name", "White Sky"], ["EQUAL", "$TARGET.sides.A.name", "Kobo's Market"], ["EQUAL", "$TARGET.sides.A.name", "Golden Shore"]], 
+                                        ["PREV", ["NOT", "$TARGET.inPlay"]]
+                                    ],
+                            "then": [
+                                    ["PROMPT", "player1", "RISING_WATERS"]
+                            ]
+                        },
+                        "TheWatcherInTheBrush": {
+                            "type": "trigger",
+                            "listenTo": ["/cardById/*/inPlay"],
+                            "condition": [
+                                    "AND", 
+                                        "$THIS.inPlay", 
+                                        ["EQUAL", "$THIS.currentSide", "B"],
+                                        "$TARGET.inPlay", 
+                                        ["EQUAL", "$TARGET.sides.A.type", "Location"], 
+                                        ["PREV", ["NOT", "$TARGET.inPlay"]]
+                                    ],
+                            "then": [
+                                    ["LOAD_CARDS", ["LIST",
+                                        {
+                                        "databaseId": "02069",
+                                        "quantity": 1,
+                                        "loadGroupId": "sharedPathDeck"
+                                        }]
+                                    ],
+                                    ["LOG", "├── ", "Mysterious Verdessian added into the path deck."]
+                            ]
+                        }
+                    }},
+            "03007": {"_comment": "Sensor Network / Secret Invasion",
+                "rules": {
+                        "SecretInvasion": {
+                            "type": "trigger",
+                            "listenTo": ["/cardById/*/inPlay"],
+                            "condition": [
+                                    "AND", 
+                                        "$THIS.inPlay", 
+                                        ["EQUAL", "$THIS.currentSide", "B"],
+                                        "$TARGET.inPlay", 
+                                        ["EQUAL", "$TARGET.sides.A.type", "Location"], 
+                                        ["EQUAL", "$TARGET.sides.A.pivotal", "0"],
+                                        ["PREV", ["NOT", "$TARGET.inPlay"]]
+                                    ],
+                            "then": [
+                                    ["LOAD_CARDS", ["LIST",
+                                        {
+                                        "databaseId": "02071",
+                                        "quantity": 5,
+                                        "loadGroupId": "sharedPathDeck3"
+                                        }]
+                                    ],
+                                    ["LOG", "├── ", "5 Reclaimer Seekers shuffled into the Valley set."]
+                            ]
+                        }
+                    }},
+            "03013": {"_comment": "Invasion - Stage 1 / Invasion - Stage 2",
+                "rules": {
+                        "Stage1": {
+                            "type": "trigger",
+                            "listenTo": ["/cardById/*/inPlay"],
+                            "condition": ["AND", 
+                                    "$THIS.inPlay", 
+                                    ["EQUAL", "$THIS.currentSide", "A"],
+                                    "$TARGET.inPlay", 
+                                    ["EQUAL", "$TARGET.sides.A.type", "Location"], 
+                                    ["PREV", ["NOT", "$TARGET.inPlay"]], 
+                                    ["OR", ["IN_STRING", "$TARGET.currentFace.traits", "Ruin"], ["IN_STRING", "$TARGET.currentFace.traits", "Forest"], ["IN_STRING", "$TARGET.currentFace.traits", "Mountain"]]],
+                            "then": [
+                                    ["PROMPT", "player1", "INVASION_STAGE1", "$TARGET"]
+                            ]
+                        },
+                        "Stage2": {
+                            "type": "trigger",
+                            "listenTo": ["/cardById/*/inPlay"],
+                            "condition": ["AND", 
+                                    "$THIS.inPlay", 
+                                    ["EQUAL", "$THIS.currentSide", "B"],
+                                    "$TARGET.inPlay", 
+                                    ["EQUAL", "$TARGET.sides.A.type", "Location"], 
+                                    ["PREV", ["NOT", "$TARGET.inPlay"]], 
+                                    ["OR", ["IN_STRING", "$TARGET.currentFace.traits", "Ruin"], ["IN_STRING", "$TARGET.currentFace.traits", "Forest"], ["IN_STRING", "$TARGET.currentFace.traits", "Mountain"]]],
+                            "then": [
+                                    ["LOAD_CARDS", ["LIST",
+                                        {
+                                        "databaseId": "02072",
+                                        "quantity": 1,
+                                        "loadGroupId": "sharedPathDeck"
+                                        }]
+                                    ],
+                                    ["PROMPT", "player1", "INVASION_STAGE2"]
+                            ]
+                        }
+                    }}
         }
     }
 }

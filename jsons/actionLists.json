@@ -311,6 +311,12 @@
             ["LOG", "$ALIAS_N", " shuffled ", "$ACTIVE_GROUP.label", " into ", "$DEST_GROUP.label", "."],
             ["MOVE_STACKS", "$ACTIVE_GROUP_ID", "$DEST_GROUP_ID"]
         ],
+        "discardGroup": [
+            ["DEFINE", "$DEST_GROUP_ID", "$ACTIVE_GROUP.onCardEnter.discardGroupId"],
+            ["DEFINE", "$DEST_GROUP", "$GAME.groupById.$DEST_GROUP_ID"],
+            ["LOG", "$ALIAS_N", " shuffled ", "$ACTIVE_GROUP.label", " into ", "$DEST_GROUP.label", "."],
+            ["MOVE_STACKS", "$ACTIVE_GROUP_ID", "$DEST_GROUP_ID"]
+        ],
         "togglePreventRefresh": [
             ["COND",
                 ["EQUAL", "$ACTIVE_CARD.preventRefresh", true],

@@ -7,13 +7,18 @@
                 "actionList": "shuffleGroupIntoDeck"
             },
             {
-                "label": "id:discardUntilBeing",
-                "actionList": ["DISCARD_UNTIL", "$ACTIVE_GROUP_ID", "Being"]
+                "label": "id:discardGroup",
+                "actionList": "discardGroup"
             },
             {
-                "label": "id:discardUntilFeature",
-                "actionList": ["DISCARD_UNTIL", "$ACTIVE_GROUP_ID", "Feature"]
+                "label": "id:searchNextBeing",
+                "actionList": ["SEARCH_NEXT_TYPE", "$ACTIVE_GROUP_ID", "Being"]
+            },
+            {
+                "label": "id:searchNextFeature",
+                "actionList": ["SEARCH_NEXT_TYPE", "$ACTIVE_GROUP_ID", "Feature"]
             }
-        ]
+        ],
+        "suppress": ["Browse", "Look at top", "Set Visibility"]
     }
 }
