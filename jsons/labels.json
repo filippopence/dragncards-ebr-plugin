@@ -430,6 +430,9 @@
         "quantity": {
             "English": "Quantity"
         },
+        "pack_name": {
+            "English": "Pack"
+        },
         "myPlayArea": {
             "English": "My Play Area"
         },
@@ -686,49 +689,49 @@
             "English": "Progress"
         },
         "woodsSet": {
-            "English": "12 Path Card Set - Woods"
+            "English": "Woods"
         },
         "Woods": {
             "English": "Woods"
         },
         "mountainSet": {
-            "English": "12 Path Card Set - Mountain"
+            "English": "Mountain"
         },
         "MountainPass": {
             "English": "Mountain Pass"
         },
         "lakeshoreSet": {
-            "English": "12 Path Card Set - Lakeshore"
+            "English": "Lakeshore"
         },
         "Lakeshore": {
             "English": "Lakeshore"
         },
         "oldGrowthSet": {
-            "English": "12 Path Card Set - Old-Growth"
+            "English": "Old-Growth"
         },
         "Old-Growth": {
             "English": "Old-Growth"
         },
         "grasslandSet": {
-            "English": "12 Path Card Set - Grassland"
+            "English": "Grassland"
         },
         "Grassland": {
             "English": "Grassland"
         },
         "ravineSet": {
-            "English": "12 Path Card Set - Ravine"
+            "English": "Ravine"
         },
         "Ravine": {
             "English": "Ravine"
         },
         "swampSet": {
-            "English": "12 Path Card Set - Swamp"
+            "English": "Swamp"
         },
         "Swamp": {
             "English": "Swamp"
         },
         "riverSet": {
-            "English": "12 Path Card Set - River"
+            "English": "River"
         },
         "River": {
             "English": "River"
@@ -907,8 +910,11 @@
         "AdherentoftheFirstIdeal": {
             "English": "Adherent of the First Ideal"
         },
-        "Map&Reference": {
-            "English": "Map & Reference"
+        "CoreMap": {
+            "English": "Core Map"
+        },
+        "Reference": {
+            "English": "Reference"
         },
         "CerberusianCyclone": {
             "English": "Cerberusian Cyclone"
@@ -933,6 +939,123 @@
         },
         "sendToTop": {
             "English": "Move on top"
+        },
+        "theChimney": {
+            "English": "The Chimney"
+        },
+        "theChimneyfromSpire": {
+            "English": "The Chimney (from Arcology Threshold)"
+        },
+        "SeveredArtery": {
+            "English": "Severed Artery"
+        },
+        "BranchingArtery": {
+            "English": "Branching Artery"
+        },
+        "TerminalArtery": {
+            "English": "Terminal Artery"
+        },
+        "MycelialConclave": {
+            "English": "Mycelial Conclave"
+        },
+        "ArboretumofMemory": {
+            "English": "Arboretum of Memory"
+        },
+        "theVerdantSphere": {
+            "English": "The Verdant Sphere"
+        },
+        "theCage": {
+            "English": "The Cage"
+        },
+        "DrenchingChamber": {
+            "English": "Drenching Chamber"
+        },
+        "OasisofSunlight": {
+            "English": "Oasis of Sunlight"
+        },
+        "DesertofEndlessNight": {
+            "English": "Desert of Endless Night"
+        },
+        "CeruleanCurtain": {
+            "English": "Cerulean Curtain"
+        },
+        "OrlinsVault": {
+            "English": "Orlin's Vault"
+        },
+        "ScuttlerNetwork": {
+            "English": "Scuttler Network"
+        },
+        "TheCistern": {
+            "English": "The Cistern"
+        },
+        "SilentDormitories": {
+            "English": "Silent Dormitories"
+        },
+        "CarbonforgedMaze": {
+            "English": "Carbonforged Maze"
+        },
+        "InvertedForest": {
+            "English": "Inverted Forest"
+        },
+        "TheRootway": {
+            "English": "The Rootway"
+        },
+        "TalpidsSqueeze": {
+            "English": "Talpid's Squeeze"
+        },
+        "ancientRuinsSet": {
+            "English": "Ancient Ruins"
+        },
+        "floodedRuinsSet": {
+            "English": "Flooded Ruins"
+        },
+        "caveSystemSet": {
+            "English": " Cave System"
+        },
+        "deepRootsSet": {
+            "English": "Deep Roots"
+        },
+        "fungalForestSet": {
+            "English": "Fungal Forest"
+        },
+        "arcology": {
+            "English": "Arcology"
+        },
+        "APreservedDay": {
+            "English": "A Preserved Day / Fractured Sky"
+        },
+        "EnvelopingSilence": {
+            "English": "Enveloping Silence / Reverberating Echo"
+        },
+        "Glitterain": {
+            "English": "Glitterain / Shimmering Runoff"
+        },
+        "ArcologyMap": {
+            "English": "Arcology Map"
+        }, 
+        "Legacy of the Ancestors": {
+            "English": "Legacy of the Ancestors"
+        },
+        "sharedMaps": {
+            "English": "Maps"
+        },
+        "Maps": {
+            "English": "All available maps"
+        },
+        "AddMoments": {
+            "English": "Add Moments"
+        }, 
+        "rebalanced": {
+            "English": "Use Elder's Book of Uncommon Wisdom"
+        },
+        "FloodedPassage": {
+            "English": "FloodedPassage"
+        },
+        "OvergrownPassage": {
+            "English": "OvergrownPassage"
+        },
+        "LockedPassage": {
+            "English": "LockedPassage"
         }
     }
 }

@@ -22,6 +22,7 @@
         "scaleGenericTokenPerPlayer": {"type": "boolean", "default": false},
         "reveal": {"type": "string", "default": null},
         "connectedLocations": {"type": "list", "default": null},
-        "connectedPaths": {"type": "list", "default": null}
+        "connectedPaths": {"type": "list", "default": null},
+        "UncommonWisdom" : {"type": "boolean", "default": false}
     }
 }

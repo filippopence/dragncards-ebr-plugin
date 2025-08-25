@@ -25,7 +25,8 @@
             {"key": "S", "actionList": "sufferFatigue", "label": "id:sufferFatigue"},
             {"key": "Shift+S", "actionList": "sootheFatigue", "label": "id:sootheFatigue"},
             {"key": "Shift+N", "actionList": "newRound", "label": "id:newRound"},
-            {"key": "Shift+T", "actionList": "travelPhase", "label": "id:travelPhase"}
+            {"key": "Shift+T", "actionList": "travelPhase", "label": "id:travelPhase"},
+            {"key": "Shift+M", "actionList": "AddMoments", "label": "id:AddMoments"}
         ],
         "card": [
             {"key": "A", "actionList": "toggleExhaust", "label": "id:exhaustReadyIfLocationMakeActive"},

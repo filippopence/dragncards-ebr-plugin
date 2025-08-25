@@ -1,7 +1,6 @@
 {
     "automation": {
         "postNewGameActionList": [
-            // ["LOAD_CARDS", "Spire"],
             // ["LOAD_CARDS", "APerfectDay"],
             // ["LOAD_CARDS", "AdherentoftheFirstIdeal"],
             // ["LOAD_CARDS", "mountainSet"],
@@ -14,12 +13,43 @@
             // ],
             ["DEFINE", "$PLAYER_N", "player1"],
             ["LOAD_CARDS", "challengeDeck"],
-            ["LOAD_CARDS", "Map&Reference"]
+            ["LOAD_CARDS", "Reference"],
+            ["LOAD_CARDS", "CoreMap"]
+            //["LOAD_CARDS", "Maps"],
+            //["LOAD_CARDS", "ScuttlerNetwork"]
         ],
         "postLoadActionList": [
+            ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds",  // Play with Rebalanced Cards (Uncommon Wisdom)
+                ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
+                ["COND", 
+                    ["AND", "$CARD.sides.A.UncommonWisdom", "$GAME.playerData.{{$PLAYER_N}}.rebalanced"],
+                    ["SET", 
+                        "/cardById/$CARD_ID/sides/A/imageUrl", 
+                        "https://earthborne-rangers.s3.eu-west-3.amazonaws.com/Uncommon_Wisdom/{{$CARD.sides.A.databaseId}}.jpg"
+                    ]
+                ]    
+            ],
             ["DEFINE", "$LOADED_PLAYER_DECK", false],
-            ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
-                ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
+            ["FOR_EACH_VAL", "$CARD_SET_ASIDE", "$GAME.groupById.sharedSetAside.parentCards", // Prevents from loading multiple copies of the same card
+                [["VAR", "$i", 0],
+                 ["FOR_EACH_VAL", "$COPY_LOADED_ID", "$GAME.loadedCardIds", [
+                    ["VAR", "$COPY_LOADED", "$GAME.cardById.$COPY_LOADED_ID"],
+                    ["COND", 
+                        ["AND", 
+                            ["LESS_THAN", "$i", 1],
+                            ["EQUAL", "$COPY_LOADED.sides.A.name", "$CARD_SET_ASIDE.sides.A.name"],
+                            ["NOT", ["EQUAL", "$COPY_LOADED.groupId", "sharedOther"]],
+                            ["NOT", ["EQUAL", "$COPY_LOADED.sides.A.set", "Map"]],
+                            ["NOT", ["EQUAL", "$COPY_LOADED.sides.A.set", "Reference"]]
+                        ],
+                        [["MOVE_CARD", "$COPY_LOADED_ID", "sharedOther", 0],
+                         ["INCREASE_VAR", "$i", 1]
+                        ]
+                    ]
+                ]]]
+            ],
+            ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [ // Add 3 cards from the Valley/Arcology set to the Path Deck
+                ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
                 ["COND",  
                     ["AND", 
                         ["EQUAL", "$CARD.sides.A.type", "Location"], 
@@ -30,8 +60,8 @@
                         ["MOVE_CARD", "$CARD_ID", "sharedLocation", 0],
                         ["SET", "/cardById/$CARD_ID/currentSide", "B"],
                         ["LOG", "├── ", "Rangers arrived at ", "$CARD.sides.A.name", "."],
-                        ["COND",
-                            ["EQUAL", "$CARD.sides.A.name", "Bowl of the Sun"],
+                        ["COND", 
+                            ["EQUAL", "$CARD.sides.A.name", "Bowl of the Sun"],   // Bowl of the Sun
                             [   
                                 ["SHUFFLE_GROUP", "sharedPathDeck3"],
                                 ["VAR", "$i", 0],
@@ -49,14 +79,15 @@
                                         ]],
                                         [
                                         ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0],
+                                        ["DEFINE", "$iCARD_SET", "$iCARD.sides.A.set"],
                                         ["INCREASE_VAR", "$i", 1]
                                         ]
                                     ]
                                     ]],
                                 ["SHUFFLE_GROUP", "sharedPathDeck"],
-                                ["LOG", "├── ", "Shuffled {{$i}} cards from The Valley set into the Path Deck."]
+                                ["LOG", "├── ", "Shuffled {{$i}} cards from the {{$iCARD_SET}} set into the Path Deck."]
                             ],
-                            ["EQUAL", "$CARD.sides.A.name", "Archaeological Outpost"],
+                            ["EQUAL", "$CARD.sides.A.name", "Archaeological Outpost"], // Archaeological Outpost
                             [   
                                 ["SHUFFLE_GROUP", "sharedPathDeck3"],
                                 ["VAR", "$i", 0],
@@ -74,12 +105,53 @@
                                         ]],
                                         [
                                         ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0],
+                                        ["DEFINE", "$iCARD_SET", "$iCARD.sides.A.set"],
                                         ["INCREASE_VAR", "$i", 1]
                                         ]
                                     ]
                                     ]],
                                 ["SHUFFLE_GROUP", "sharedPathDeck"],
-                                ["LOG", "├── ", "Shuffled {{$i}} cards from The Valley set into the Path Deck."]
+                                ["LOG", "├── ", "Shuffled {{$i}} cards from the {{$iCARD_SET}} set into the Path Deck."]
+                            ],
+                            ["EQUAL", "$CARD.sides.A.name", "Oasis of Sunlight"], // Oasis of Sunlight
+                            [   
+                                ["SHUFFLE_GROUP", "sharedPathDeck2"],
+                                ["SHUFFLE_GROUP", "sharedPathDeck3"],
+                                ["VAR", "$i", 0],
+                                ["VAR", "$ii", 0],
+                                ["FOR_EACH_VAL", "$iCARD", "$GAME.groupById.sharedPathDeck2.parentCards", [
+                                    ["COND",
+                                        ["AND", 
+                                        ["LESS_THAN", "$i", 3],
+                                        ["OR",
+                                            ["NOT", ["CHECK_IF_COPY_IN_PLAY", "$iCARD"]], 
+                                            ["EQUAL", "$iCARD.sides.A.name", "Reclaimer Seeker"]
+                                        ]],
+                                        [
+                                        ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0],
+                                        ["DEFINE", "$iCARD_SET", "$iCARD.sides.A.set"],
+                                        ["INCREASE_VAR", "$i", 1]
+                                        ]
+                                    ]
+                                    ]],
+                                ["FOR_EACH_VAL", "$iCARD", "$GAME.groupById.sharedPathDeck3.parentCards", [
+                                    ["COND",
+                                        ["AND", 
+                                        ["LESS_THAN", "$ii", 3],
+                                        ["OR",
+                                            ["NOT", ["CHECK_IF_COPY_IN_PLAY", "$iCARD"]], 
+                                            ["EQUAL", "$iCARD.sides.A.name", "Reclaimer Seeker"]
+                                        ]],
+                                        [
+                                        ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0],
+                                        ["DEFINE", "$iCARD_SET", "$iCARD.sides.A.set"],
+                                        ["INCREASE_VAR", "$ii", 1]
+                                        ]
+                                    ]
+                                    ]],
+                                ["SHUFFLE_GROUP", "sharedPathDeck"],
+                                ["LOG", "├── ", "Shuffled {{$ii}} cards from the {{$iCARD_SET}} set into the Path Deck."],
+                                ["LOG", "├── ", "Shuffled {{$i}} cards from the Woods set into the Path Deck."]
                             ],
                         true,
                             [
@@ -95,12 +167,13 @@
                                         ]],
                                         [
                                         ["MOVE_CARD", "$iCARD.id", "sharedPathDeck", 0],
+                                        ["DEFINE", "$iCARD_SET", "$iCARD.sides.A.set"],
                                         ["INCREASE_VAR", "$i", 1]
                                         ]
                                     ]
                                     ]],
                                 ["SHUFFLE_GROUP", "sharedPathDeck"],
-                                ["LOG", "├── ", "Shuffled {{$i}} cards from The Valley set into the Path Deck."]
+                                ["LOG", "├── ", "Shuffled {{$i}} cards from the {{$iCARD_SET}} set into the Path Deck."]
                             ]
                         ]
                     ]
@@ -155,90 +228,233 @@
                     [
                         ["LOAD_CARDS", "BallLightning"]
                     ]
-                ],
-                ["COND", 
-                    ["EQUAL", "$CARD.sides.A.name", "Spire"],
-                    [
-                        ["TOGGLE_ENCOUNTER_2_DECK", true]
-                    ]
                 ]
             ]],
             ["DEFINE", "$PLAYER_N_HAND_GROUP_ID", ["JOIN_STRING", "$PLAYER_N", "Hand"]],
-            ["COND",
+            ["COND", // Draw first 6 cards
                 ["AND", "$LOADED_PLAYER_DECK", ["EQUAL", "$GAME.roundNumber", 0], ["EQUAL", ["LENGTH", "$GAME.groupById.$PLAYER_N_HAND_GROUP_ID.stackIds"], 0]],
                 [
                     ["LOG", "└── ", "$PLAYER_N", " draws 6 cards."],
                     ["DRAW_CARD", 6]
                 ]
+            ],
+            ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [ // Set shared controller
+                ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
+                ["COND",
+                  ["OR", 
+                    ["EQUAL", "$CARD.sides.A.name", "The Spiral Stairway"], 
+                    ["EQUAL", "$CARD.sides.A.name", "The Plinth"],
+                    ["EQUAL", "$CARD.sides.A.name", "Flooded Passage"],
+                    ["EQUAL", "$CARD.sides.A.name", "Overgrown Passage"],
+                    ["EQUAL", "$CARD.sides.A.name", "Locked Passage"]
+                 ],
+                  ["SET", "/cardById/$CARD_ID/controller", "shared"]
+                ]
+            ]],
+            ["COND", // Define Active Location
+             ["GREATER_THAN", ["LENGTH", "$GAME.groupById.sharedLocation.stackIds"], 0],
+             ["DEFINE", "$ACTIVE_LOCATION", "$GAME.groupById.sharedLocation.parentCards.[0]"]
+            ],
+            ["COND", // Move The Spiral Stairway along the way when travelling to The Chimney from Spire
+                ["AND", 
+                 ["DEFINED", "$PREV_LOCATION"], 
+                 ["EQUAL", "$PREV_LOCATION.sides.A.name", "Spire"],
+                 ["EQUAL", "$ACTIVE_LOCATION.sides.A.name", "The Chimney"]
+                ],
+                [
+                    ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
+                        ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
+                        ["COND",  
+                            ["EQUAL", "$CARD.sides.A.name", "The Spiral Stairway"],
+                            ["MOVE_CARD", "$CARD_ID", "sharedAlongTheWay", -1]
+                        ],
+                        ["COND",  
+                            ["EQUAL", "$CARD.sides.A.name", "The Plinth"],
+                            [["MOVE_CARD", "$CARD_ID", "sharedPathDeck", -1],
+                             ["SHUFFLE_GROUP", "sharedPathDeck"]]
+                        ]]
+                    ]
+                 
+                ]
+            ],
+            // ["COND", // Setup for Scuttler Network
+            //     ["AND", 
+            //      ["DEFINED", "$PREV_LOCATION"], 
+            //      ["EQUAL", "$PREV_LOCATION.sides.A.name", "Terminal Artery"],
+            //      ["EQUAL", "$ACTIVE_LOCATION.sides.A.name", "Scuttler Network"],
+            //      ["NOT", ["DEFINED", "$LOOP_ONCE"]]
+            //      ],
+            //      [
+            //         ["DEFINE", "$LOOP_ONCE", true],
+            //         ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
+            //             ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
+            //             ["COND",  
+            //                 ["EQUAL", "$CARD.sides.A.name", "Flooded Passage"],
+            //                 ["DELETE_CARD", "$CARD_ID"]
+            //             ]]
+            //         ],
+            //         ["LOAD_CARDS", "FloodedPassage"]
+            //      ]                 
+            // ],
+            // ["COND", // Setup for Terminal Artery
+            //     ["AND", 
+            //      ["DEFINED", "$PREV_LOCATION"], 
+            //      ["EQUAL", "$PREV_LOCATION.sides.A.name", "Carbonforged Maze"],
+            //      ["EQUAL", "$ACTIVE_LOCATION.sides.A.name", "Terminal Artery"],
+            //      ["NOT", ["DEFINED", "$LOOP_ONCE"]]
+            //      ],
+            //      [
+            //         ["DEFINE", "$LOOP_ONCE", true],
+            //         ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
+            //             ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
+            //             ["COND",  
+            //                 ["EQUAL", "$CARD.sides.A.name", "Overgrown Passage"],
+            //                 ["DELETE_CARD", "$CARD_ID"]
+            //             ]]
+            //         ],
+            //         ["LOAD_CARDS", "LockedPassage"]
+            //      ]                 
+            // ],
+            // ["COND", // Setup for Orlin's Vault
+            //     ["AND", 
+            //      ["DEFINED", "$PREV_LOCATION"], 
+            //      ["EQUAL", "$PREV_LOCATION.sides.A.name", "Branching Artery"],
+            //      ["EQUAL", "$ACTIVE_LOCATION.sides.A.name", "Orlin's Vault"],
+            //      ["NOT", ["DEFINED", "$LOOP_ONCE"]]
+            //      ],
+            //      [
+            //         ["DEFINE", "$LOOP_ONCE", true],
+            //         ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
+            //             ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
+            //             ["COND",  
+            //                 ["EQUAL", "$CARD.sides.A.name", "Overgrown Passage"],
+            //                 ["DELETE_CARD", "$CARD_ID"]
+            //             ]]
+            //         ],
+            //         ["LOAD_CARDS", "LockedPassage"]
+            //      ]                 
+            // ],
+            ["COND", // Remove Prev. Maps and loads Core Maps
+                ["AND", 
+                ["DEFINED", "$PREV_LOCATION"],
+                ["EQUAL", "$PREV_LOCATION.sides.A.pack_code", "Core"],
+                ["EQUAL", "$ACTIVE_LOCATION.sides.A.pack_code", "LoA"],
+                ["NOT", ["DEFINED", "$LOOP_ONCE"]]
+                ],
+                [
+                    ["DEFINE", "$LOOP_ONCE", true],
+                    ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedSetAside.parentCards", 
+                        ["COND",  
+                            ["EQUAL", "$CARD.sides.A.set", "Map"],
+                            ["DELETE_CARD", "$CARD.id"]
+                        ]
+                    ],
+                    ["LOAD_CARDS", "ArcologyMap"]
+                ],
+             true,
+                ["COND",
+                ["AND", 
+                ["DEFINED", "$PREV_LOCATION"],
+                ["EQUAL", "$PREV_LOCATION.sides.A.pack_code", "LoA"],
+                ["EQUAL", "$ACTIVE_LOCATION.sides.A.pack_code", "Core"],
+                ["NOT", ["DEFINED", "$LOOP_ONCE"]]
+                ],
+                [
+                    ["DEFINE", "$LOOP_ONCE", true],
+                    ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedSetAside.parentCards", 
+                        ["COND",  
+                            ["EQUAL", "$CARD.sides.A.set", "Map"],
+                            ["DELETE_CARD", "$CARD.id"]
+                        ]
+                    ],
+                    ["LOAD_CARDS", "CoreMap"]]
+                ]
+            ],
+            ["COND", // Remove Prev. Maps and loads Arcology Maps
+                ["AND", 
+                ["NOT", ["DEFINED", "$PREV_LOCATION"]],
+                ["DEFINED", "$ACTIVE_LOCATION"],
+                ["EQUAL", "$ACTIVE_LOCATION.sides.A.pack_code", "LoA"],
+                ["NOT", ["DEFINED", "$LOOP_ONCE"]]
+                ],
+                [
+                    ["DEFINE", "$LOOP_ONCE", true],
+                    ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedSetAside.parentCards", 
+                        ["COND",  
+                            ["EQUAL", "$CARD.sides.A.set", "Map"],
+                            ["DELETE_CARD", "$CARD.id"]
+                        ]
+                    ],
+                    ["LOAD_CARDS", "ArcologyMap"]]
             ]
         ],
-        "gameRules":
-            { "AddGeneralToken": {
-                "_comment": "Add general tokens when card enters play.",
-                "type": "trigger", 
-                "listenTo": ["/cardById/*/inPlay", "/cardById/*/currentSide"],
-                "condition": ["AND", 
-                                "$TARGET.inPlay",
-                                ["GREATER_EQUAL", "$TARGET.currentFace.generic_token", 0], 
-                                ["PREV", ["NOT", "$TARGET.inPlay"]]
-                            ],
-                "then": ["COND",
-                                ["EQUAL", "$TARGET.currentSide", "A"],
-                                ["COND", 
-                                    ["EQUAL", "$TARGET.currentFace.scaleGenericTokenPerPlayer", true],
-                                    ["SET", "/cardById/$TARGET_ID/tokens/general", ["MULTIPLY", "$TARGET.currentFace.generic_token", "$GAME.numPlayers"]],
-                                true,
-                                    ["SET", "/cardById/$TARGET_ID/tokens/general", "$TARGET.currentFace.generic_token"]
-                                ]
+        "gameRules":{ 
+                "AddGeneralToken": {
+                    "_comment": "Add general tokens when card enters play.",
+                    "type": "trigger", 
+                    "listenTo": ["/cardById/*/inPlay", "/cardById/*/currentSide"],
+                    "condition": ["AND", 
+                                    "$TARGET.inPlay",
+                                    ["GREATER_EQUAL", "$TARGET.currentFace.generic_token", 0], 
+                                    ["PREV", ["NOT", "$TARGET.inPlay"]]
+                                ],
+                    "then": ["COND",
+                                    ["EQUAL", "$TARGET.currentSide", "A"],
+                                    ["COND", 
+                                        ["EQUAL", "$TARGET.currentFace.scaleGenericTokenPerPlayer", true],
+                                        ["SET", "/cardById/$TARGET_ID/tokens/general", ["MULTIPLY", "$TARGET.currentFace.generic_token", "$GAME.numPlayers"]],
+                                    true,
+                                        ["SET", "/cardById/$TARGET_ID/tokens/general", "$TARGET.currentFace.generic_token"]
+                                    ]
+                            ]
+                },
+                "ColorBorderBlue": {
+                    "_comment": "Turn cards blue when they have enought progress tokens on them.",
+                    "type": "passive", 
+                    "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens"],
+                    "condition": ["AND", 
+                        ["NOT_EQUAL", "$TARGET.currentFace.progress_threshold", null],
+                        ["GREATER_THAN", "$TARGET.tokens.progress", 0],
+                        ["COND",
+                            ["EQUAL", "$TARGET.currentFace.scaleProgressThresholdPerPlayer", true],
+                            ["GREATER_EQUAL", "$TARGET.tokens.progress", ["MULTIPLY", "$TARGET.currentFace.progress_threshold", "$GAME.numPlayers"]],
+                            true,
+                            ["GREATER_EQUAL", "$TARGET.tokens.progress", "$TARGET.currentFace.progress_threshold"]
                         ]
-            },
-            "ColorBorderBlue": {
-                "_comment": "Turn cards blue when they have enought progress tokens on them.",
-                "type": "passive", 
-                "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens"],
-                "condition": ["AND", 
-                    ["NOT_EQUAL", "$TARGET.currentFace.progress_threshold", null],
-                    ["GREATER_THAN", "$TARGET.tokens.progress", 0],
-                    ["COND",
-                        ["EQUAL", "$TARGET.currentFace.scaleProgressThresholdPerPlayer", true],
-                        ["GREATER_EQUAL", "$TARGET.tokens.progress", ["MULTIPLY", "$TARGET.currentFace.progress_threshold", "$GAME.numPlayers"]],
-                        true,
-                        ["GREATER_EQUAL", "$TARGET.tokens.progress", "$TARGET.currentFace.progress_threshold"]
+                    ],
+                    "onDo": [
+                        ["LOG", "└── ", "$TARGET.currentFace.name", " is cleared by progress."],
+                        ["SET", "/cardById/$TARGET_ID/borderColor", "blue"]
+                    ],
+                    "offDo": [
+                        ["SET", "/cardById/$TARGET_ID/borderColor", null]
                     ]
-                ],
-                "onDo": [
-                    ["LOG", "└── ", "$TARGET.currentFace.name", " is cleared by progress."],
-                    ["SET", "/cardById/$TARGET_ID/borderColor", "blue"]
-                ],
-                "offDo": [
-                    ["SET", "/cardById/$TARGET_ID/borderColor", null]
-                ]
-            },
-            "ColorBorderRed": {
-                "_comment": "Turn cards red when they have enought harm tokens on them.",
-                "type": "passive", 
-                "listenTo": ["/cardById/*/tokens/harm", "/cardById/*/tokens"],
-                "condition": ["AND", 
-                    ["NOT_EQUAL", "$TARGET.currentFace.harm_threshold", null],
-                    ["GREATER_THAN", "$TARGET.tokens.harm", 0],
-                    ["COND",
-                        ["EQUAL", "$TARGET.currentFace.scaleHarmThresholdPerPlayer", true],
-                        ["GREATER_EQUAL", "$TARGET.tokens.harm", ["MULTIPLY", "$TARGET.currentFace.harm_threshold", "$GAME.numPlayers"]],
-                        true,
-                        ["GREATER_EQUAL", "$TARGET.tokens.harm", "$TARGET.currentFace.harm_threshold"]
+                },
+                "ColorBorderRed": {
+                    "_comment": "Turn cards red when they have enought harm tokens on them.",
+                    "type": "passive", 
+                    "listenTo": ["/cardById/*/tokens/harm", "/cardById/*/tokens"],
+                    "condition": ["AND", 
+                        ["NOT_EQUAL", "$TARGET.currentFace.harm_threshold", null],
+                        ["GREATER_THAN", "$TARGET.tokens.harm", 0],
+                        ["COND",
+                            ["EQUAL", "$TARGET.currentFace.scaleHarmThresholdPerPlayer", true],
+                            ["GREATER_EQUAL", "$TARGET.tokens.harm", ["MULTIPLY", "$TARGET.currentFace.harm_threshold", "$GAME.numPlayers"]],
+                            true,
+                            ["GREATER_EQUAL", "$TARGET.tokens.harm", "$TARGET.currentFace.harm_threshold"]
+                        ]
+                    ],
+                    "onDo": [
+                        ["LOG", "└── ", "$TARGET.currentFace.name", " is cleared by harm."],
+                        ["SET", "/cardById/$TARGET_ID/borderColor", "red"]
+                    ],
+                    "offDo": [
+                        ["SET", "/cardById/$TARGET_ID/borderColor", null]
                     ]
-                ],
-                "onDo": [
-                    ["LOG", "└── ", "$TARGET.currentFace.name", " is cleared by harm."],
-                    ["SET", "/cardById/$TARGET_ID/borderColor", "red"]
-                ],
-                "offDo": [
-                    ["SET", "/cardById/$TARGET_ID/borderColor", null]
-                ]
-            }
-        },
+                }
+            },
         "cards": {
-            "02023": {"_comment": "Cloudhive Swarm",
+            "01284": {"_comment": "Cloudhive Swarm",
                 "rules": {
                     "AddABee": {    "_comment": "Add generic token on Refresh.",
                         "type": "trigger",
@@ -254,7 +470,7 @@
                         }
                     }
             },
-            "02007": {
+            "01268": {"_comment": "Circling Irix",
                 "rules": {
                     "isPersistent": {    "_comment": "Circling Irix",
                         "type": "trigger",
@@ -270,50 +486,16 @@
                         }
                     }
             },
-            "02055": {
-                "_comment": "Quisi Vos, Rascal",
-                "inheritFrom": "02007"
+            "01316": {"_comment": "Quisi Vos, Rascal",
+                "inheritFrom": "01268"
             },
-            "02056": {
-                "_comment": "Ren Kobo",
-                "inheritFrom": "02007"
+            "01317": {"_comment": "Ren Kobo",
+                "inheritFrom": "01268"
             },
-            "02065": {
-                "_comment": "Umbra",
-                "inheritFrom": "02007"
+            "01326": {"_comment": "Umbra",
+                "inheritFrom": "01268"
             },
-            "03002": {
-                "rules": {
-                "PersistenKeyword": {"_comment": "Helping Hand",
-                    "type": "passive",
-                    "listenTo": [
-                        "/cardById/$THIS_ID/inPlay",
-                        "/cardById/$THIS_ID/cardIndex"  
-                    ],
-                    "condition": [
-                    "AND",
-                        "$THIS.inPlay",
-                        ["GREATER_THAN", "$THIS.cardIndex", 0]
-                    ],
-                    "onDo": [
-                        ["SET", "/cardById/$THIS.parentCardId/controller", "playerNull"],
-                        ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/persistent", 1],
-                        ["LOG", "└── ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", " gains Persistent."]
-                    ],
-                    "offDo": [
-                        ["VAR", "$PREV_PARENT_ID",["PREV","$THIS.parentCardId"]],
-                        ["SET", "/cardById/$PREV_PARENT_ID/controller", "shared"],
-                        ["DECREASE_VAL", "/cardById/$PREV_PARENT_ID/tokens/persistent", 1],
-                        ["LOG", "└── ", "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name", " loses Persistent."]
-                    ]
-                    }
-                }
-            },
-            "03003": {
-                "_comment": "Helping Hand",
-                "inheritFrom": "03002"
-            },
-            "04001": {"_comment": "A Perfect Day / Midday Sun",
+            "01373": {"_comment": "A Perfect Day / Midday Sun",
                 "rules": {
                     "Trigger1": {    "_comment": "Trigger for A Perfect Day.",
                         "type": "trigger",
@@ -344,7 +526,7 @@
                     }
                 }
             },
-            "04002": {"_comment": "Gathering Storm",
+            "01374": {"_comment": "Gathering Storm",
                 "rules":
                     {    "Trigger": {"_comment": "Trigger for Gathering Storm.",
                     "type": "trigger",
@@ -372,7 +554,7 @@
                             ]]}
                     }
             },
-            "04003": {"_comment": "Howling Winds / Thunderhead",
+            "01375": {"_comment": "Howling Winds / Thunderhead",
                 "rules": {
                     "Trigger1": {    "_comment": "Refresh for Howling Winds.",
                     "type": "trigger",
@@ -416,7 +598,7 @@
                     }
                 }
             },
-            "04004": {"_comment": "Clinging Mist / Electric Fog",
+            "01376": {"_comment": "Clinging Mist / Electric Fog",
                 "rules": {
                     "Trigger1": {    "_comment": "Refresh for Clinging Mist.",
                     "type": "trigger",
@@ -454,121 +636,51 @@
                     }
                 }
             }, 
-            "05034": {"_comment": "Alluvial Ruins",
+            "01410": {"_comment": "Alluvial Ruins",
                 "rules": {
                     "pathDeckAssembly": {
                         "type": "trigger",
                         "listenTo": ["/cardById/*/inPlay"],
                         "condition":["AND", ["GREATER_EQUAL", ["LENGTH", "sharedPathDeck2"], 0], ["EQUAL", "$TARGET.groupId", "sharedLocation"]],
                         "then": [   
-                                    ["TOGGLE_ENCOUNTER_2_DECK", true],
-                                    ["LOAD_CARDS", ["LIST",
-                                                        {
-                                                        "databaseId": "02014",
-                                                        "quantity": 1,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02015",
-                                                        "quantity": 4,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02016",
-                                                        "quantity": 1,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02017",
-                                                        "quantity": 2,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02018",
-                                                        "quantity": 2,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02019",
-                                                        "quantity": 2,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02048",
-                                                        "quantity": 2,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02049",
-                                                        "quantity": 3,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02050",
-                                                        "quantity": 2,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02051",
-                                                        "quantity": 2,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02052",
-                                                        "quantity": 2,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02053",
-                                                        "quantity": 1,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02020",
-                                                        "quantity": 2,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02021",
-                                                        "quantity": 1,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02022",
-                                                        "quantity": 1,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02023",
-                                                        "quantity": 2,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02024",
-                                                        "quantity": 1,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02025",
-                                                        "quantity": 2,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02026",
-                                                        "quantity": 2,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        },
-                                                        {
-                                                        "databaseId": "02027",
-                                                        "quantity": 1,
-                                                        "loadGroupId": "sharedPathDeck2"
-                                                        }
-                                                    ]
-                                    ]
+                                    ["TOGGLE_ENCOUNTER_2_DECK", true]
                         ]  
                     }}
             }, 
-            "03006": {"_comment": "Rising Waters / The Watcher in the Brush",
+            "01385": {"_comment": "Spire",
+                "inheritFrom": "01410"
+            },
+            "01415": {"_comment": "Helping Hand",
+                "rules": {
+                "PersistenKeyword": {"_comment": "Helping Hand",
+                    "type": "passive",
+                    "listenTo": [
+                        "/cardById/$THIS_ID/inPlay",
+                        "/cardById/$THIS_ID/cardIndex"  
+                    ],
+                    "condition": [
+                    "AND",
+                        "$THIS.inPlay",
+                        ["GREATER_THAN", "$THIS.cardIndex", 0]
+                    ],
+                    "onDo": [
+                        ["SET", "/cardById/$THIS.parentCardId/controller", "playerNull"],
+                        ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/persistent", 1],
+                        ["LOG", "└── ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", " gains Persistent."]
+                    ],
+                    "offDo": [
+                        ["VAR", "$PREV_PARENT_ID",["PREV","$THIS.parentCardId"]],
+                        ["SET", "/cardById/$PREV_PARENT_ID/controller", "shared"],
+                        ["DECREASE_VAL", "/cardById/$PREV_PARENT_ID/tokens/persistent", 1],
+                        ["LOG", "└── ", "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name", " loses Persistent."]
+                    ]
+                    }
+                }
+            },
+            "01416": {"_comment": "Helping Hand",
+                "inheritFrom": "01415"
+            },
+            "01419": {"_comment": "Rising Waters / The Watcher in the Brush",
                 "rules": {
                         "RisingWaters": {
                             "type": "trigger",
@@ -599,16 +711,16 @@
                             "then": [
                                     ["LOAD_CARDS", ["LIST",
                                         {
-                                        "databaseId": "02069",
+                                        "databaseId": "01330",
                                         "quantity": 1,
                                         "loadGroupId": "sharedPathDeck"
                                         }]
                                     ],
                                     ["LOG", "├── ", "Mysterious Verdessian added into the path deck."]
                             ]
-                        }
-                    }},
-            "03007": {"_comment": "Sensor Network / Secret Invasion",
+                        }}
+            },
+            "01420": {"_comment": "Sensor Network / Secret Invasion",
                 "rules": {
                         "SecretInvasion": {
                             "type": "trigger",
@@ -625,16 +737,16 @@
                             "then": [
                                     ["LOAD_CARDS", ["LIST",
                                         {
-                                        "databaseId": "02071",
+                                        "databaseId": "01332",
                                         "quantity": 5,
                                         "loadGroupId": "sharedPathDeck3"
                                         }]
                                     ],
                                     ["LOG", "├── ", "5 Reclaimer Seekers shuffled into the Valley set."]
                             ]
-                        }
-                    }},
-            "03013": {"_comment": "Invasion - Stage 1 / Invasion - Stage 2",
+                        }}
+            },
+            "01426": {"_comment": "Invasion - Stage 1 / Invasion - Stage 2",
                 "rules": {
                         "Stage1": {
                             "type": "trigger",
@@ -662,16 +774,26 @@
                                     ["OR", ["IN_STRING", "$TARGET.currentFace.traits", "Ruin"], ["IN_STRING", "$TARGET.currentFace.traits", "Forest"], ["IN_STRING", "$TARGET.currentFace.traits", "Mountain"]]],
                             "then": [
                                     ["LOAD_CARDS", ["LIST",
-                                        {
-                                        "databaseId": "02072",
+                                        { 
+                                        "databaseId": "01333",
                                         "quantity": 1,
                                         "loadGroupId": "sharedPathDeck"
                                         }]
                                     ],
                                     ["PROMPT", "player1", "INVASION_STAGE2"]
                             ]
-                        }
-                    }}
+                        }}
+            }//,
+            // "01360": {"_comment": "The Arcology Threshold",
+            //     "ability": {
+            //         "A": ["PROMPT", "$PLAYER_N", "ARCOLOGY_THRESHOLD"]
+            //     }
+            // },
+            // "01320": {"_comment": "Arcology Sinkhole",
+                // "ability": {
+            //         "A": ["PROMPT", "$PLAYER_N", "ARCOLOGY_SINKHOLE"]
+            //     }
+            // }
         }
     }
 }

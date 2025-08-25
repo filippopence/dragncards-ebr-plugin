@@ -16,7 +16,7 @@
                     "code": [
                         ["LOAD_CARDS", ["LIST",
                             {
-                            "databaseId": "02074",
+                            "databaseId": "01335",
                             "quantity": 2,
                             "loadGroupId": "sharedPathDeck"
                             }]
@@ -30,7 +30,7 @@
                     "code": [
                         ["LOAD_CARDS", ["LIST",
                             {
-                            "databaseId": "02074",
+                            "databaseId": "01335",
                             "quantity": 2,
                             "loadGroupId": "sharedPathDeck"
                             }]
@@ -63,7 +63,7 @@
                         ["IN_STRING", "$TARGET.currentFace.traits", "Ruin"],
                         [["LOAD_CARDS", ["LIST",
                             {
-                            "databaseId": "02071",
+                            "databaseId": "01332",
                             "quantity": 3,
                             "loadGroupId": "sharedPathDeck"
                             }]
@@ -79,7 +79,7 @@
                         ["OR", ["IN_STRING", "$TARGET.currentFace.traits", "Ruin"], ["IN_STRING", "$TARGET.currentFace.traits", "Forest"]],
                         [["LOAD_CARDS", ["LIST",
                             {
-                            "databaseId": "02071",
+                            "databaseId": "01332",
                             "quantity": 3,
                             "loadGroupId": "sharedPathDeck"
                             }]
@@ -95,13 +95,20 @@
                         ["OR", ["IN_STRING", "$TARGET.currentFace.traits", "Ruin"], ["IN_STRING", "$TARGET.currentFace.traits", "Forest"], ["IN_STRING", "$TARGET.currentFace.traits", "Mountain"]],
                         [["LOAD_CARDS", ["LIST",
                             {
-                            "databaseId": "02071",
+                            "databaseId": "01332",
                             "quantity": 3,
                             "loadGroupId": "sharedPathDeck"
                             }]
                         ], 
                         ["LOG", "├── ", "3 Reclaimer Seekers shuffled into the path deck."]]
                     ]]
+                },
+                {
+                    "label": "Cancel.",
+                    "hotkey": "0",
+                    "code": [
+                        ["LOG", ""]
+                    ]
                 }
             ]
         },
@@ -115,7 +122,7 @@
                     "code": [
                         ["LOAD_CARDS", ["LIST",
                             {
-                            "databaseId": "02071",
+                            "databaseId": "01332",
                             "quantity": 1,
                             "loadGroupId": "sharedPathDeck"
                             }]
@@ -129,7 +136,7 @@
                     "code": [
                         ["LOAD_CARDS", ["LIST",
                             {
-                            "databaseId": "02071",
+                            "databaseId": "01332",
                             "quantity": 2,
                             "loadGroupId": "sharedPathDeck"
                             }]
@@ -143,12 +150,66 @@
                     "code": [
                         ["LOAD_CARDS", ["LIST",
                             {
-                            "databaseId": "02071",
+                            "databaseId": "01332",
                             "quantity": 3,
                             "loadGroupId": "sharedPathDeck"
                             }]
                         ], 
                         ["LOG", "├── ", "3 Reclaimer Seekers shuffled into the path deck."]
+                    ]
+                },
+                {
+                    "label": "Cancel.",
+                    "hotkey": "0",
+                    "code": [
+                        ["LOG", ""]
+                    ]
+                }
+            ]
+        },
+        "ARCOLOGY_THRESHOLD": {
+            "args": [],
+            "message": "Do you want to Travel to The Chimney?",
+            "options": [
+                {
+                    "label": "Yes, let's dive deep!",
+                    "hotkey": "1",
+                    "code": [
+                        ["TRAVEL_TO", "theChimney", "ancientRuinsSet"]
+                    ]
+                },
+                {
+                    "label": "No, stay in Spire.",
+                    "hotkey": "2",
+                    "code": [
+                        ["LOG", ""]
+                    ]
+                }
+            ]
+        },
+        "ARCOLOGY_SINKHOLE": {
+            "args": [],
+            "message": "Do you want to dive into the darkness?",
+            "options": [
+                {
+                    "label": "Yes, let's travel to the Drenching Chamber!",
+                    "hotkey": "1",
+                    "code": [
+                        ["TRAVEL_TO", "DrenchingChamber", "caveSystemSet"]
+                    ]
+                },
+                {
+                    "label": "Yes, let's travel to the Scuttler Network!",
+                    "hotkey": "2",
+                    "code": [
+                        ["TRAVEL_TO", "ScuttlerNetwork", "caveSystemSet"]
+                    ]
+                },
+                {
+                    "label": "No, stay here.",
+                    "hotkey": "2",
+                    "code": [
+                        ["LOG", ""]
                     ]
                 }
             ]

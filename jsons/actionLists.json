@@ -332,9 +332,9 @@
             ]
         ],
         "travelPhase": [
-            ["VAR", "$ACTIVE_LOCATION", "$GAME.groupById.sharedLocation.parentCards.[0]"],
+            ["DEFINE", "$ACTIVE_LOCATION", "$GAME.groupById.sharedLocation.parentCards.[0]"],
             ["VAR", "$i", 0],
-            ["PROMPT", "$PLAYER_N", "EMPTY_PROMPT"],
+            ["PROMPT", "$PLAYER_N", "EMPTY_PROMPT"], 
             ["FOR_EACH_VAL", "$CONNECTED_LOCATION", "$ACTIVE_LOCATION.sides.A.connectedLocations", [
                 ["VAR", "$PATH", "$ACTIVE_LOCATION.sides.A.connectedPaths.[$i]"],
                 ["UPDATE_VAR", "$i", ["ADD", "$i", 1]],
@@ -366,6 +366,35 @@
             ["VAR", "$MY_GROUP_ID", "$ACTIVE_CARD.deckGroupId"],
             ["LOG", "{{$ALIAS_N}} is looking at the top 3 cards of {{$GAME.groupById.$MY_GROUP_ID.label}}."],
             ["LOOK_AT", "$PLAYER_N", "$MY_GROUP_ID", 3, true]
+        ],
+        "AddMoments": [
+            ["DEFINE", "$ACTIVE_LOCATION", "$GAME.groupById.sharedLocation.parentCards.[0]"],
+            ["COND",
+                ["EQUAL", "$ACTIVE_LOCATION.sides.A.pack_code", "Core"],
+                [
+                    ["LOAD_CARDS", "ValleyMoments"],
+                    ["SHUFFLE_GROUP", "sharedValleyMoments"],
+                    ["FOR_EACH_VAL", "$iPlayer", "$PLAYER_ORDER", 
+                        ["MOVE_CARD", ["GET_CARD_ID", "sharedValleyMoments", 0, 0], "sharedPathDeck", 0]
+                    ],
+                    ["SHUFFLE_GROUP", "sharedPathDeck"],
+                    ["VAR", "$NUM_PLAYERS", ["LENGTH", "$PLAYER_ORDER"]],
+                    ["LOG", "├── ", "Shuffled {{$NUM_PLAYERS}} cards from the Valley Moments set into the Path Deck."]
+                ]
+            ],
+            ["COND",
+                ["EQUAL", "$ACTIVE_LOCATION.sides.A.pack_code", "LoA"],
+                [
+                    ["LOAD_CARDS", "UndergroundMoments"],
+                    ["SHUFFLE_GROUP", "sharedMoments"],
+                    ["FOR_EACH_VAL", "$iPlayer", "$PLAYER_ORDER", 
+                        ["MOVE_CARD", ["GET_CARD_ID", "sharedMoments", 0, 0], "sharedPathDeck", 0]
+                    ],
+                    ["SHUFFLE_GROUP", "sharedPathDeck"],
+                    ["VAR", "$NUM_PLAYERS", ["LENGTH", "$PLAYER_ORDER"]],
+                    ["LOG", "├── ", "Shuffled {{$NUM_PLAYERS}} cards from the Arcology Moments set into the Path Deck."]
+                ]
+            ]
         ]
     }
 }

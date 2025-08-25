@@ -45,11 +45,6 @@
                         {"label": "id:CrossroadsStation", "deckListId": "CrossroadsStation"}
                     ]
                 },
-                {"label": "id:GeneralSet",
-                    "deckLists": [
-                        {"label": "id:GeneralSet", "deckListId": "GeneralSet"}
-                    ]
-                },
                 {"label": "id:TheValleySet",
                     "deckLists": [
                         {"label": "id:TheValleySet", "deckListId": "TheValleySet"}
@@ -83,13 +78,73 @@
                         {"label": "id:AdherentoftheFirstIdeal", "deckListId": "AdherentoftheFirstIdeal"}
                     ]
                 },
-                {"label": "id:Map&Reference",
+                {"label": "id:CoreMap",
                     "deckLists": [
-                        {"label": "id:Map&Reference", "deckListId": "Map&Reference"}
+                        {"label": "id:CoreMap", "deckListId": "CoreMap"}
                     ]
                 }
-            ]
-        },  
+                ]
+            },  
+            // {
+            //     "label": "id:Legacy of the Ancestors",
+            //     "subMenus": [
+            //     {"label": "id:Location",
+            //         "deckLists": [
+            //             {"label": "id:theChimney", "deckListId": "theChimney"},
+            //             {"label": "id:SeveredArtery", "deckListId": "SeveredArtery"},
+            //             {"label": "id:BranchingArtery", "deckListId": "BranchingArtery"},
+            //             {"label": "id:TerminalArtery", "deckListId": "TerminalArtery"},
+            //             {"label": "id:MycelialConclave", "deckListId": "MycelialConclave"},
+            //             {"label": "id:ArboretumofMemory", "deckListId": "ArboretumofMemory"},
+            //             {"label": "id:theVerdantSphere", "deckListId": "theVerdantSphere"},
+            //             {"label": "id:theCage", "deckListId": "theCage"},
+            //             {"label": "id:DrenchingChamber", "deckListId": "DrenchingChamber"},
+            //             {"label": "id:OasisofSunlight", "deckListId": "OasisofSunlight"},
+            //             {"label": "id:DesertofEndlessNight", "deckListId": "DesertofEndlessNight"},
+            //             {"label": "id:CeruleanCurtain", "deckListId": "CeruleanCurtain"},
+            //             {"label": "id:OrlinsVault", "deckListId": "OrlinsVault"},
+            //             {"label": "id:ScuttlerNetwork", "deckListId": "ScuttlerNetwork"},
+            //             {"label": "id:TheCistern", "deckListId": "TheCistern"},
+            //             {"label": "id:SilentDormitories", "deckListId": "SilentDormitories"},
+            //             {"label": "id:CarbonforgedMaze", "deckListId": "CarbonforgedMaze"},
+            //             {"label": "id:InvertedForest", "deckListId": "InvertedForest"},
+            //             {"label": "id:TheRootway", "deckListId": "TheRootway"},
+            //             {"label": "id:TalpidsSqueeze", "deckListId": "TalpidsSqueeze"}
+            //         ]
+            //     },
+            //     {"label": "id:arcology",
+            //         "deckLists": [
+            //             {"label": "id:arcology", "deckListId": "arcology"}
+            //         ]
+            //     },
+            //     {"label": "id:Path Sets",
+            //         "deckLists": [
+            //             {"label": "id:Woods", "deckListId": "ancientRuinsSet"},
+            //             {"label": "id:Lakeshore", "deckListId": "floodedRuinsSet"},
+            //             {"label": "id:MountainPass", "deckListId": "caveSystemSet"},
+            //             {"label": "id:Old-Growth", "deckListId": "deepRootsSet"},
+            //             {"label": "id:Grassland", "deckListId": "fungalForestSet"}
+            //         ]
+            //     },
+            //     {"label": "id:Weather",
+            //         "deckLists": [
+            //             {"label": "id:APreservedDay", "deckListId": "APreservedDay"},
+            //             {"label": "id:EnvelopingSilence", "deckListId": "EnvelopingSilence"},
+            //             {"label": "id:Glitterain", "deckListId": "Glitterain"}
+            //         ]
+            //     },
+            //     {"label": "id:PremadeRangerDecks",
+            //         "deckLists": [
+                        
+            //         ]
+            //     },
+            //     {"label": "id:ArcologyMap",
+            //         "deckLists": [
+            //             {"label": "id:ArcologyMap", "deckListId": "ArcologyMap"}
+            //         ]
+            //     }
+            //     ]
+            // },  
             {
                 "label": "id:Challenge Deck",
                     "deckLists": [

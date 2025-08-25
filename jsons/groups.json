@@ -96,6 +96,14 @@
                 "controller": "playerNull"
             }
         },
+        "sharedMaps": {
+            "groupType": "discard",
+            "label": "id:sharedMaps", 
+            "tableLabel": "id:sharedMaps",
+            "onCardEnter": {
+                "controller": "playerNull"
+            }
+        },
         "sharedRewards": {
             "groupType": "discard",
             "label": "id:sharedRewards", 
@@ -169,6 +177,15 @@
             "tableLabel": "id:sharedExtra4",
             "canHaveAttachments": true,
             "onCardEnter": {
+            }
+        },
+        "sharedMoments": {
+            "groupType": "deck",
+            "label": "Moment Deck", 
+            "tableLabel": "Moment Deck",
+            "onCardEnter": {
+                "controller": "shared",
+                "deckGroupId": "sharedMoments"
             }
         },
         "player1Hand": {

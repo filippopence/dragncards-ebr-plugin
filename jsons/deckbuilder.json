@@ -14,7 +14,7 @@
             {"propName": "type", "label": "id:type"},
             {"propName": "traits", "label": "id:traits"},
             {"propName": "set", "label": "id:set"},
-            {"propName": "quantity", "label": "id:quantity"}
+            {"propName": "pack_name", "label": "id:pack_name"}
         ],
         "spawnGroups": [
             {"loadGroupId": "sharedMissions", "label": "id:sharedMissions"},

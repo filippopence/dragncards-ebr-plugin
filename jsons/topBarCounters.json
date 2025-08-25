@@ -9,9 +9,9 @@
         ],
         "player": [
             {
-                "label": "id:committedEffort",
-                "imageUrl": "https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/lead_ranger.png",
-                "playerProperty": "committedEffort"
+                "label": "id:rebalanced",
+                "imageUrl": "https://earthborne-rangers.s3.eu-west-3.amazonaws.com/background-and-tokens/EBoUW.png",
+                "playerProperty": "rebalanced"
             }
         ]
     }
