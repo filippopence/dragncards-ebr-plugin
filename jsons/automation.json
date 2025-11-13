@@ -52,6 +52,7 @@
                 ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
                 ["COND",  
                     ["AND", 
+                        ["NOT", ["LENGTH", "$GAME.groupById.sharedPathDeck3.parentCards"], 0],
                         ["EQUAL", "$CARD.sides.A.type", "Location"], 
                         ["EQUAL", "$CARD.sides.A.pivotal", "0"] 
                     ],
