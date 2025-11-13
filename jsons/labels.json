@@ -2,7 +2,8 @@
 {
     "labels": {
         "drawACard": {
-            "English": "Draw a card"
+            "English": "Draw a card",
+            "Italian": "Pesca una carta"
         },
         "sufferFatigue": {
             "English": "Suffer one fatigue"

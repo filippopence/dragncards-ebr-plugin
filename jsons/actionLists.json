@@ -373,9 +373,9 @@
                 ["EQUAL", "$ACTIVE_LOCATION.sides.A.pack_code", "Core"],
                 [
                     ["LOAD_CARDS", "ValleyMoments"],
-                    ["SHUFFLE_GROUP", "sharedValleyMoments"],
+                    ["SHUFFLE_GROUP", "sharedMoments"],
                     ["FOR_EACH_VAL", "$iPlayer", "$PLAYER_ORDER", 
-                        ["MOVE_CARD", ["GET_CARD_ID", "sharedValleyMoments", 0, 0], "sharedPathDeck", 0]
+                        ["MOVE_CARD", ["GET_CARD_ID", "sharedMoments", 0, 0], "sharedPathDeck", 0]
                     ],
                     ["SHUFFLE_GROUP", "sharedPathDeck"],
                     ["VAR", "$NUM_PLAYERS", ["LENGTH", "$PLAYER_ORDER"]],

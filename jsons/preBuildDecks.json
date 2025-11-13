@@ -37,7 +37,11 @@
             "databaseId": "01431",
             "quantity": 1,
             "loadGroupId": "sharedSetAside"
-          }
+          },
+          {
+            "databaseId": "03206",
+            "quantity": 1,
+            "loadGroupId": "sharedSetAside"}
         ]
       },
       "CoreMap": {
@@ -1876,7 +1880,7 @@
           {
             "databaseId": "01327",
             "quantity": 1,
-            "loadGroupId": "sharedPathDeck3"
+            "loadGroupId": "sharedPathDeck3" 
           },
           {
             "databaseId": "01328",
@@ -1890,6 +1894,76 @@
         "cards": [
           {
             "databaseId": "01396",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01315",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01326",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01317",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01318",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01319",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01320",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01321",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01322",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01323",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01324",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01325",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01326",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01327",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3" 
+          },
+          {
+            "databaseId": "01328",
             "quantity": 1,
             "loadGroupId": "sharedPathDeck3"
           }

@@ -2,8 +2,8 @@
     "automation": {
         "postNewGameActionList": [
             // ["LOAD_CARDS", "APerfectDay"],
-            // ["LOAD_CARDS", "AdherentoftheFirstIdeal"],
-            // ["LOAD_CARDS", "mountainSet"],
+            // ["LOAD_CARDS", "VoiceoftheElders"],
+            // ["LOAD_CARDS", "Spire"],
             // ["LOAD_CARDS", ["LIST",
             //     {
             //     "databaseId": "03007",
@@ -20,14 +20,14 @@
         ],
         "postLoadActionList": [
             ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds",  // Play with Rebalanced Cards (Uncommon Wisdom)
-                ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
+                [["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
                 ["COND", 
                     ["AND", "$CARD.sides.A.UncommonWisdom", "$GAME.playerData.{{$PLAYER_N}}.rebalanced"],
                     ["SET", 
                         "/cardById/$CARD_ID/sides/A/imageUrl", 
                         "https://earthborne-rangers.s3.eu-west-3.amazonaws.com/Uncommon_Wisdom/{{$CARD.sides.A.databaseId}}.jpg"
-                    ]
-                ]    
+                    ] 
+                ]]
             ],
             ["DEFINE", "$LOADED_PLAYER_DECK", false],
             ["FOR_EACH_VAL", "$CARD_SET_ASIDE", "$GAME.groupById.sharedSetAside.parentCards", // Prevents from loading multiple copies of the same card
@@ -48,7 +48,7 @@
                     ]
                 ]]]
             ],
-            ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [ // Add 3 cards from the Valley/Arcology set to the Path Deck
+            ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds",  [ // Add 3 cards from the Valley/Arcology set to the Path Deck
                 ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
                 ["COND",  
                     ["AND", 
@@ -61,6 +61,12 @@
                         ["SET", "/cardById/$CARD_ID/currentSide", "B"],
                         ["LOG", "├── ", "Rangers arrived at ", "$CARD.sides.A.name", "."],
                         ["COND", 
+                            ["EQUAL", "$CARD.sides.A.name", "Headwaters Station"],   // Headwaters Station
+                            [   
+                                ["SHUFFLE_GROUP", "sharedPathDeck3"],
+                                ["SHUFFLE_GROUP", "sharedPathDeck"],
+                                ["LOG", "├── ", "Shuffled 0 cards from the Valley set into the Path Deck."]
+                            ],
                             ["EQUAL", "$CARD.sides.A.name", "Bowl of the Sun"],   // Bowl of the Sun
                             [   
                                 ["SHUFFLE_GROUP", "sharedPathDeck3"],
@@ -176,7 +182,7 @@
                                 ["LOG", "├── ", "Shuffled {{$i}} cards from the {{$iCARD_SET}} set into the Path Deck."]
                             ]
                         ]
-                    ]
+                    ] 
                 ],
                 ["COND",  
                     ["AND", 
@@ -228,8 +234,8 @@
                     [
                         ["LOAD_CARDS", "BallLightning"]
                     ]
-                ]
-            ]],
+                ] ]
+            ],
             ["DEFINE", "$PLAYER_N_HAND_GROUP_ID", ["JOIN_STRING", "$PLAYER_N", "Hand"]],
             ["COND", // Draw first 6 cards
                 ["AND", "$LOADED_PLAYER_DECK", ["EQUAL", "$GAME.roundNumber", 0], ["EQUAL", ["LENGTH", "$GAME.groupById.$PLAYER_N_HAND_GROUP_ID.stackIds"], 0]],
@@ -238,8 +244,8 @@
                     ["DRAW_CARD", 6]
                 ]
             ],
-            ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [ // Set shared controller
-                ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
+            ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds",  // Set shared controller
+                [["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
                 ["COND",
                   ["OR", 
                     ["EQUAL", "$CARD.sides.A.name", "The Spiral Stairway"], 
@@ -248,9 +254,8 @@
                     ["EQUAL", "$CARD.sides.A.name", "Overgrown Passage"],
                     ["EQUAL", "$CARD.sides.A.name", "Locked Passage"]
                  ],
-                  ["SET", "/cardById/$CARD_ID/controller", "shared"]
-                ]
-            ]],
+                  ["SET", "/cardById/$CARD_ID/controller", "shared"] ] ]
+            ],
             ["COND", // Define Active Location
              ["GREATER_THAN", ["LENGTH", "$GAME.groupById.sharedLocation.stackIds"], 0],
              ["DEFINE", "$ACTIVE_LOCATION", "$GAME.groupById.sharedLocation.parentCards.[0]"]
@@ -277,63 +282,63 @@
                  
                 ]
             ],
-            // ["COND", // Setup for Scuttler Network
-            //     ["AND", 
-            //      ["DEFINED", "$PREV_LOCATION"], 
-            //      ["EQUAL", "$PREV_LOCATION.sides.A.name", "Terminal Artery"],
-            //      ["EQUAL", "$ACTIVE_LOCATION.sides.A.name", "Scuttler Network"],
-            //      ["NOT", ["DEFINED", "$LOOP_ONCE"]]
-            //      ],
-            //      [
-            //         ["DEFINE", "$LOOP_ONCE", true],
-            //         ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
-            //             ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
-            //             ["COND",  
-            //                 ["EQUAL", "$CARD.sides.A.name", "Flooded Passage"],
-            //                 ["DELETE_CARD", "$CARD_ID"]
-            //             ]]
-            //         ],
-            //         ["LOAD_CARDS", "FloodedPassage"]
-            //      ]                 
-            // ],
-            // ["COND", // Setup for Terminal Artery
-            //     ["AND", 
-            //      ["DEFINED", "$PREV_LOCATION"], 
-            //      ["EQUAL", "$PREV_LOCATION.sides.A.name", "Carbonforged Maze"],
-            //      ["EQUAL", "$ACTIVE_LOCATION.sides.A.name", "Terminal Artery"],
-            //      ["NOT", ["DEFINED", "$LOOP_ONCE"]]
-            //      ],
-            //      [
-            //         ["DEFINE", "$LOOP_ONCE", true],
-            //         ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
-            //             ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
-            //             ["COND",  
-            //                 ["EQUAL", "$CARD.sides.A.name", "Overgrown Passage"],
-            //                 ["DELETE_CARD", "$CARD_ID"]
-            //             ]]
-            //         ],
-            //         ["LOAD_CARDS", "LockedPassage"]
-            //      ]                 
-            // ],
-            // ["COND", // Setup for Orlin's Vault
-            //     ["AND", 
-            //      ["DEFINED", "$PREV_LOCATION"], 
-            //      ["EQUAL", "$PREV_LOCATION.sides.A.name", "Branching Artery"],
-            //      ["EQUAL", "$ACTIVE_LOCATION.sides.A.name", "Orlin's Vault"],
-            //      ["NOT", ["DEFINED", "$LOOP_ONCE"]]
-            //      ],
-            //      [
-            //         ["DEFINE", "$LOOP_ONCE", true],
-            //         ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
-            //             ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
-            //             ["COND",  
-            //                 ["EQUAL", "$CARD.sides.A.name", "Overgrown Passage"],
-            //                 ["DELETE_CARD", "$CARD_ID"]
-            //             ]]
-            //         ],
-            //         ["LOAD_CARDS", "LockedPassage"]
-            //      ]                 
-            // ],
+            ["COND", // Setup for Scuttler Network
+                ["AND", 
+                 ["DEFINED", "$PREV_LOCATION"], 
+                 ["EQUAL", "$PREV_LOCATION.sides.A.name", "Terminal Artery"],
+                 ["EQUAL", "$ACTIVE_LOCATION.sides.A.name", "Scuttler Network"],
+                 ["NOT", ["DEFINED", "$LOOP_ONCE"]]
+                 ],
+                 [
+                    ["DEFINE", "$LOOP_ONCE", true],
+                    ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
+                        ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
+                        ["COND",  
+                            ["EQUAL", "$CARD.sides.A.name", "Flooded Passage"],
+                            ["DELETE_CARD", "$CARD_ID"]
+                        ]]
+                    ],
+                    ["LOAD_CARDS", "FloodedPassage"]
+                 ]                 
+            ],
+            ["COND", // Setup for Terminal Artery
+                ["AND", 
+                 ["DEFINED", "$PREV_LOCATION"], 
+                 ["EQUAL", "$PREV_LOCATION.sides.A.name", "Carbonforged Maze"],
+                 ["EQUAL", "$ACTIVE_LOCATION.sides.A.name", "Terminal Artery"],
+                 ["NOT", ["DEFINED", "$LOOP_ONCE"]]
+                 ],
+                 [
+                    ["DEFINE", "$LOOP_ONCE", true],
+                    ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
+                        ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
+                        ["COND",  
+                            ["EQUAL", "$CARD.sides.A.name", "Overgrown Passage"],
+                            ["DELETE_CARD", "$CARD_ID"]
+                        ]]
+                    ],
+                    ["LOAD_CARDS", "LockedPassage"]
+                 ]                 
+            ],
+            ["COND", // Setup for Orlin's Vault
+                ["AND", 
+                 ["DEFINED", "$PREV_LOCATION"], 
+                 ["EQUAL", "$PREV_LOCATION.sides.A.name", "Branching Artery"],
+                 ["EQUAL", "$ACTIVE_LOCATION.sides.A.name", "Orlin's Vault"],
+                 ["NOT", ["DEFINED", "$LOOP_ONCE"]]
+                 ],
+                 [
+                    ["DEFINE", "$LOOP_ONCE", true],
+                    ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
+                        ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
+                        ["COND",  
+                            ["EQUAL", "$CARD.sides.A.name", "Overgrown Passage"],
+                            ["DELETE_CARD", "$CARD_ID"]
+                        ]]
+                    ],
+                    ["LOAD_CARDS", "LockedPassage"]
+                 ]                 
+            ],
             ["COND", // Remove Prev. Maps and loads Core Maps
                 ["AND", 
                 ["DEFINED", "$PREV_LOCATION"],
@@ -783,17 +788,17 @@
                                     ["PROMPT", "player1", "INVASION_STAGE2"]
                             ]
                         }}
-            }//,
-            // "01360": {"_comment": "The Arcology Threshold",
-            //     "ability": {
-            //         "A": ["PROMPT", "$PLAYER_N", "ARCOLOGY_THRESHOLD"]
-            //     }
-            // },
-            // "01320": {"_comment": "Arcology Sinkhole",
-                // "ability": {
-            //         "A": ["PROMPT", "$PLAYER_N", "ARCOLOGY_SINKHOLE"]
-            //     }
-            // }
+            },
+            "01360": {"_comment": "The Arcology Threshold",
+                "ability": {
+                    "A": ["PROMPT", "$PLAYER_N", "ARCOLOGY_THRESHOLD"]
+                }
+            },
+            "01320": {"_comment": "Arcology Sinkhole",
+                "ability": {
+                    "A": ["PROMPT", "$PLAYER_N", "ARCOLOGY_SINKHOLE"]
+                }
+            }
         }
     }
 }
