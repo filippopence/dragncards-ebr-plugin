@@ -2,8 +2,7 @@
 {
     "labels": {
         "drawACard": {
-            "English": "Draw a card",
-            "Italian": "Pesca una carta"
+            "English": "Draw a card"
         },
         "sufferFatigue": {
             "English": "Suffer one fatigue"
@@ -738,7 +737,7 @@
             "English": "River"
         },
         "Spire": {
-            "English": "Spire"
+            "English": "Spire (Core Set)"
         },
         "WhiteSky": {
             "English": "White Sky"
@@ -808,6 +807,9 @@
         },
         "TheConcordantZiggurats": {
             "English": "The Concordant Ziggurats"
+        },
+        "TheConcordantZigguratsLoA": {
+            "English": "The Concordant Ziggurats (only on LoA)"
         },
         "CrossroadsStation": {
             "English": "Crossroads Station"
@@ -1050,13 +1052,37 @@
             "English": "Use Elder's Book of Uncommon Wisdom"
         },
         "FloodedPassage": {
-            "English": "FloodedPassage"
+            "English": "Flooded Passage"
         },
         "OvergrownPassage": {
             "English": "OvergrownPassage"
         },
         "LockedPassage": {
             "English": "LockedPassage"
+        },
+        "Spire in Bloom": {
+            "English": "Spire in Bloom"
+        },
+        "SilverfinDocks":{
+            "English": "Silverfin Docks"
+        },
+        "SpireCrossing":{
+            "English": "Spire Crossing"
+        },
+        "Brookside":{
+            "English": "Brookside"
+        },
+        "Spire2":{
+            "English": "Spire"
+        },
+        "WildGrowth":{
+            "English": "Wild Growth"
+        },
+        "thoroughfareSet":{
+            "English": "Thoroughfare"
+        },
+        "SpireinBloomMap":{
+            "English": "Spire in Bloom Map"
         }
     }
 }

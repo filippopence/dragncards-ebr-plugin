@@ -606,6 +606,11 @@
             "databaseId": "01378",
             "quantity": 1,
             "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04018",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
           }
         ]
       },
@@ -780,72 +785,82 @@
           {
             "databaseId": "01315",
             "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
+            "loadGroupId": "sharedPathDeck3"
           },
           {
             "databaseId": "01316",
             "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
+            "loadGroupId": "sharedPathDeck3"
           },
           {
             "databaseId": "01317",
             "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
+            "loadGroupId": "sharedPathDeck3"
           },
           {
             "databaseId": "01318",
             "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
+            "loadGroupId": "sharedPathDeck3"
           },
           {
             "databaseId": "01319",
             "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
+            "loadGroupId": "sharedPathDeck3"
           },
           {
             "databaseId": "01320",
             "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
+            "loadGroupId": "sharedPathDeck3"
           },
           {
             "databaseId": "01321",
             "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
+            "loadGroupId": "sharedPathDeck3"
           },
           {
             "databaseId": "01322",
             "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
+            "loadGroupId": "sharedPathDeck3"
           },
           {
             "databaseId": "01323",
             "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
+            "loadGroupId": "sharedPathDeck3"
           },
           {
             "databaseId": "01324",
             "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
+            "loadGroupId": "sharedPathDeck3"
           },
           {
             "databaseId": "01325",
             "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
+            "loadGroupId": "sharedPathDeck3"
           },
           {
             "databaseId": "01326",
             "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
+            "loadGroupId": "sharedPathDeck3"
           },
           {
             "databaseId": "01327",
             "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
+            "loadGroupId": "sharedPathDeck3"
           },
           {
             "databaseId": "01328",
             "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "04019",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "04020",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
           }
         ]
       },
@@ -5346,6 +5361,211 @@
             "databaseId": "03344",
             "quantity": 1,
             "loadGroupId": "sharedAlongTheWay"
+          }
+        ]
+      },
+      "SilverfinDocks": {
+        "label": "id:SilverfinDocks",
+        "cards": [
+          {
+            "databaseId": "04001",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "04029",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04017",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "SpireCrossing": {
+        "label": "id:SpireCrossing",
+        "cards": [
+          {
+            "databaseId": "04002",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "04029",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04015",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04016",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "Brookside": {
+        "label": "id:Brookside",
+        "cards": [
+          {
+            "databaseId": "04003",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "04029",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04013",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04014",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "Spire2": {
+        "label": "id:Spire",
+        "cards": [
+          {
+            "databaseId": "04004",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01358",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01359",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01360",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01361",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01362",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01363",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "WildGrowth": {
+        "label": "id:WildGrowth",
+        "cards": [
+          {
+            "databaseId": "04005",
+            "quantity": 1,
+            "loadGroupId": "sharedWeather"
+          }
+        ]
+      },
+      "thoroughfareSet": {
+        "label": "id:thoroughfareSet",
+        "cards": [
+          {
+            "databaseId": "04006",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04007",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04008",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04009",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04010",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04011",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04012",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "SpireMoments": {
+        "label": "Spire Moments",
+        "cards": [
+          {
+            "databaseId": "04042",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04043",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04044",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04045",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04046",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04047",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04048",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04049",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
           }
         ]
       }

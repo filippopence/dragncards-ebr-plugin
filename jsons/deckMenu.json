@@ -138,6 +138,28 @@
                 }
                 ]
             },  
+            {"label": "id:Spire in Bloom",
+                "subMenus": [
+                {"label": "id:Location",
+                    "deckLists": [
+                        {"label": "id:SilverfinDocks", "deckListId": "SilverfinDocks"},
+                        {"label": "id:SpireCrossing", "deckListId": "SpireCrossing"},
+                        {"label": "id:Brookside", "deckListId": "Brookside"},
+                        {"label": "id:Spire", "deckListId": "Spire2"}
+                    ]
+                },
+                {"label": "id:Path Sets",
+                    "deckLists": [
+                        {"label": "id:thoroughfareSet", "deckListId": "thoroughfareSet"}
+                    ]
+                },
+                {"label": "id:Weather",
+                    "deckLists": [
+                        {"label": "id:WildGrowth", "deckListId": "WildGrowth"}
+                    ]
+                }
+                ]
+            },  
             {"label": "id:Challenge Deck",
                     "deckLists": [
                         {"label": "id:Challenge Deck", "deckListId": "challengeDeck"}

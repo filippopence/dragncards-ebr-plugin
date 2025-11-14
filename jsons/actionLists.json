@@ -394,6 +394,19 @@
                     ["VAR", "$NUM_PLAYERS", ["LENGTH", "$PLAYER_ORDER"]],
                     ["LOG", "├── ", "Shuffled {{$NUM_PLAYERS}} cards from the Arcology Moments set into the Path Deck."]
                 ]
+            ],
+            ["COND",
+                ["EQUAL", "$ACTIVE_LOCATION.sides.A.pack_code", "SiB"],
+                [
+                    ["LOAD_CARDS", "SpireMoments"],
+                    ["SHUFFLE_GROUP", "sharedMoments"],
+                    ["FOR_EACH_VAL", "$iPlayer", "$PLAYER_ORDER", 
+                        ["MOVE_CARD", ["GET_CARD_ID", "sharedMoments", 0, 0], "sharedPathDeck", 0]
+                    ],
+                    ["SHUFFLE_GROUP", "sharedPathDeck"],
+                    ["VAR", "$NUM_PLAYERS", ["LENGTH", "$PLAYER_ORDER"]],
+                    ["LOG", "├── ", "Shuffled {{$NUM_PLAYERS}} cards from the Arcology Moments set into the Path Deck."]
+                ]
             ]
         ]
     }

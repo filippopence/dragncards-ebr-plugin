@@ -6,15 +6,20 @@
             // ["LOAD_CARDS", "Spire"],
             // ["LOAD_CARDS", ["LIST",
             //     {
-            //     "databaseId": "03007",
+            //     "databaseId": "03363",
+            //     "quantity": 1,
+            //     "loadGroupId": "sharedMissions"
+            //     },
+            //     {
+            //     "databaseId": "03364",
             //     "quantity": 1,
             //     "loadGroupId": "sharedMissions"
             //     }]
             // ],
             ["DEFINE", "$PLAYER_N", "player1"],
             ["LOAD_CARDS", "challengeDeck"],
-            ["LOAD_CARDS", "Reference"],
-            ["LOAD_CARDS", "CoreMap"]
+            ["LOAD_CARDS", "Reference"]
+            // ["LOAD_CARDS", "CoreMap"]
             //["LOAD_CARDS", "Maps"],
             //["LOAD_CARDS", "ScuttlerNetwork"]
         ],
@@ -52,9 +57,9 @@
                 ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
                 ["COND",  
                     ["AND", 
-                        ["NOT", ["LENGTH", "$GAME.groupById.sharedPathDeck3.parentCards"], 0],
                         ["EQUAL", "$CARD.sides.A.type", "Location"], 
-                        ["EQUAL", "$CARD.sides.A.pivotal", "0"] 
+                        ["EQUAL", "$CARD.sides.A.pivotal", "0"]
+                        // ["GREATER_THAN", ["LENGTH", "$GAME.groupById.sharedPathDeck3.parentCards"], 0]
                     ],
                     [
                         ["TOGGLE_ENCOUNTER_2_DECK", false],
@@ -161,7 +166,13 @@
                                 ["LOG", "├── ", "Shuffled {{$i}} cards from the Woods set into the Path Deck."]
                             ],
                         true,
-                            [
+                            [   
+                                ["COND", 
+                                    ["EQUAL", "$CARD.sides.A.pack_code", "Core"],
+                                    ["LOAD_CARDS", "TheValleySet"],
+                                    ["EQUAL", "$CARD.sides.A.pack_code", "LoA"],
+                                    ["LOAD_CARDS", "arcology"]
+                                ],
                                 ["SHUFFLE_GROUP", "sharedPathDeck3"],
                                 ["VAR", "$i", 0],
                                 ["FOR_EACH_VAL", "$iCARD", "$GAME.groupById.sharedPathDeck3.parentCards", [
@@ -340,58 +351,67 @@
                     ["LOAD_CARDS", "LockedPassage"]
                  ]                 
             ],
-            ["COND", // Remove Prev. Maps and loads Core Maps
-                ["AND", 
-                ["DEFINED", "$PREV_LOCATION"],
-                ["EQUAL", "$PREV_LOCATION.sides.A.pack_code", "Core"],
-                ["EQUAL", "$ACTIVE_LOCATION.sides.A.pack_code", "LoA"],
-                ["NOT", ["DEFINED", "$LOOP_ONCE"]]
-                ],
-                [
-                    ["DEFINE", "$LOOP_ONCE", true],
-                    ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedSetAside.parentCards", 
-                        ["COND",  
-                            ["EQUAL", "$CARD.sides.A.set", "Map"],
-                            ["DELETE_CARD", "$CARD.id"]
+            [ // Scalable map configuration
+                ["DEFINE", "$MAP_TO_LOAD", null],
+                ["DEFINE", "$LOCATION_KEY", null],
+                ["COND",  // Traveling from->to
+                    ["DEFINED", "$PREV_LOCATION"],
+                    [
+                        ["DEFINE", "$LOCATION_KEY", 
+                            ["JOIN_STRING", "$PREV_LOCATION.sides.A.pack_code", ["JOIN_STRING", "->", "$ACTIVE_LOCATION.sides.A.pack_code"]]
                         ]
                     ],
-                    ["LOAD_CARDS", "ArcologyMap"]
+                    true,
+                    [
+                        ["COND",
+                            ["AND", 
+                                ["NOT", ["DEFINED", "$PREV_LOCATION"]],
+                                ["DEFINED", "$ACTIVE_LOCATION"]
+                            ],
+                            [
+                                ["DEFINE", "$LOCATION_KEY", ["JOIN_STRING", "START->", "$ACTIVE_LOCATION.sides.A.pack_code"]]
+                            ]
+                        ]
+                    ]
                 ],
-             true,
+                ["COND",  // Select map to load
+                    ["OR",
+                        ["EQUAL", "$LOCATION_KEY", "START->Core"],
+                        ["EQUAL", "$LOCATION_KEY", "START->SiB"],
+                        ["EQUAL", "$LOCATION_KEY", "START->SoS"],
+                        ["EQUAL", "$LOCATION_KEY", "START->ItM"],
+                        ["EQUAL", "$LOCATION_KEY", "START->SaS"],
+                        ["EQUAL", "$LOCATION_KEY", "LoA->Core"]
+                    ],
+                    [["DEFINE", "$MAP_TO_LOAD", "CoreMap"]]
+                ],
                 ["COND",
-                ["AND", 
-                ["DEFINED", "$PREV_LOCATION"],
-                ["EQUAL", "$PREV_LOCATION.sides.A.pack_code", "LoA"],
-                ["EQUAL", "$ACTIVE_LOCATION.sides.A.pack_code", "Core"],
-                ["NOT", ["DEFINED", "$LOOP_ONCE"]]
-                ],
-                [
-                    ["DEFINE", "$LOOP_ONCE", true],
-                    ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedSetAside.parentCards", 
-                        ["COND",  
-                            ["EQUAL", "$CARD.sides.A.set", "Map"],
-                            ["DELETE_CARD", "$CARD.id"]
-                        ]
+                    ["OR",
+                        ["EQUAL", "$LOCATION_KEY", "START->LoA"],
+                        ["EQUAL", "$LOCATION_KEY", "Core->LoA"],
+                        ["EQUAL", "$LOCATION_KEY", "SiB->LoA"],
+                        ["EQUAL", "$LOCATION_KEY", "SoS->LoA"],
+                        ["EQUAL", "$LOCATION_KEY", "ItM->LoA"],
+                        ["EQUAL", "$LOCATION_KEY", "SaS->LoA"]
                     ],
-                    ["LOAD_CARDS", "CoreMap"]]
+                    [["DEFINE", "$MAP_TO_LOAD", "ArcologyMap"]]
+                ],
+                ["COND", // Load selected Map
+                    ["AND",
+                        ["NOT_EQUAL", "$MAP_TO_LOAD", null],
+                        ["NOT", ["DEFINED", "$LOOP_ONCE"]]
+                    ],
+                    [
+                        ["DEFINE", "$LOOP_ONCE", true],
+                        ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedSetAside.parentCards",
+                            ["COND",
+                                ["EQUAL", "$CARD.sides.A.set", "Map"],
+                                ["DELETE_CARD", "$CARD.id"]
+                            ]
+                        ],
+                        ["LOAD_CARDS", "$MAP_TO_LOAD"]
+                    ]
                 ]
-            ],
-            ["COND", // Remove Prev. Maps and loads Arcology Maps
-                ["AND", 
-                ["NOT", ["DEFINED", "$PREV_LOCATION"]],
-                ["DEFINED", "$ACTIVE_LOCATION"],
-                ["EQUAL", "$ACTIVE_LOCATION.sides.A.pack_code", "LoA"],
-                ["NOT", ["DEFINED", "$LOOP_ONCE"]]
-                ],
-                [
-                    ["DEFINE", "$LOOP_ONCE", true],
-                    ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedSetAside.parentCards", 
-                        ["COND",  
-                            ["EQUAL", "$CARD.sides.A.set", "Map"],
-                            ["DELETE_CARD", "$CARD.id"]
-                        ]
-                    ],
-                    ["LOAD_CARDS", "ArcologyMap"]]
             ]
         ],
         "gameRules":{ 
@@ -798,6 +818,192 @@
             "01320": {"_comment": "Arcology Sinkhole",
                 "ability": {
                     "A": ["PROMPT", "$PLAYER_N", "ARCOLOGY_SINKHOLE"]
+                }
+            },
+"03363": {"_comment": "Collapse! / Buried Survey Team",
+    "rules": {
+        "Collapse": {
+            "type": "trigger",
+            "listenTo": ["/cardById/*/inPlay"],
+            "condition": [
+                "AND",
+                "$THIS.inPlay",
+                ["EQUAL", "$THIS.currentSide", "A"],
+                "$TARGET.inPlay",
+                ["EQUAL", "$TARGET.sides.A.type", "Location"],
+                ["EQUAL", "$TARGET.sides.A.pack_code", "Core"],
+                ["PREV", ["NOT", "$TARGET.inPlay"]],
+                ["DEFINE", "$ARCOLOGY_FOUND", false],
+                ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedPathDeck.parentCards",
+                    ["COND",
+                        ["EQUAL", "$CARD.sides.A.name", "Arcology Sinkhole"],
+                        ["DEFINE", "$ARCOLOGY_FOUND", true]
+                    ]
+                ],
+                ["NOT", "$ARCOLOGY_FOUND"]
+            ],
+            "then": [
+                ["LOAD_CARDS", ["LIST",
+                    {
+                        "databaseId": "01320",
+                        "quantity": 1,
+                        "loadGroupId": "sharedPathDeck"
+                    }]
+                ],
+                ["LOG", "├── ", "Arcology Sinkhole added into the path deck."]
+            ]
+        }
+    }
+},
+            "03364": {"_comment": "Breathe Easier / Breathe Easier",
+    "rules": {
+        "BreatheEasier": {
+            "type": "trigger",
+            "listenTo": ["/cardById/*/inPlay"],
+            "condition": [
+                "AND",
+                "$THIS.inPlay",
+                "$TARGET.inPlay",
+                ["EQUAL", "$TARGET.sides.A.type", "Location"],
+                ["EQUAL", "$TARGET.sides.A.pack_code", "LoA"],
+                ["PREV", ["NOT", "$TARGET.inPlay"]]
+            ],
+            "then": [
+                ["LOAD_CARDS", ["LIST",
+                    {
+                        "databaseId": "03345",
+                        "quantity": 4,
+                        "loadGroupId": "sharedPathDeck"
+                    }]
+                ],
+                ["LOG", "├── ", "Added 3 Shifting Rubble to the Path Deck."]
+            ]
+        }
+    }
+},
+            "04009": {"_comment": "Pertinacious Peddlers",
+                "inheritFrom": "01268"
+            }, 
+            "04034": {"_comment": "Supply Run / Return Trip",
+                "rules": {
+                    "SupplyRun": {
+                    "type": "trigger",
+                    "listenTo": ["/cardById/*/inPlay"],
+                    "condition": [
+                            "AND", 
+                                "$THIS.inPlay", 
+                                ["EQUAL", "$THIS.currentSide", "A"],
+                                "$TARGET.inPlay", 
+                                ["EQUAL", "$TARGET.sides.A.type", "Location"], 
+                                ["PREV", ["NOT", "$TARGET.inPlay"]]
+                            ],
+                    "then": [
+                            ["LOAD_CARDS", ["LIST",
+                                {
+                                "databaseId": "01283",
+                                "quantity": 1,
+                                "loadGroupId": "sharedPathDeck"
+                                },
+                                {
+                                "databaseId": "01284",
+                                "quantity": 2,
+                                "loadGroupId": "sharedPathDeck"
+                                }]
+                            ],
+                            ["LOG", "├── ", "Added 1 Cloudhive and 2 Cloudhive Swarm to the path deck."]
+                    ]
+                    },
+                    "ReturnTrip": {
+                        "type": "trigger",
+                        "listenTo": ["/cardById/*/inPlay"],
+                        "condition": [
+                                "AND", 
+                                    "$THIS.inPlay", 
+                                    ["EQUAL", "$THIS.currentSide", "B"],
+                                    "$TARGET.inPlay", 
+                                    ["EQUAL", "$TARGET.sides.A.type", "Location"], 
+                                    ["PREV", ["NOT", "$TARGET.inPlay"]]
+                                ],
+                        "then": [
+                                ["LOAD_CARDS", ["LIST",
+                                    {
+                                    "databaseId": "01283",
+                                    "quantity": 1,
+                                    "loadGroupId": "sharedPathDeck"
+                                    },
+                                    {
+                                    "databaseId": "01284",
+                                    "quantity": 2,
+                                    "loadGroupId": "sharedPathDeck"
+                                    }]
+                                ],
+                                ["LOG", "├── ", "Added 1 Cloudhive and 2 Cloudhive Swarm to the path deck."]
+                        ]
+                    }}
+            }, 
+            "04033": {"_comment": "Flower Collection / Pollen Collection",
+                "rules": {
+                    "FlowerCollection": {
+                        "type": "trigger",
+                        "listenTo": ["/cardById/*/inPlay"],
+                        "condition": [
+                                "AND", 
+                                    "$THIS.inPlay", 
+                                    ["EQUAL", "$THIS.currentSide", "A"],
+                                    "$TARGET.inPlay", 
+                                    ["EQUAL", "$TARGET.sides.A.type", "Location"], 
+                                    ["PREV", ["NOT", "$TARGET.inPlay"]]
+                                ],
+                        "then": [
+                                ["LOAD_CARDS", ["LIST",
+                                    {
+                                    "databaseId": "01283",
+                                    "quantity": 1,
+                                    "loadGroupId": "sharedPathDeck"
+                                    },
+                                    {
+                                    "databaseId": "01284",
+                                    "quantity": 2,
+                                    "loadGroupId": "sharedPathDeck"
+                                    }]
+                                ],
+                                ["LOG", "├── ", "Added 1 Cloudhive and 2 Cloudhive Swarm to the path deck."]
+                        ]
+                    }}
+            }, 
+            "04035": {"_comment": "Tracking Destruction / Stop the Rampage",
+                "rules": {
+                    "TrackingDestruction": {
+                        "type": "trigger",
+                        "listenTo": ["/cardById/*/inPlay"],
+                        "condition": [
+                            "AND",
+                            "$THIS.inPlay",
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            "$TARGET.inPlay",
+                            ["EQUAL", "$TARGET.sides.A.type", "Location"],
+                            ["EQUAL", "$TARGET.sides.A.pivotal", "0"],
+                            ["PREV", ["NOT", "$TARGET.inPlay"]],
+                            ["NOT", 
+                                ["ONE_CARD", "$C", 
+                                    ["AND",
+                                        "$C.inPlay",
+                                        ["EQUAL", "$C.sides.A.name", "Deadfall"]
+                                    ]
+                                ]
+                            ]
+                        ],
+                        "then": [
+                            ["LOAD_CARDS", ["LIST",
+                                {
+                                    "databaseId": "04019",
+                                    "quantity": 1,
+                                    "loadGroupId": "sharedPathDeck"
+                                }]
+                            ],
+                            ["LOG", "├── ", "Deadfall added into the path deck."]
+                        ]
+                    }
                 }
             }
         }
