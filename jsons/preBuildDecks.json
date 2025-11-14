@@ -606,11 +606,6 @@
             "databaseId": "01378",
             "quantity": 1,
             "loadGroupId": "sharedPathDeck"
-          },
-          {
-            "databaseId": "04018",
-            "quantity": 1,
-            "loadGroupId": "sharedPathDeck"
           }
         ]
       },
@@ -849,16 +844,6 @@
           },
           {
             "databaseId": "01328",
-            "quantity": 1,
-            "loadGroupId": "sharedPathDeck3"
-          },
-          {
-            "databaseId": "04019",
-            "quantity": 1,
-            "loadGroupId": "sharedPathDeck3"
-          },
-          {
-            "databaseId": "04020",
             "quantity": 1,
             "loadGroupId": "sharedPathDeck3"
           }
