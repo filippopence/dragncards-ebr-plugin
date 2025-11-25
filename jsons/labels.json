@@ -380,7 +380,7 @@
             "English": "Path Deck 2"
         },
         "sharedPathDeck3": {
-            "English": "My Valley Set"
+            "English": "My Valley "
         },
         "sharedExtra1": {
             "English": "Extra1"
@@ -409,8 +409,8 @@
         "ready": {
             "English": "ready"
         },
-        "The Core Set": {
-            "English": "The Core Set"
+        "The Core ": {
+            "English": "The Core "
         },
         "name": {
             "English": "Name"
@@ -425,7 +425,7 @@
             "English": "Traits"
         },
         "set": {
-            "English": "Set"
+            "English": ""
         },
         "quantity": {
             "English": "Quantity"
@@ -688,166 +688,142 @@
         "topBarStagingProgress": {
             "English": "Progress"
         },
-        "woodsSet": {
+        "woods": {
             "English": "Woods"
         },
-        "Woods": {
-            "English": "Woods"
-        },
-        "mountainSet": {
-            "English": "Mountain"
-        },
-        "MountainPass": {
+        "mountain_pass": {
             "English": "Mountain Pass"
         },
-        "lakeshoreSet": {
+        "lakeshore": {
             "English": "Lakeshore"
         },
-        "Lakeshore": {
-            "English": "Lakeshore"
-        },
-        "oldGrowthSet": {
+        "old_growth": {
             "English": "Old-Growth"
         },
-        "Old-Growth": {
-            "English": "Old-Growth"
-        },
-        "grasslandSet": {
+        "grassland": {
             "English": "Grassland"
         },
-        "Grassland": {
-            "English": "Grassland"
-        },
-        "ravineSet": {
+        "ravine": {
             "English": "Ravine"
         },
-        "Ravine": {
-            "English": "Ravine"
-        },
-        "swampSet": {
+        "swamp": {
             "English": "Swamp"
         },
-        "Swamp": {
-            "English": "Swamp"
-        },
-        "riverSet": {
+        "river": {
             "English": "River"
         },
-        "River": {
-            "English": "River"
-        },
-        "Spire": {
+        "spire": {
             "English": "Spire (Core Set)"
         },
-        "WhiteSky": {
+        "white_sky": {
             "English": "White Sky"
         },
-        "NorthernOutpost": {
+        "northern_outpost": {
             "English": "Northern Outpost"
         },
-        "LoneTreeStation": {
+        "lone_tree_station": {
             "English": "Lone Tree Station"
         },
-        "FracturedWall": {
+        "fractured_wall": {
             "English": "The Fractured Wall"
         },
-        "Meadow": {
+        "meadow": {
             "English": "Meadow"
         },
-        "MarshofRebirth": {
+        "marsh_of_rebirth": {
             "English": "Marsh of Rebirth"
         },
-        "Branch": {
+        "branch": {
             "English": "Branch"
         },
-        "Tumbledown": {
+        "tumbledown": {
             "English": "Tumbledown"
         },
-        "AtroxMountain": {
+        "atrox_mountain": {
             "English": "Atrox Mountain"
         },
-        "GoldenShore": {
+        "golden_shore": {
             "English": "Golden Shore"
         },
-        "MountNim": {
+        "mount_nim": {
             "English": "Mount Nim"
         },
-        "BoulderField": {
+        "boulder_field": {
             "English": "Boulder Field"
         },
-        "AncestorsGrove": {
+        "ancestors_grove": {
             "English": "Ancestor's Grove"
         },
-        "KobosMarket": {
+        "kobos_market": {
             "English": "Kobo's Market"
         },
-        "StoneweaverBridge": {
+        "stoneweaver_bridge": {
             "English": "Stoneweaver Bridge"
         },
-        "ThePhilosophersGarden": {
+        "the_philosophers_garden": {
             "English": "The Philosopher's Garden"
         },
-        "TheHighBasin": {
+        "the_high_basin": {
             "English": "The High Basin"
         },
-        "TheFurrow": {
+        "the_furrow": {
             "English": "The Furrow"
         },
-        "BiologicalOutpost": {
+        "biological_outpost": {
             "English": "Biological Outpost"
         },
-        "ThePlummet": {
+        "the_plummet": {
             "English": "The Plummet"
         },
-        "GreenbriarKnoll": {
+        "greenbriar_knoll": {
             "English": "Greenbriar Knoll"
         },
-        "HeadwatersStation": {
+        "headwaters_station": {
             "English": "Headwaters Station"
         },
-        "TheConcordantZiggurats": {
+        "the_concordant_ziggurats": {
             "English": "The Concordant Ziggurats"
         },
         "TheConcordantZigguratsLoA": {
             "English": "The Concordant Ziggurats (only on LoA)"
         },
-        "CrossroadsStation": {
+        "crossroads_station": {
             "English": "Crossroads Station"
         },
-        "RingsoftheMoon": {
+        "rings_of_the_moon": {
             "English": "Rings of the Moon"
         },
-        "ArchaeologicalOutpost": {
+        "archaeological_outpost": {
             "English": "Archaeological Outpost"
         },
-        "MoundoftheNavigator": {
+        "mound_of_the_navigator": {
             "English": "Mound of the Navigator"
         },
-        "Terravore": {
+        "terravore": {
             "English": "Terravore"
         },
-        "TheGreenbridge": {
+        "the_greenbridge": {
             "English": "The Greenbridge"
         },
-        "MichaelsBog": {
+        "michaels_bog": {
             "English": "Michael's Bog"
         },
-        "TheCypressCitadel": {
+        "the_cypress_citadel": {
             "English": "The Cypress Citadel"
         },
-        "TheFrowningGate": {
+        "the_frowning_gate": {
             "English": "The Frowning Gate"
         },
-        "SunkenOutpost": {
+        "sunken_outpost": {
             "English": "Sunken Outpost"
         },
-        "AlluvialRuins": {
+        "alluvial_ruins": {
             "English": "Alluvial Ruins"
         },
-        "BowloftheSun": {
+        "bowl_of_the_sun": {
             "English": "Bowl of the Sun"
         },
-        "WatchersRock": {
+        "watchers_rock": {
             "English": "Watcher's Rock"
         },
         "Pivotal Location": {
@@ -857,10 +833,10 @@
             "English": "Path Sets"
         },
         "GeneralSet": {
-            "English": "General Set"
+            "English": "General "
         },
         "TheValleySet": {
-            "English": "The Valley Set"
+            "English": "The Valley "
         },
         "The Lure of the Valley": {
             "English": "The Lure of the Valley"
@@ -943,82 +919,82 @@
         "sendToTop": {
             "English": "Move on top"
         },
-        "theChimney": {
+        "the_chimney": {
             "English": "The Chimney"
         },
         "theChimneyfromSpire": {
             "English": "The Chimney (from Arcology Threshold)"
         },
-        "SeveredArtery": {
+        "severed_artery": {
             "English": "Severed Artery"
         },
-        "BranchingArtery": {
+        "branching_artery": {
             "English": "Branching Artery"
         },
-        "TerminalArtery": {
+        "terminal_artery": {
             "English": "Terminal Artery"
         },
-        "MycelialConclave": {
+        "mycelial_conclave": {
             "English": "Mycelial Conclave"
         },
-        "ArboretumofMemory": {
+        "arboretum_of_memory": {
             "English": "Arboretum of Memory"
         },
-        "theVerdantSphere": {
+        "the_verdant_sphere": {
             "English": "The Verdant Sphere"
         },
-        "theCage": {
+        "the_cage": {
             "English": "The Cage"
         },
-        "DrenchingChamber": {
+        "drenching_chamber": {
             "English": "Drenching Chamber"
         },
-        "OasisofSunlight": {
+        "oasis_of_sunlight": {
             "English": "Oasis of Sunlight"
         },
-        "DesertofEndlessNight": {
+        "desert_of_endless_night": {
             "English": "Desert of Endless Night"
         },
-        "CeruleanCurtain": {
+        "cerulean_curtain": {
             "English": "Cerulean Curtain"
         },
-        "OrlinsVault": {
+        "orlins_vault": {
             "English": "Orlin's Vault"
         },
-        "ScuttlerNetwork": {
+        "scuttler_network": {
             "English": "Scuttler Network"
         },
-        "TheCistern": {
+        "the_cistern": {
             "English": "The Cistern"
         },
-        "SilentDormitories": {
+        "silent_dormitories": {
             "English": "Silent Dormitories"
         },
-        "CarbonforgedMaze": {
+        "carbonforged_maze": {
             "English": "Carbonforged Maze"
         },
-        "InvertedForest": {
+        "inverted_forest": {
             "English": "Inverted Forest"
         },
-        "TheRootway": {
+        "the_rootway": {
             "English": "The Rootway"
         },
-        "TalpidsSqueeze": {
+        "talpids_squeeze": {
             "English": "Talpid's Squeeze"
         },
-        "ancientRuinsSet": {
+        "ancient_ruins": {
             "English": "Ancient Ruins"
         },
-        "floodedRuinsSet": {
+        "flooded_ruins": {
             "English": "Flooded Ruins"
         },
-        "caveSystemSet": {
+        "cave_system": {
             "English": " Cave System"
         },
-        "deepRootsSet": {
+        "deep_roots": {
             "English": "Deep Roots"
         },
-        "fungalForestSet": {
+        "fungal_forest": {
             "English": "Fungal Forest"
         },
         "arcology": {
@@ -1063,22 +1039,22 @@
         "Spire in Bloom": {
             "English": "Spire in Bloom"
         },
-        "SilverfinDocks":{
+        "silverfin_docks":{
             "English": "Silverfin Docks"
         },
-        "SpireCrossing":{
+        "spire_crossing":{
             "English": "Spire Crossing"
         },
-        "Brookside":{
+        "brookside":{
             "English": "Brookside"
         },
-        "Spire2":{
+        "spire2":{
             "English": "Spire"
         },
         "WildGrowth":{
             "English": "Wild Growth"
         },
-        "thoroughfareSet":{
+        "thoroughfare":{
             "English": "Thoroughfare"
         },
         "SpireinBloomMap":{
