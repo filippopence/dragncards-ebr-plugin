@@ -20,6 +20,6 @@ jobs:
         env:
           REPO_URL: ${{ github.event.repository.html_url }}
         run: |
-          curl --fail-with-body -X POST https://beta.dragncards.com/api/plugin-repo-update \
+          curl --fail-with-body -X POST https://www.dragncards.com/api/plugin-repo-update \
                -F "repo_url=${REPO_URL}" \
                -F "file=@jsons.tar.gz"
