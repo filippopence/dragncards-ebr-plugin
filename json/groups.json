@@ -1,5 +1,13 @@
 {
     "groups": {
+        "removedCards": {
+            "groupType": "discard",
+            "label": "id:removedCards", 
+            "tableLabel": "id:removedCards",
+            "onCardEnter": {
+                "controller": "playerNull"
+            }
+        },
         "sharedPathDeck": {
             "groupType": "deck",
             "label": "id:sharedPathDeck", 

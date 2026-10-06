@@ -305,6 +305,9 @@
             ["INPUT", "integer", "$VAL", "Set the number of cards drawn during resource phase:", 1],
             ["SET", "/playerData/$PLAYER_N/cardsDrawn", "$VAL"]
         ],
+        "loadCampaign": [
+            ["PROMPT", "$PLAYER_N", "PROMPT_LOAD_CAMPAIGN"]
+        ],
         "shuffleGroupIntoDeck": [
             ["DEFINE", "$DEST_GROUP_ID", "$ACTIVE_GROUP.onCardEnter.deckGroupId"],
             ["DEFINE", "$DEST_GROUP", "$GAME.groupById.$DEST_GROUP_ID"],
@@ -405,7 +408,20 @@
                     ],
                     ["SHUFFLE_GROUP", "sharedPathDeck"],
                     ["VAR", "$NUM_PLAYERS", ["LENGTH", "$PLAYER_ORDER"]],
-                    ["LOG", "├── ", "Shuffled {{$NUM_PLAYERS}} cards from the Arcology Moments set into the Path Deck."]
+                    ["LOG", "├── ", "Shuffled {{$NUM_PLAYERS}} cards from the Spire Moments set into the Path Deck."]
+                ]
+            ],
+            ["COND",
+                ["EQUAL", "$ACTIVE_LOCATION.sides.A.pack_code", "SoS"],
+                [
+                    ["LOAD_CARDS", "ShadowoftheStormMoments"],
+                    ["SHUFFLE_GROUP", "sharedMoments"],
+                    ["FOR_EACH_VAL", "$iPlayer", "$PLAYER_ORDER", 
+                        ["MOVE_CARD", ["GET_CARD_ID", "sharedMoments", 0, 0], "sharedPathDeck", 0]
+                    ],
+                    ["SHUFFLE_GROUP", "sharedPathDeck"],
+                    ["VAR", "$NUM_PLAYERS", ["LENGTH", "$PLAYER_ORDER"]],
+                    ["LOG", "├── ", "Shuffled {{$NUM_PLAYERS}} cards from the Shadow Moments set into the Path Deck."]
                 ]
             ]
         ]

@@ -1,0 +1,3292 @@
+{
+    "preBuiltDecks": {
+      "Maps": {
+        "label": "id:Maps",
+        "cards": [
+          {
+            "databaseId": "01432",
+            "quantity": 1,
+            "loadGroupId": "sharedMaps"
+          },
+          {
+            "databaseId": "01433",
+            "quantity": 1,
+            "loadGroupId": "sharedMaps"
+          },
+          {
+            "databaseId": "03378",
+            "quantity": 1,
+            "loadGroupId": "sharedMaps"
+          },
+          {
+            "databaseId": "03379",
+            "quantity": 1,
+            "loadGroupId": "sharedMaps"
+          },
+          {
+            "databaseId": "03380",
+            "quantity": 1,
+            "loadGroupId": "sharedMaps"
+          }
+        ]
+      },
+      "Reference": {
+        "label": "Reference",
+        "cards": [
+          {
+            "databaseId": "01431",
+            "quantity": 1,
+            "loadGroupId": "sharedSetAside"
+          },
+          {
+            "databaseId": "03206",
+            "quantity": 1,
+            "loadGroupId": "sharedSetAside"}
+        ]
+      },
+      "CoreMap": {
+        "label": "id:CoreMap",
+        "cards": [
+          {
+            "databaseId": "01432",
+            "quantity": 1,
+            "loadGroupId": "sharedSetAside"
+          },
+          {
+            "databaseId": "01433",
+            "quantity": 1,
+            "loadGroupId": "sharedSetAside"
+          }
+        ]
+      },
+      "ArcologyMap": {
+        "label": "id:ArcologyMap",
+        "cards": [
+          {
+            "databaseId": "03378",
+            "quantity": 1,
+            "loadGroupId": "sharedSetAside"
+          },
+          {
+            "databaseId": "03380",
+            "quantity": 1,
+            "loadGroupId": "sharedSetAside"
+          },
+          {
+            "databaseId": "03379",
+            "quantity": 1,
+            "loadGroupId": "sharedSetAside"
+          }
+        ]
+      },
+      "challengeDeck": {
+        "label": "id:challengeDeck",
+        "cards": [
+          {
+            "databaseId": "00001",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00002",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00003",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00004",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00005",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00006",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00007",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00008",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00009",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00010",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00011",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00012",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00013",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00014",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00015",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00016",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00017",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00018",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00019",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00020",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00021",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00022",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00023",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          },
+          {
+            "databaseId": "00024",
+            "quantity": 1,
+            "loadGroupId": "sharedChallengeDeck"
+          }
+        ]
+      },
+      "woods": {
+        "label": "id:woods",
+        "cards": [
+          {
+            "databaseId": "01262",
+            "quantity": 3,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01263",
+            "quantity": 3,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01264",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01265",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01266",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01267",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "mountain_pass": {
+        "label": "id:mountain_pass",
+        "cards": [
+          {
+            "databaseId": "01268",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01269",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01270",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01271",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01272",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01273",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01274",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "lakeshore": {
+        "label": "id:lakeshore",
+        "cards": [
+          {
+            "databaseId": "01275",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01276",
+            "quantity": 4,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01277",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01278",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01279",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01280",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "old_growth": {
+        "label": "id:old_growth",
+        "cards": [
+          {
+            "databaseId": "01281",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01282",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01283",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01284",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01285",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01286",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01287",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01288",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "river": {
+        "label": "id:river",
+        "cards": [
+          {
+            "databaseId": "01289",
+            "quantity": 3,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01290",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01291",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01292",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01293",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01294",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "ravine": {
+        "label": "id:ravine",
+        "cards": [
+          {
+            "databaseId": "01295",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01296",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01297",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01298",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01299",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01300",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01301",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "swamp": {
+        "label": "id:swamp",
+        "cards": [
+          {
+            "databaseId": "01302",
+            "quantity": 4,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01303",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01304",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01305",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01306",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01307",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01308",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "grassland": {
+        "label": "id:grassland",
+        "cards": [
+          {
+            "databaseId": "01309",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01310",
+            "quantity": 3,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01311",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01312",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01313",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01314",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "spire": {
+        "label": "id:spire",
+        "cards": [
+          {
+            "databaseId": "01358",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck2"
+          },
+          {
+            "databaseId": "01359",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck2"
+          },
+          {
+            "databaseId": "01360",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck2"
+          },
+          {
+            "databaseId": "01361",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck2"
+          },
+          {
+            "databaseId": "01362",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck2"
+          },
+          {
+            "databaseId": "01363",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck2"
+          },
+          {
+            "databaseId": "01385",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck2"
+          }
+        ]
+      },
+      "northern_outpost": {
+        "label": "id:northern_outpost",
+        "cards": [
+          {
+            "databaseId": "01338",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01339",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01340",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01379",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "lone_tree_station": {
+        "label": "id:lone_tree_station",
+        "cards": [
+          {
+            "databaseId": "01341",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01342",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01343",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01344",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01345",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01378",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04018",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ],
+        "postLoadActionList": [
+            ["COND",
+                ["NOT", "$GAME.spire_in_bloom"],
+                ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", 
+                  [
+                    ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
+                    ["COND",
+                      ["EQUAL", "$CARD.sides.A.name", "Olyv, Ranger Aspirant"],
+                      ["DELETE_CARD", "$CARD_ID"]
+                    ]
+                  ]
+                ]
+            ]
+        ]
+      },
+      "white_sky": {
+        "label": "id:white_sky",
+        "cards": [
+          {
+            "databaseId": "01346",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01347",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01348",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01349",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01377",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "fractured_wall": {
+        "label": "id:fractured_wall",
+        "cards": [
+          {
+            "databaseId": "01350",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01351",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01352",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01388",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "branch": {
+        "label": "id:branch",
+        "cards": [
+          {
+            "databaseId": "01353",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01354",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01355",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01356",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01357",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01391",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "meadow": {
+        "label": "id:meadow",
+        "cards": [
+          {
+            "databaseId": "01364",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01365",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01366",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01367",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01397",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "marsh_of_rebirth": {
+        "label": "id:marsh_of_rebirth",
+        "cards": [
+          {
+            "databaseId": "01368",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01369",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01408",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "tumbledown": {
+        "label": "id:tumbledown",
+        "cards": [
+          {
+            "databaseId": "01370",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01371",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01372",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01413",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01322",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ],
+        "postLoadActionList": [
+          ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", 
+            [  
+                ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
+                ["COND",
+                    ["AND",
+                        ["NOT_EQUAL", "$CARD", null],
+                        ["EQUAL", "$CARD.sides.A.name", "Tala the Red, Exile"]  // Tala the Red
+                    ],
+                    [
+                        ["COND",
+                            // Se Tala È stata rimossa (da The Valley) → muovi (deve apparire qui)
+                            ["OBJ_GET_VAL", "$GAME.removedCards", "tala the red, exile_the_valley"],
+                            ["SET", "/cardById/$CARD_ID/moved", true],
+                            // Se Tala NON è stata rimossa → cancella da Tumbledown
+                            true,
+                            ["DELETE_CARD", "$CARD_ID"]
+                        ]
+                    ]
+                ]
+            ]
+          ]
+        ]
+      },
+      "TheValleySet": {
+        "label": "id:TheValleySet",
+        "cards": [
+          {
+            "databaseId": "01315",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01316",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01317",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01318",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01319",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01320",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01321",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01322",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01323",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01324",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01325",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01326",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01327",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01328",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "04018",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "04019",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "04020",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "04098",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "04099",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ],
+        "postLoadActionList": [
+            ["COND",
+                ["NOT", "$GAME.spire_in_bloom"],
+                    ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", 
+                      [  
+                        ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
+                        ["COND",
+                          ["OR",
+                              ["EQUAL", "$CARD.sides.A.name", "Deadfall"],
+                              ["EQUAL", "$CARD.sides.A.name", "Parental Bond"]
+                          ],
+                          ["DELETE_CARD", "$CARD_ID"]
+                        ]
+                      ]
+                    ]
+            ],
+            ["COND",
+                ["NOT", "$GAME.shadow_of_the_storm"],
+                ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds",
+                  [
+                    ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
+                    ["COND",
+                      ["OR",
+                          ["EQUAL", "$CARD.sides.A.name", "Prismatic Elk"],
+                          ["EQUAL", "$CARD.sides.A.name", "Remi Byrd, Hermit"]
+                      ],
+                      ["DELETE_CARD", "$CARD_ID"]
+                    ]
+                  ]
+                ]
+            ],
+            ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", 
+              [  
+                  ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
+                  ["COND",
+                      ["AND",
+                          ["NOT_EQUAL", "$CARD", null],
+                          ["EQUAL", "$CARD.sides.A.name", "Olyv, Ranger Aspirant"]  // Olyv
+                      ],
+                      [
+                          ["COND",
+                              // Se Olyv È stata rimossa (da LTS) → muovi (deve apparire qui)
+                              ["OBJ_GET_VAL", "$GAME.removedCards", "olyv, ranger aspirant_lone_tree_station"],
+                              ["SET", "/cardById/$CARD_ID/moved", true],
+                              // Se Olyv NON è stata rimossa → cancella da The Valley
+                              true,
+                              ["DELETE_CARD", "$CARD_ID"]
+                          ]
+                      ]
+                  ]
+              ]
+            ]
+        ]
+      },
+      "atrox_mountain": {
+        "label": "id:atrox_mountain",
+        "cards": [
+          {
+            "databaseId": "01380",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "golden_shore": {
+        "label": "id:golden_shore",
+        "cards": [
+          {
+            "databaseId": "01381",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "mount_nim": {
+        "label": "id:mount_nim",
+        "cards": [
+          {
+            "databaseId": "01382",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "boulder_field": {
+        "label": "id:boulder_field",
+        "cards": [
+          {
+            "databaseId": "01383",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "ancestors_grove": {
+        "label": "id:ancestors_grove",
+        "cards": [
+          {
+            "databaseId": "01384",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "kobos_market": {
+        "label": "id:kobos_market",
+        "cards": [
+          {
+            "databaseId": "01386",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "stoneweaver_bridge": {
+        "label": "id:stoneweaver_bridge",
+        "cards": [
+          {
+            "databaseId": "01387",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "the_philosophers_garden": {
+        "label": "id:the_philosophers_garden",
+        "cards": [
+          {
+            "databaseId": "01389",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "the_high_basin": {
+        "label": "id:the_high_basin",
+        "cards": [
+          {
+            "databaseId": "01390",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "the_furrow": {
+        "label": "id:the_furrow",
+        "cards": [
+          {
+            "databaseId": "01392",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "biological_outpost": {
+        "label": "id:biological_outpost",
+        "cards": [
+          {
+            "databaseId": "01393",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "the_plummet": {
+        "label": "id:the_plummet",
+        "cards": [
+          {
+            "databaseId": "01394",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "greenbriar_knoll": {
+        "label": "id:greenbriar_knoll",
+        "cards": [
+          {
+            "databaseId": "01395",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "headwaters_station": {
+        "label": "id:headwaters_station",
+        "cards": [
+          {
+            "databaseId": "01396",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "the_concordant_ziggurats": {
+        "label": "id:the_concordant_ziggurats",
+        "cards": [
+          {
+            "databaseId": "01398",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "TheConcordantZigguratsLoA": {
+        "label": "id:TheConcordantZigguratsLoA",
+        "cards": [
+          {
+            "databaseId": "01398",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "crossroads_station": {
+        "label": "id:crossroads_station",
+        "cards": [
+          {
+            "databaseId": "01399",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "rings_of_the_moon": {
+        "label": "id:rings_of_the_moon",
+        "cards": [
+          {
+            "databaseId": "01400",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "archaeological_outpost": {
+        "label": "id:archaeological_outpost",
+        "cards": [
+          {
+            "databaseId": "01401",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "mound_of_the_navigator": {
+        "label": "id:mound_of_the_navigator",
+        "cards": [
+          {
+            "databaseId": "01402",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "terravore": {
+        "label": "id:terravore",
+        "cards": [
+          {
+            "databaseId": "01403",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "the_greenbridge": {
+        "label": "id:the_greenbridge",
+        "cards": [
+          {
+            "databaseId": "01404",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "michaels_bog": {
+        "label": "id:michaels_bog",
+        "cards": [
+          {
+            "databaseId": "01405",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "the_cypress_citadel": {
+        "label": "id:the_cypress_citadel",
+        "cards": [
+          {
+            "databaseId": "01406",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "the_frowning_gate": {
+        "label": "id:the_frowning_gate",
+        "cards": [
+          {
+            "databaseId": "01407",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "sunken_outpost": {
+        "label": "id:sunken_outpost",
+        "cards": [
+          {
+            "databaseId": "01409",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "alluvial_ruins": {
+        "label": "id:alluvial_ruins",
+        "cards": [
+          {
+            "databaseId": "01410",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+          "databaseId": "01275",
+          "quantity": 1,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01276",
+          "quantity": 4,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01277",
+          "quantity": 1,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01278",
+          "quantity": 2,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01279",
+          "quantity": 2,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01280",
+          "quantity": 2,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01309",
+          "quantity": 2,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01310",
+          "quantity": 3,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01311",
+          "quantity": 2,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01312",
+          "quantity": 2,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01313",
+          "quantity": 2,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01314",
+          "quantity": 1,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01281",
+          "quantity": 2,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01282",
+          "quantity": 1,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01283",
+          "quantity": 1,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01284",
+          "quantity": 2,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01285",
+          "quantity": 1,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01286",
+          "quantity": 2,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01287",
+          "quantity": 2,
+          "loadGroupId": "sharedPathDeck2"
+          },
+          {
+          "databaseId": "01288",
+          "quantity": 1,
+          "loadGroupId": "sharedPathDeck2"
+          }
+        ]
+      },
+      "bowl_of_the_sun": {
+        "label": "id:bowl_of_the_sun",
+        "cards": [
+          {
+            "databaseId": "01411",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "watchers_rock": {
+        "label": "id:watchers_rock",
+        "cards": [
+          {
+            "databaseId": "01412",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "GeneralSet": {
+        "label": "id:GeneralSet",
+        "cards": [
+          {
+            "databaseId": "01329",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01330",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01331",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01332",
+            "quantity": 5,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01333",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01334",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01335",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01336",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01337",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "APerfectDay": {
+        "label": "id:APerfectDay",
+        "cards": [
+          {
+            "databaseId": "01373",
+            "quantity": 1,
+            "loadGroupId": "sharedWeather"
+          }
+        ]
+      },
+      "Downpour": {
+        "label": "id:Downpour",
+        "cards": [
+          {
+            "databaseId": "01374",
+            "quantity": 1,
+            "loadGroupId": "sharedWeather"
+          }
+        ]
+      },
+      "HowlingWinds": {
+        "label": "id:HowlingWinds",
+        "cards": [
+          {
+            "databaseId": "01375",
+            "quantity": 1,
+            "loadGroupId": "sharedWeather"
+          }
+        ]
+      },
+      "ElectricFog": {
+        "label": "id:ElectricFog",
+        "cards": [
+          {
+            "databaseId": "01376",
+            "quantity": 1,
+            "loadGroupId": "sharedWeather"
+          }
+        ]
+      },
+      "UndauntedSeeker": {
+        "label": "id:UndauntedSeeker",
+        "cards": [
+          {
+            "databaseId": "01037",
+            "quantity": 1,
+            "loadGroupId": "playerNRole"
+          },
+          {
+            "databaseId": "01258",
+            "quantity": 1,
+            "loadGroupId": "playerNAspect"
+          },
+          {
+            "databaseId": "01001",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01008",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01006",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01005",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01003",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01044",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01039",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01042",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01043",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01048",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01101",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01099",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01093",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01105",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01056",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          }
+        ]
+      },
+      "VoiceoftheElders": {
+        "label": "id:VoiceoftheElders",
+        "cards": [
+          {
+            "databaseId": "01066",
+            "quantity": 1,
+            "loadGroupId": "playerNRole"
+          },
+          {
+            "databaseId": "01253",
+            "quantity": 1,
+            "loadGroupId": "playerNAspect"
+          },
+          {
+            "databaseId": "01026",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01025",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01022",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01023",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01027",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01067",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01077",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01073",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01070",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01078",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01107",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01104",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01097",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01095",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01018",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          }
+        ]
+      },
+      "MasterfulEngineer": {
+        "label": "id:MasterfulEngineer",
+        "cards": [
+          {
+            "databaseId": "01051",
+            "quantity": 1,
+            "loadGroupId": "playerNRole"
+          },
+          {
+            "databaseId": "01261",
+            "quantity": 1,
+            "loadGroupId": "playerNAspect"
+          },
+          {
+            "databaseId": "01017",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01013",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01015",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01011",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01012",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01061",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01060",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01059",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01053",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01062",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01098",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01103",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01096",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01108",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01007",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          }
+        ]
+      },
+      "AdherentoftheFirstIdeal": {
+        "label": "id:AdherentoftheFirstIdeal",
+        "cards": [
+          {
+            "databaseId": "01079",
+            "quantity": 1,
+            "loadGroupId": "playerNRole"
+          },
+          {
+            "databaseId": "01250",
+            "quantity": 1,
+            "loadGroupId": "playerNAspect"
+          },
+          {
+            "databaseId": "01031",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01028",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01029",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01034",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01035",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01084",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01083",
+            "quantity": 1,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01083",
+            "quantity": 1,
+            "loadGroupId": "playerNPlay"
+          },
+          {
+            "databaseId": "01082",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01085",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01081",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01100",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01106",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01102",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01094",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          },
+          {
+            "databaseId": "01090",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck"
+          }
+        ]
+      },
+      "CerberusianCyclone": {
+        "label": "id:CerberusianCyclone",
+        "cards": [
+          {
+            "databaseId": "01329",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "BallLightning": {
+        "label": "id:BallLightning",
+        "cards": [
+          {
+            "databaseId": "01337",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "theChimneyfromSpire": {
+        "label": "id:theChimneyfromSpire",
+        "cards": [
+          {
+            "databaseId": "03251",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03305",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03306",
+            "quantity": 1,
+            "loadGroupId": "sharedAlongTheWay"
+          },
+          {
+            "databaseId": "03307",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03308",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03309",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "the_chimney": {
+        "label": "id:the_chimney",
+        "cards": [
+          {
+            "databaseId": "03251",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03305",
+            "quantity": 1,
+            "loadGroupId": "sharedAlongTheWay"
+          },
+          {
+            "databaseId": "03306",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03307",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03308",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03309",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "severed_artery": {
+        "label": "id:severed_artery",
+        "cards": [
+          {
+            "databaseId": "03252",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03310",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03311",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03312",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03313",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03314",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ],
+        "postLoadActionList": [
+          ["SHUFFLE_GROUP", "sharedPathDeck"],
+          ["VAR", "$i", 0],
+          ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedPathDeck.parentCards", [
+              ["COND",
+                  ["AND",
+                      ["LESS_THAN", "$i", 3],
+                      ["OR",
+                          ["EQUAL", "$CARD.sides.A.databaseId", "03310"],
+                          ["EQUAL", "$CARD.sides.A.databaseId", "03311"],
+                          ["EQUAL", "$CARD.sides.A.databaseId", "03312"],
+                          ["EQUAL", "$CARD.sides.A.databaseId", "03313"],
+                          ["EQUAL", "$CARD.sides.A.databaseId", "03314"]
+                      ]
+                  ],
+                  [
+                      ["MOVE_CARD", "$CARD.id", "sharedPathDeck2", -1],
+                      ["INCREASE_VAR", "$i", 1]
+                  ]
+              ]
+          ]]
+        ]
+      },
+      "branching_artery": {
+        "label": "id:branching_artery",
+        "cards": [
+          {
+            "databaseId": "03253",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03310",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03311",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03312",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03313",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03314",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "terminal_artery": {
+        "label": "id:terminal_artery",
+        "cards": [
+          {
+            "databaseId": "03254",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03344",
+            "quantity": 1,
+            "loadGroupId": "sharedAlongTheWay"
+          },
+          {
+            "databaseId": "03310",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03311",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03312",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03313",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03314",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ],
+        "postLoadActionList": [
+          ["SHUFFLE_GROUP", "sharedPathDeck"],
+          ["VAR", "$i", 0],
+          ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedPathDeck.parentCards", [
+              ["COND",
+                  ["AND",
+                      ["LESS_THAN", "$i", 4],
+                      ["OR",
+                          ["EQUAL", "$CARD.sides.A.databaseId", "03310"],
+                          ["EQUAL", "$CARD.sides.A.databaseId", "03311"],
+                          ["EQUAL", "$CARD.sides.A.databaseId", "03312"],
+                          ["EQUAL", "$CARD.sides.A.databaseId", "03313"],
+                          ["EQUAL", "$CARD.sides.A.databaseId", "03314"]
+                      ]
+                  ],
+                  [
+                      ["MOVE_CARD", "$CARD.id", "sharedPathDeck2", -1],
+                      ["INCREASE_VAR", "$i", 1]
+                  ]
+              ]
+          ]]
+        ]
+      },
+      "mycelial_conclave": {
+        "label": "id:mycelial_conclave",
+        "cards": [
+          {
+            "databaseId": "03255",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03315",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03316",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03317",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "arboretum_of_memory": {
+        "label": "id:arboretum_of_memory",
+        "cards": [
+          {
+            "databaseId": "03256",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03318",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03319",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03320",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03321",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03322",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03323",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "the_verdant_sphere": {
+        "label": "id:the_verdant_sphere",
+        "cards": [
+          {
+            "databaseId": "03257",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03324",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03325",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03326",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "the_cage": {
+        "label": "id:the_cage",
+        "cards": [
+          {
+            "databaseId": "03258",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03327",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03328",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03329",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "drenching_chamber": {
+        "label": "id:drenching_chamber",
+        "cards": [
+          {
+            "databaseId": "03259",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03342",
+            "quantity": 1,
+            "loadGroupId": "sharedAlongTheWay"
+          }
+        ]
+      },
+      "oasis_of_sunlight": {
+        "label": "id:oasis_of_sunlight",
+        "cards": [
+          {
+            "databaseId": "03260",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01262",
+            "quantity": 3,
+            "loadGroupId": "sharedPathDeck2"
+          },
+          {
+            "databaseId": "01263",
+            "quantity": 3,
+            "loadGroupId": "sharedPathDeck2"
+          },
+          {
+            "databaseId": "01264",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck2"
+          },
+          {
+            "databaseId": "01265",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck2"
+          },
+          {
+            "databaseId": "01266",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck2"
+          },
+          {
+            "databaseId": "01267",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck2"
+          }
+        ]
+      },
+      "desert_of_endless_night": {
+        "label": "id:desert_of_endless_night",
+        "cards": [
+          {
+            "databaseId": "03261",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "cerulean_curtain": {
+        "label": "id:cerulean_curtain",
+        "cards": [
+          {
+            "databaseId": "03262",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "03343",
+            "quantity": 1,
+            "loadGroupId": "sharedAlongTheWay"
+          }
+        ]
+      },
+      "orlins_vault": {
+        "label": "id:orlins_vault",
+        "cards": [
+          {
+            "databaseId": "03263",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "03344",
+            "quantity": 1,
+            "loadGroupId": "sharedAlongTheWay"
+          }
+        ]
+      },
+      "scuttler_network": {
+        "label": "id:scuttler_network",
+        "cards": [
+          {
+            "databaseId": "03264",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "03342",
+            "quantity": 1,
+            "loadGroupId": "sharedAlongTheWay"
+          }
+        ]
+      },
+      "the_cistern": {
+        "label": "id:the_cistern",
+        "cards": [
+          {
+            "databaseId": "03265",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "silent_dormitories": {
+        "label": "id:silent_dormitories",
+        "cards": [
+          {
+            "databaseId": "03266",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "carbonforged_maze": {
+        "label": "id:carbonforged_maze",
+        "cards": [
+          {
+            "databaseId": "03267",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "inverted_forest": {
+        "label": "id:inverted_forest",
+        "cards": [
+          {
+            "databaseId": "03268",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "the_rootway": {
+        "label": "id:the_rootway",
+        "cards": [
+          {
+            "databaseId": "03269",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "03344",
+            "quantity": 1,
+            "loadGroupId": "sharedAlongTheWay"
+          }
+        ]
+      },
+      "talpids_squeeze": {
+        "label": "id:talpids_squeeze",
+        "cards": [
+          {
+            "databaseId": "03270",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03343",
+            "quantity": 1,
+            "loadGroupId": "sharedAlongTheWay"
+          }
+        ]
+      },
+      "ancient_ruins": {
+        "label": "id:ancient_ruins",
+        "cards": [
+          {
+            "databaseId": "03271",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03272",
+            "quantity": 3,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03273",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03274",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03275",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03276",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "flooded_ruins": {
+        "label": "id:flooded_ruins",
+        "cards": [
+          {
+            "databaseId": "03277",
+            "quantity": 3,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03278",
+            "quantity": 3,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03279",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03280",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03281",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03282",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "cave_system": {
+        "label": "id:cave_system",
+        "cards": [
+          {
+            "databaseId": "03283",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03284",
+            "quantity": 3,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03285",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03286",
+            "quantity": 3,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03287",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03288",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "deep_roots": {
+        "label": "id:deep_roots",
+        "cards": [
+          {
+            "databaseId": "03289",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03290",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03291",
+            "quantity": 4,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03292",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03293",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03294",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "fungal_forest": {
+        "label": "id:fungal_forest",
+        "cards": [
+          {
+            "databaseId": "03295",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03296",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03297",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03298",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03299",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03300",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03301",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03302",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03303",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "03304",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "arcology": {
+        "label": "id:arcology",
+        "cards": [
+          {
+            "databaseId": "03330",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "03331",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "03332",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "03333",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "03334",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "03335",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "03336",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "03337",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "03338",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "03339",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "03340",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "03341",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "APreservedDay": {
+        "label": "id:APreservedDay",
+        "cards": [
+          {
+            "databaseId": "03248",
+            "quantity": 1,
+            "loadGroupId": "sharedWeather"
+          }
+        ]
+      },
+      "EnvelopingSilence": {
+        "label": "id:EnvelopingSilence",
+        "cards": [
+          {
+            "databaseId": "03249",
+            "quantity": 1,
+            "loadGroupId": "sharedWeather"
+          }
+        ]
+      },
+      "Glitterain": {
+        "label": "id:Glitterain",
+        "cards": [
+          {
+            "databaseId": "03250",
+            "quantity": 1,
+            "loadGroupId": "sharedWeather"
+          }
+        ]
+      },
+      "ShimmeringRunoff": {
+        "label": "id:ShimmeringRunoff",
+        "cards": [
+          {
+            "databaseId": "03250",
+            "quantity": 1,
+            "loadGroupId": "sharedWeather"
+          }
+        ],
+        "postLoadActionList": [
+          ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedWeather.parentCards",
+              ["SET", "/cardById/$CARD.id/currentSide", "B"]
+          ]
+        ]
+      },
+      "ValleyMoments": {
+        "label": "Valley Moments",
+        "cards": [
+          {
+            "databaseId": "03381",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03382",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03383",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03384",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03385",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03386",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03387",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03388",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03389",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03390",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03391",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03392",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03393",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03394",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03395",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03396",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          }
+        ]
+      },
+      "UndergroundMoments": {
+        "label": "Underground Moments",
+        "cards": [
+          {
+            "databaseId": "03397",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03398",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03399",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03400",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03401",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03402",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03403",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03404",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03405",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03406",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03407",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03408",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03409",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03410",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03411",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "03412",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          }
+        ]
+      },
+      "FloodedPassage": {
+        "label": "id:FloodedPassage",
+        "cards": [
+          {
+            "databaseId": "03342",
+            "quantity": 1,
+            "loadGroupId": "sharedAlongTheWay"
+          }
+        ]
+      },
+      "OvergrownPassage": {
+        "label": "id:OvergrownPassage",
+        "cards": [
+          {
+            "databaseId": "03343",
+            "quantity": 1,
+            "loadGroupId": "sharedAlongTheWay"
+          }
+        ]
+      },
+      "LockedPassage": {
+        "label": "id:LockedPassage",
+        "cards": [
+          {
+            "databaseId": "03344",
+            "quantity": 1,
+            "loadGroupId": "sharedAlongTheWay"
+          }
+        ]
+      },
+      "silverfin_docks": {
+        "label": "id:silverfin_docks",
+        "cards": [
+          {
+            "databaseId": "04001",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "04029",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04017",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "spire_crossing": {
+        "label": "id:spire_crossing",
+        "cards": [
+          {
+            "databaseId": "04002",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "04029",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04015",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04016",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "brookside": {
+        "label": "id:brookside",
+        "cards": [
+          {
+            "databaseId": "04003",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "04029",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04013",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04014",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "spire2": {
+        "label": "id:spire2",
+        "cards": [
+          {
+            "databaseId": "04004",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "01358",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01359",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01360",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01361",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01362",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "01363",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "WildGrowth": {
+        "label": "id:WildGrowth",
+        "cards": [
+          {
+            "databaseId": "04005",
+            "quantity": 1,
+            "loadGroupId": "sharedWeather"
+          }
+        ]
+      },
+      "thoroughfare": {
+        "label": "id:thoroughfare",
+        "cards": [
+          {
+            "databaseId": "04006",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04007",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04008",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04009",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04010",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04011",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04012",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "SpireMoments": {
+        "label": "Spire Moments",
+        "cards": [
+          {
+            "databaseId": "04042",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04043",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04044",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04045",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04046",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04047",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04048",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04049",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          }
+        ]
+      },
+      "nimbus": {
+        "label": "id:nimbus",
+        "cards": [
+          {
+            "databaseId": "04082",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04083",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04084",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04085",
+            "quantity": 2,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04086",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04087",
+            "quantity": 3,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04088",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "terra_lodge": {
+        "label": "id:terra_lodge",
+        "cards": [
+          {
+            "databaseId": "04075",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04089",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04090",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04091",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "the_otherwoods": {
+        "label": "id:the_otherwoods",
+        "cards": [
+          {
+            "databaseId": "04076",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04092",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck2"
+          },
+          {
+            "databaseId": "04093",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck2"
+          },
+          {
+            "databaseId": "04094",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "crystal_basin": {
+        "label": "id:crystal_basin",
+        "cards": [
+          {
+            "databaseId": "04077",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          }
+        ]
+      },
+      "sentinel_peak": {
+        "label": "id:sentinel_peak",
+        "cards": [
+          {
+            "databaseId": "04078",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "04086",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          },
+          {
+            "databaseId": "04087",
+            "quantity": 3,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "arbor_mist": {
+        "label": "id:arbor_mist",
+        "cards": [
+          {
+            "databaseId": "04079",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "04097",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "the_undergrove": {
+        "label": "id:the_undergrove",
+        "cards": [
+          {
+            "databaseId": "04080",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "04096",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "nimbus_facility": {
+        "label": "id:nimbus_facility",
+        "cards": [
+          {
+            "databaseId": "04081",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck3"
+          },
+          {
+            "databaseId": "04095",
+            "quantity": 1,
+            "loadGroupId": "sharedPathDeck"
+          }
+        ]
+      },
+      "pristine_snow": {
+        "label": "id:pristine_snow",
+        "cards": [
+          {
+            "databaseId": "04103",
+            "quantity": 1,
+            "loadGroupId": "sharedWeather"
+          }
+        ]
+      },
+      "ShadowoftheStormMoments": {
+        "label": "id:ShadowoftheStormMoments",
+        "cards": [
+          {
+            "databaseId": "04050",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04051",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04052",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04053",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04054",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04055",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04056",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          },
+          {
+            "databaseId": "04057",
+            "quantity": 1,
+            "loadGroupId": "sharedMoments"
+          }
+        ]
+      }
+    }
+}

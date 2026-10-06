@@ -19,6 +19,11 @@
             "label": "4",
             "numPlayers": 4,
             "layoutId": "layout4Player"
+        },
+        {
+            "label": "id:2-handed",
+            "numPlayers": 2,
+            "layoutId": "layout2Handed"
         }
     ]
 }

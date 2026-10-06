@@ -1,0 +1,1170 @@
+{
+    "functions": {
+        "SET_CAMPAIGN_MAP": {
+          "args": ["$MAP_NAME"],
+          "code": [
+            // Rimuove eventuali pezzi mappa già in tavola prima di caricare quella nuova
+            ["FOR_EACH_VAL", "$OLD_MAP_CARD", "$GAME.groupById.sharedSetAside.parentCards",
+              ["COND",
+                ["EQUAL", "$OLD_MAP_CARD.sides.A.set", "Map"],
+                ["DELETE_CARD", "$OLD_MAP_CARD.id"]
+              ]
+            ],
+            ["LOAD_CARDS", "$MAP_NAME"]
+          ]
+        },
+        "RESOLVE_LOCATION_DECK": {
+          "args": ["$LOCATION"],
+          "code": [
+            ["COND",
+              ["AND", ["EQUAL", "$LOCATION", "spire"], "$GAME.spire_in_bloom"],
+              "spire2",
+              true,
+              "$LOCATION"
+            ]
+          ]
+        },
+        "SET_SIDE_REGION": {
+          "args": ["$SIDE_GROUP_ID"],
+          "code": [
+            ["LOG", "{{$PLAYER_N}} updated their layout to display {{$GAME.groupById.$SIDE_GROUP_ID.label}}."],
+            ["SET", "/playerData/$PLAYER_N/layout/regions/sideRegion/groupId", "$SIDE_GROUP_ID"]
+          ]
+        },
+        "DISCARD_UNTIL": {
+            "args": ["$GROUP_ID", "$TYPE"],
+            "code": [
+                ["LOG", "{{$PLAYER_N}} began discarding until {{$TYPE}}."],
+                ["WHILE",
+                  ["NOT_EQUAL", "$GAME.groupById.$GROUP_ID.parentCards.[0].sides.A.type", "$TYPE"],
+                  [
+                    ["DEFINE", "$ACTIVE_CARD_ID", "$GAME.groupById.$GROUP_ID.parentCardIds.[0]"],
+                    ["ACTION_LIST", "discardCard"]
+                  ]
+                ],
+                ["VAR", "$TOP_CARD", "$GAME.groupById.$GROUP_ID.parentCards.[0]"],
+                ["LOG", "{{$PLAYER_N}} discarded {{$TOP_CARD.sides.A.name}} and added it to the staging area."],
+                ["COND",
+                    ["EQUAL", "$TOP_CARD.sides.A.reveal", "along_the_way"],
+                    ["MOVE_CARD", "$TOP_CARD.id", "sharedAlongTheWay", -1, 0],
+                    true,
+                    ["MOVE_CARD", "$TOP_CARD.id", "{{$PLAYER_N}}WithinReach", -1, 0]]
+            ]
+        },
+        "SEARCH_NEXT_TYPE": {
+            "args": ["$GROUP_ID", "$TYPE"],
+            "code": [
+              ["VAR", "$i", 0],
+              ["FOR_EACH_VAL", "$iCARD", "$GAME.groupById.$GROUP_ID.parentCards", [
+                ["COND", 
+                    ["AND", 
+                        ["LESS_THAN", "$i", 1],
+                        ["EQUAL", "$iCARD.sides.A.type", "$TYPE"]
+                    ],
+                    [["COND",
+                      ["EQUAL", "$iCARD.sides.A.reveal", "along_the_way"],
+                      ["MOVE_CARD", "$iCARD.id", "sharedAlongTheWay", -1, 0],
+                      true,
+                      ["MOVE_CARD", "$iCARD.id", "{{$PLAYER_N}}WithinReach", -1, 0]],
+                    ["INCREASE_VAR", "$i", 1]]
+                ]]
+              ],
+              ["SHUFFLE_GROUP", "$GROUP_ID"]]
+        },
+        "DEAL_PATH_CARD": {
+          "args": [
+            {"$FACE_UP": false},
+            {"$GROUP_ID": "sharedPathDeck"},
+            {"$PLAYER": "$PLAYER_N"},
+            {"$CONTROLLER": "$ALIAS_N"}
+          ],
+          "code": ["COND",
+            ["EQUAL", "$GAME.roundNumber", 0],
+            [["INCREASE_VAL", "/roundNumber", 1],
+            ["VAR", "$GROUP", "$GAME.groupById.$GROUP_ID"],
+            ["COND",
+              ["EQUAL", ["LENGTH", "$GROUP.stackIds"], 0],
+              ["LOG", "{{$GROUP.label}} is empty."],
+              true,
+              [
+                ["DEFINE", "$CARD_ID", ["GET_CARD_ID", "$GROUP_ID", 0, 0]],
+                ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
+                ["COND", 
+                ["EQUAL", "$FACE_UP", false],
+                [["MOVE_CARD", "$CARD_ID", "sharedAlongTheWay", -1, 0, ["PROCESS_MAP", {"allowFlip": "$FACE_UP"}]],
+                ["LOG", "{{$ALIAS_N}} revealed a facedown Path card."]],
+                true,
+                [["COND",
+                    ["EQUAL", "$CARD.sides.A.reveal", "along_the_way"],
+                    ["MOVE_CARD", "$CARD_ID", "sharedAlongTheWay", -1, 0],
+                    true,
+                    ["MOVE_CARD", "$CARD_ID", "{{$PLAYER_N}}WithinReach", -1, 0]],
+                ["COND",
+                  ["DEFINED", "$CONTROLLER"],
+                  ["LOG", "{{$ALIAS_N}} revealed {{$CARD.sides.A.name}}."]]
+                ]]
+              ]
+            ]],
+            true,
+            [["VAR", "$GROUP", "$GAME.groupById.$GROUP_ID"],
+            ["COND",
+              ["EQUAL", ["LENGTH", "$GROUP.stackIds"], 0],
+              ["LOG", "{{$GROUP.label}} is empty."],
+              true,
+              [
+                ["DEFINE", "$CARD_ID", ["GET_CARD_ID", "$GROUP_ID", 0, 0]],
+                ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
+                ["COND", 
+                ["EQUAL", "$FACE_UP", false],
+                [["MOVE_CARD", "$CARD_ID", "sharedAlongTheWay", -1, 0, ["PROCESS_MAP", {"allowFlip": "$FACE_UP"}]],
+                ["LOG", "{{$ALIAS_N}} revealed a facedown Path card."]],
+                true,
+                [["COND",
+                    ["EQUAL", "$CARD.sides.A.reveal", "along_the_way"],
+                    ["MOVE_CARD", "$CARD_ID", "sharedAlongTheWay", -1, 0],
+                    true,
+                    ["MOVE_CARD", "$CARD_ID", "{{$PLAYER_N}}WithinReach", -1, 0]],
+                ["COND",
+                  ["DEFINED", "$CONTROLLER"],
+                  ["LOG", "{{$ALIAS_N}} revealed {{$CARD.sides.A.name}}."]]
+                ]]
+              ]
+            ]]
+          ]
+        },
+        "sufferFatigueForInjury": {
+          "args": [
+            "$PLAYER"
+            ],
+          "code": [
+              ["DEFINE", "$ROLE_ID", ["GET_CARD_ID", "{{$PLAYER}}Role", 0, 0]],
+              ["DEFINE", "$ROLE", "$GAME.cardById.$ROLE_ID"],
+              ["COND",
+                  ["GREATER_THAN", "$ROLE.tokens.harm", 0],
+                  [["FOR_EACH_START_STOP_STEP", "$i", 0, "$ROLE.tokens.harm", 1,
+                  [
+                      ["MOVE_CARD", ["GET_CARD_ID", "{{$PLAYER}}Deck", 0, 0], "{{$PLAYER}}Fatigue", 0]
+                  ]],
+                  ["LOG", "{{$GAME.playerInfo.$PLAYER.alias}} suffered ", "$ROLE.tokens.harm", " fatigue."]]
+              ]
+            ] 
+        },
+        "DRAW_ONE_CARD": {
+          "args": [
+            "$PLAYER",
+            {"$CONTROLLER": "$GAME.playerInfo.$PLAYER.alias"}],
+          "code": [
+            ["MOVE_CARD", ["GET_CARD_ID", "{{$PLAYER}}Deck", 0, 0], "{{$PLAYER}}Hand", -1]
+          ]
+        },
+        "CHECK_IF_COPY_IN_PLAY": {
+          "args": ["$OUT_OF_PLAY_CARD"],
+          "code": [["VAR", "$COPY_IN_PLAY", 
+                    ["ONE_CARD", "$CARD", 
+                      ["AND", 
+                        "$CARD.inPlay", 
+                        ["EQUAL", "$CARD.sides.A.name", "$OUT_OF_PLAY_CARD.sides.A.name"]
+                      ]
+                    ]
+                   ],
+                   ["NOT_EQUAL", "$COPY_IN_PLAY", null]
+            ]  
+        }, 
+        "CHECK_IF_LOADED_COPY": {
+          "args": ["$IN_PLAY_CARD"],
+          "code": [
+            ["VAR", "$COPY_LOADED", 
+              ["ONE_CARD", "$CARD", 
+                ["AND", 
+                  ["IN_LIST", "$GAME.loadedCardIds", "$CARD.id"],
+                  ["AND",
+                    ["EQUAL", "$CARD.sides.A.name", "$IN_PLAY_CARD.sides.A.name"],
+                    ["EQUAL", "$CARD.sides.A.set", "$IN_PLAY_CARD.sides.A.set"]
+                  ]
+                ]
+              ]
+            ],
+            ["NOT_EQUAL", "$COPY_LOADED", null]
+          ]  
+        },
+        "UNLOAD_SHARED_CARDS": {
+          "args": [],
+          "code": [
+            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", 
+              ["COND",
+                ["EQUAL", "$CARD.controller", "shared"],
+                ["DELETE_CARD", "$CARD_ID"]
+              ]
+            ]
+          ]
+        },
+        "TRAVEL_TO": {
+          "args": ["$LOCATION", "$PATH_SET"],
+          "code": [
+            ["DEFINE", "$PREV_LOCATION", "$GAME.groupById.sharedLocation.parentCards.[0]"],
+            ["UNLOAD_SHARED_CARDS"],
+            ["LOAD_CARDS", ["RESOLVE_LOCATION_DECK", "$LOCATION"]],
+            ["LOAD_CARDS", "$PATH_SET"],
+            ["PROMPT", "$PLAYER_N", "MOMENTS_PROMPT"]
+          ]
+        },    
+        "TOGGLE_ENCOUNTER_2_DECK": {
+            "args": ["$VISIBILITY"],
+            "code": [
+              ["COND",
+                "$VISIBILITY",
+                [
+                  ["LOG", "{{$ALIAS_N}} updated the layout to display the second encounter deck."],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedPathDeck2/visible", true],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedPathDiscard2/visible", true],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedLocation/width", "15%"],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedMissions/left", "48%"],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedMissions/width", "14%"],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedPathDeck/left", "62%"],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedPathDiscard/left", "71.5%"]
+      
+                ],
+                true,
+                [
+                  ["LOG", "{{$ALIAS_N}} updated the layout to hide the second encounter deck."],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedPathDeck2/visible", false],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedPathDiscard2/visible", false],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedLocation/width", "17.5%"],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedMissions/left", "50.5%"],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedMissions/width", "28%"],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedPathDeck/left", "81%"],
+                  ["UPDATE_LAYOUT", "/layout/regions/sharedPathDiscard/left", "90.5%"]
+                ]
+              ]
+            ]
+          },
+          "SHOW_MULTI_HANDED_GROUP": {
+            "args": ["$PLAYER_I", "$SUFFIX"],
+            "code": [
+              ["VAR", "$GROUP_ID_TO_SHOW", "{{$PLAYER_I}}{{$SUFFIX}}"],
+              ["LOG", "{{$ALIAS_N}} updated the layout to show ", ["LABEL", "$GROUP_ID_TO_SHOW"], "."],
+              ["UPDATE_LAYOUT", "/layout/regions/{{$PLAYER_I}}Deck/visible", false],
+              ["UPDATE_LAYOUT", "/layout/regions/{{$PLAYER_I}}Discard/visible", false],
+              ["UPDATE_LAYOUT", "/layout/regions/{{$PLAYER_I}}Fatigue/visible", false],
+              ["UPDATE_LAYOUT", "/layout/regions/{{$PLAYER_I}}Deck2/visible", false],
+              ["UPDATE_LAYOUT", "/layout/regions/{{$GROUP_ID_TO_SHOW}}/visible", true]
+            ]
+          },
+          "POST_SET_LAYOUT": {
+            "args": [],
+            "code": [
+              ["UPDATE_ADVANCE_BUTTON"],
+              ["UPDATE_HELPER_TEXT_VISIBILITY"]
+            ]
+          },
+          "LOAD_CAMPAIGN_EARTHBORNE": {
+            "args": ["$CAMPAIGN_DATA"],
+            "code": [
+                ["DEFINE", "$VALLEY_WEATHER_MAP", {
+                  "1": "APerfectDay",
+                  "2": "APerfectDay",
+                  "3": "APerfectDay",
+                  "4": "Downpour",
+                  "5": "Downpour",
+                  "6": "Downpour",
+                  "7": "Downpour",
+                  "8": "APerfectDay",
+                  "9": "APerfectDay",
+                  "10": "Downpour",
+                  "11": "Downpour",
+                  "12": "Downpour",
+                  "13": "HowlingWinds",
+                  "14": "HowlingWinds",
+                  "15": "Downpour",
+                  "16": "Downpour",
+                  "17": "Downpour",
+                  "18": "HowlingWinds",
+                  "19": "HowlingWinds",
+                  "20": "HowlingWinds",
+                  "21": "APerfectDay",
+                  "22": "APerfectDay",
+                  "23": "Downpour",
+                  "24": "Downpour",
+                  "25": "Downpour",
+                  "26": "HowlingWinds",
+                  "27": "HowlingWinds",
+                  "28": "HowlingWinds",
+                  "29": "APerfectDay",
+                  "30": "APerfectDay"
+                }],
+                ["DEFINE", "$ARCOLOGY_WEATHER_MAP", {
+                  "1": "EnvelopingSilence",
+                  "2": "EnvelopingSilence",
+                  "3": "EnvelopingSilence",
+                  "4": "Glitterain",
+                  "5": "Glitterain",
+                  "6": "Glitterain",
+                  "7": "ShimmeringRunoff",
+                  "8": "ShimmeringRunoff",
+                  "9": "EnvelopingSilence",
+                  "10": "EnvelopingSilence",
+                  "11": "EnvelopingSilence",
+                  "12": "EnvelopingSilence",
+                  "13": "Glitterain",
+                  "14": "Glitterain",
+                  "15": "Glitterain",
+                  "16": "EnvelopingSilence",
+                  "17": "EnvelopingSilence",
+                  "18": "EnvelopingSilence",
+                  "19": "Glitterain",
+                  "20": "Glitterain",
+                  "21": "Glitterain",
+                  "22": "ShimmeringRunoff",
+                  "23": "ShimmeringRunoff",
+                  "24": "EnvelopingSilence",
+                  "25": "EnvelopingSilence",
+                  "26": "EnvelopingSilence",
+                  "27": "EnvelopingSilence",
+                  "28": "Glitterain",
+                  "29": "Glitterain",
+                  "30": "Glitterain"
+                }],
+          // SETTING CURRENT CAMPAIGN
+                ["COND",
+                  ["EQUAL", "$CAMPAIGN_DATA.cycle_id", "loa"],
+                  ["SET", "/current_campaign", "loa"],
+                  ["EQUAL", "$CAMPAIGN_DATA.cycle_id", "core"],
+                  ["SET", "/current_campaign", "core"]
+                ],
+          // SETTING EXPANSIONS OWNED
+                // RangersDB non compila questo campo (resta null): in quel caso non tocchiamo le
+                // impostazioni esistenti, per non disattivare espansioni possedute per errore.
+                ["COND",
+                  // In Legacy of the Ancestors non si può essere anche in Spire in Bloom / Shadow of the Storm
+                  ["EQUAL", "$CAMPAIGN_DATA.cycle_id", "loa"],
+                  [
+                    ["SET", "/spire_in_bloom", false],
+                    ["SET", "/shadow_of_the_storm", false]
+                  ],
+                  ["NOT_EQUAL", "$CAMPAIGN_DATA.expansions", null],
+                  [
+                    ["SET", "/spire_in_bloom", ["IN_LIST", "$CAMPAIGN_DATA.expansions", "sib"]],
+                    ["SET", "/shadow_of_the_storm", ["IN_LIST", "$CAMPAIGN_DATA.expansions", "sos"]]
+                  ]
+                ],
+          // LOADING CARDS
+                ["COND",                                                // LOCATION (può essere null a inizio campagna)
+                  ["NOT_EQUAL", "$CAMPAIGN_DATA.current_location", null],
+                  ["LOAD_CARDS", ["RESOLVE_LOCATION_DECK", "$CAMPAIGN_DATA.current_location"]]
+                ],
+          // MAP (surface vs underground/Arcology): usa cycle_id se noto, altrimenti si adatta al
+          // pack_code della location appena caricata (stesso criterio di $MAP_ROUTES per i viaggi).
+                ["VAR", "$MAP_TO_LOAD",
+                  ["COND",
+                    ["EQUAL", "$CAMPAIGN_DATA.cycle_id", "loa"],
+                    "ArcologyMap",
+                    ["EQUAL", "$CAMPAIGN_DATA.cycle_id", "core"],
+                    "CoreMap",
+                    true,
+                    ["COND",
+                      ["EQUAL", "$GAME.groupById.sharedLocation.parentCards.[0].sides.A.pack_code", "LoA"],
+                      "ArcologyMap",
+                      true,
+                      "CoreMap"
+                    ]
+                  ]
+                ],
+                ["SET_CAMPAIGN_MAP", "$MAP_TO_LOAD"],
+                ["COND",                                                // PATH SET (può essere null a inizio campagna)
+                  ["NOT_EQUAL", "$CAMPAIGN_DATA.current_path_terrain", null],
+                  ["LOAD_CARDS", "$CAMPAIGN_DATA.current_path_terrain"]
+                ],
+                ["COND",                                                // WEATHER
+                  ["EQUAL", "$CAMPAIGN_DATA.cycle_id", "core"],
+                  [
+                    ["DEFINE", "$WEATHER_SET", "$VALLEY_WEATHER_MAP.{{$CAMPAIGN_DATA.day}}"],
+                    ["LOAD_CARDS", "$WEATHER_SET"]
+                  ],
+                  ["EQUAL", "$CAMPAIGN_DATA.cycle_id", "loa"],
+                  [
+                    ["DEFINE", "$WEATHER_SET", "$ARCOLOGY_WEATHER_MAP.{{$CAMPAIGN_DATA.day}}"],
+                    ["LOAD_CARDS", "$WEATHER_SET"],
+                    ["COND",
+                      ["EQUAL", "$WEATHER_SET", "EnvelopingSilence"],
+                      ["LOAD_CARDS", ["LIST", {"databaseId": "01374", "quantity": 1,"loadGroupId": "sharedSetAside"}]],
+                      ["EQUAL", "$WEATHER_SET", "Glitterain"],
+                      ["LOAD_CARDS", ["LIST", {"databaseId": "01373", "quantity": 1,"loadGroupId": "sharedSetAside"}]],
+                      ["EQUAL", "$WEATHER_SET", "ShimmeringRunoff"],
+                      ["LOAD_CARDS", ["LIST", {"databaseId": "01375", "quantity": 1,"loadGroupId": "sharedSetAside"}]]
+                    ]
+                  ]
+                ],
+          // MISSIONS
+                ["VAR", "$MISSION_LOAD_LIST", ["LIST"]],
+                ["VAR", "$MISSING_MISSION_NAMES", ["LIST"]],
+                ["FOR_EACH_VAL", "$MISSION", "$CAMPAIGN_DATA.missions",
+                  [
+          // RangersDB fornisce "completed" (earthborne.build no, ma filtra già lato server):
+          // saltiamo del tutto le missioni già completate, senza nemmeno tentare di caricarle.
+                    ["COND",
+                      ["NOT_EQUAL", "$MISSION.completed", true],
+                      [
+                        ["VAR", "$CARD_CODE", "$MISSION.card_code"],
+                        ["COND",
+                          ["NOT_EQUAL", "$CARD_CODE", null],
+                          [
+                            ["VAR", "$LOCAL_ID", ["EB_TO_LOCAL_ID", "$CARD_CODE"]],
+                            ["COND",
+                              ["AND", ["NOT_EQUAL", "$LOCAL_ID", null], ["DEFINED", "$CARD_DB.{{$LOCAL_ID}}"]],
+                              [
+                                ["UPDATE_VAR", "$MISSION_LOAD_LIST", ["APPEND", "$MISSION_LOAD_LIST", ["PROCESS_MAP", {"databaseId": "$LOCAL_ID", "quantity": 1, "loadGroupId": "sharedMissions"}]]]
+                              ],
+                              true,
+                              [
+                                ["LOG", "├── ", "Mission not found in local database, skipped: {{$MISSION.name}} ({{$CARD_CODE}})."],
+                                ["UPDATE_VAR", "$MISSING_MISSION_NAMES", ["APPEND", "$MISSING_MISSION_NAMES", "$MISSION.name"]]
+                              ]
+                            ]
+                          ],
+                          true,
+                          [
+                            // RangersDB non fornisce card_code, solo il nome (spesso con annotazioni tipo
+                            // "Search (Lunn)"): cerchiamo nel $CARD_DB una carta Mission il cui nome (o lato,
+                            // per le carte a due facce) sia contenuto nel testo. In caso di più corrispondenze
+                            // preferiamo quella più lunga/specifica; a parità di lunghezza è ambiguo e saltiamo.
+                            // RangersDB a volte usa apostrofi curvi (’/‘) invece di quello dritto
+                            // usato dal tuo database: li normalizziamo entrambi prima di confrontare.
+                            ["VAR", "$MISSION_NAME_NORM", ["REGEX_REPLACE", ["REGEX_REPLACE", ["TO_LOWERCASE", "$MISSION.name"], "’", "'"], "‘", "'"]],
+                            ["VAR", "$BEST_LEN", -1],
+                            ["VAR", "$BEST_IDS", ["LIST"]],
+                            ["FOR_EACH_KEY_VAL", "$DB_ID", "$DB_CARD", "$CARD_DB",
+                              [
+                                ["COND",
+                                  ["AND", ["EQUAL", "$DB_CARD.A.type", "Mission"], ["NOT_EQUAL", "$DB_CARD.A.name", null]],
+                                  [
+                                    ["FOR_EACH_VAL", "$NAME_PART", ["SPLIT_STRING", "$DB_CARD.A.name", " / "],
+                                      [
+                                        ["VAR", "$PART_NORM", ["REGEX_REPLACE", ["REGEX_REPLACE", ["TO_LOWERCASE", "$NAME_PART"], "’", "'"], "‘", "'"]],
+                                        ["COND",
+                                          ["IN_STRING", "$MISSION_NAME_NORM", "$PART_NORM"],
+                                          [
+                                            ["VAR", "$PART_LEN", ["LENGTH", "$PART_NORM"]],
+                                            ["COND",
+                                              ["GREATER_THAN", "$PART_LEN", "$BEST_LEN"],
+                                              [
+                                                ["UPDATE_VAR", "$BEST_LEN", "$PART_LEN"],
+                                                ["UPDATE_VAR", "$BEST_IDS", ["LIST", "$DB_ID"]]
+                                              ],
+                                              ["EQUAL", "$PART_LEN", "$BEST_LEN"],
+                                              // Non riaggiungere lo stesso ID (carte con lo stesso nome su entrambi i lati)
+                                              ["COND",
+                                                ["NOT", ["IN_LIST", "$BEST_IDS", "$DB_ID"]],
+                                                ["UPDATE_VAR", "$BEST_IDS", ["APPEND", "$BEST_IDS", "$DB_ID"]]
+                                              ]
+                                            ]
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ],
+                            ["COND",
+                              ["EQUAL", ["LENGTH", "$BEST_IDS"], 1],
+                              [
+                                ["UPDATE_VAR", "$MISSION_LOAD_LIST", ["APPEND", "$MISSION_LOAD_LIST", ["PROCESS_MAP", {"databaseId": ["AT_INDEX", "$BEST_IDS", 0], "quantity": 1, "loadGroupId": "sharedMissions"}]]]
+                              ],
+                              true,
+                              [
+                                ["LOG", "├── ", "Mission not found in local database, skipped: {{$MISSION.name}}."],
+                                ["UPDATE_VAR", "$MISSING_MISSION_NAMES", ["APPEND", "$MISSING_MISSION_NAMES", "$MISSION.name"]]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                ["LOAD_CARDS", "$MISSION_LOAD_LIST"],
+                ["COND",
+                  ["GREATER_THAN", ["LENGTH", "$MISSING_MISSION_NAMES"], 0],
+                  [
+                    ["FADE_TEXT_GAME", "Missions not found - check log.", 20]
+                  ]
+                ]
+            ]
+          },
+          "LOAD_DECKS_EARTHBORNE": {
+            "args": ["$DECKS"],
+            "code": [
+                ["VAR", "$PLAYER_INDEX", 1],
+                ["FOR_EACH_VAL", "$DECK", "$DECKS",
+                  [
+                    ["VAR", "$CURRENT_PLAYER", "player{{$PLAYER_INDEX}}"],
+                    ["VAR", "$LOAD_LIST", ["LIST"]],
+          // ROLE
+                    ["VAR", "$ROLE_LOCAL_ID", ["EB_TO_LOCAL_ID", "$DECK.role_code"]],
+                    ["COND",
+                      ["AND", ["NOT_EQUAL", "$ROLE_LOCAL_ID", null], ["DEFINED", "$CARD_DB.{{$ROLE_LOCAL_ID}}"]],
+                      ["UPDATE_VAR", "$LOAD_LIST", ["APPEND", "$LOAD_LIST", ["PROCESS_MAP", {"databaseId": "$ROLE_LOCAL_ID", "quantity": 1, "loadGroupId": "{{$CURRENT_PLAYER}}Role"}]]],
+                      true,
+                      ["LOG", "├── ", "Role not found in local database, skipped: {{$DECK.role_code}}."]
+                    ],
+          // ASPECT
+                    ["VAR", "$ASPECT_LOCAL_ID", ["EB_TO_LOCAL_ID", "$DECK.aspect_code"]],
+                    ["COND",
+                      ["AND", ["NOT_EQUAL", "$ASPECT_LOCAL_ID", null], ["DEFINED", "$CARD_DB.{{$ASPECT_LOCAL_ID}}"]],
+                      ["UPDATE_VAR", "$LOAD_LIST", ["APPEND", "$LOAD_LIST", ["PROCESS_MAP", {"databaseId": "$ASPECT_LOCAL_ID", "quantity": 1, "loadGroupId": "{{$CURRENT_PLAYER}}Aspect"}]]],
+                      true,
+                      ["LOG", "├── ", "Aspect not found in local database, skipped: {{$DECK.aspect_code}}."]
+                    ],
+          // DECK CARDS
+                    ["FOR_EACH_KEY_VAL", "$CARD_CODE", "$QUANTITY", "$DECK.slots",
+                      [
+                        ["VAR", "$LOCAL_ID", ["EB_TO_LOCAL_ID", "$CARD_CODE"]],
+                        ["COND",
+                          ["AND", ["NOT_EQUAL", "$LOCAL_ID", null], ["DEFINED", "$CARD_DB.{{$LOCAL_ID}}"]],
+                          ["UPDATE_VAR", "$LOAD_LIST", ["APPEND", "$LOAD_LIST", ["PROCESS_MAP", {"databaseId": "$LOCAL_ID", "quantity": "$QUANTITY", "loadGroupId": "{{$CURRENT_PLAYER}}Deck"}]]],
+                          true,
+                          ["LOG", "├── ", "Card not found in local database, skipped: {{$CARD_CODE}}."]
+                        ]
+                      ]
+                    ],
+                    ["LOAD_CARDS", "$LOAD_LIST"],
+                    ["UPDATE_VAR", "$PLAYER_INDEX", ["ADD", "$PLAYER_INDEX", 1]]
+                  ]
+                ]
+            ]
+          },
+          "MARK_REMOVED_CARDS_EARTHBORNE": {
+            "args": ["$REMOVED_LIST"],
+            "code": [
+                ["FOR_EACH_VAL", "$REMOVED_ENTRY", "$REMOVED_LIST",
+                  [
+                    ["VAR", "$TARGET_NAME_LOWER", ["TO_LOWERCASE", "$REMOVED_ENTRY.name"]],
+                    ["VAR", "$FOUND_ANY", false],
+                    // RangersDB non fornisce "action" (solo name/set_id): in quel caso omettiamo il suffisso.
+                    ["VAR", "$ACTION_SUFFIX",
+                      ["COND",
+                        ["NOT_EQUAL", "$REMOVED_ENTRY.action", null],
+                        " (action: {{$REMOVED_ENTRY.action}})",
+                        true,
+                        ""
+                      ]
+                    ],
+                    ["FOR_EACH_KEY_VAL", "$DB_ID", "$DB_CARD", "$CARD_DB",
+                      [
+                        ["COND",
+                          ["AND",
+                            ["NOT_EQUAL", "$DB_CARD.A.name", null],
+                            ["NOT_EQUAL", "$DB_CARD.A.set", null],
+                            ["EQUAL", ["TO_LOWERCASE", "$DB_CARD.A.name"], "$TARGET_NAME_LOWER"],
+                            // Non marcare mai la copia "Reward" (carta del giocatore) come rimossa: earthborne.build
+                            // si riferisce sempre alla copia "nemico" (l'altro set) quando rimuove/sposta una carta.
+                            ["NOT", ["IN_LIST", ["LIST", "reward", "rewards"], ["TO_LOWERCASE", "$DB_CARD.A.set"]]]
+                          ],
+                          [
+                            ["VAR", "$SET_NORM", ["REGEX_REPLACE", ["TO_LOWERCASE", "$DB_CARD.A.set"], " ", "_"]],
+                            ["VAR", "$REMOVED_KEY", "{{$TARGET_NAME_LOWER}}_{{$SET_NORM}}"],
+                            ["SET", "/removedCards/{{$REMOVED_KEY}}", true],
+                            ["UPDATE_VAR", "$FOUND_ANY", true],
+                            ["LOG", "├── ", "Marked as removed: {{$REMOVED_ENTRY.name}} [{{$DB_CARD.A.set}}]{{$ACTION_SUFFIX}}."]
+                          ]
+                        ]
+                      ]
+                    ],
+                    ["COND",
+                      ["NOT", "$FOUND_ANY"],
+                      ["LOG", "├── ", "Removed card not found in local database, skipped: {{$REMOVED_ENTRY.name}}."]
+                    ]
+                  ]
+                ]
+            ]
+          },
+          "EB_TO_LOCAL_ID": {
+            "args": ["$EB_CODE"],
+            "code": [
+                ["DEFINE", "$EB_TO_LOCAL_ID_MAP", {
+                  "01241": "01253",
+                  "01242": "01254",
+                  "01246": "01255",
+                  "01247": "01261",
+                  "01248": "01260",
+                  "01249": "01259",
+                  "01250": "01256",
+                  "01251": "01258",
+                  "01252": "01257",
+                  "01253": "01251",
+                  "01254": "01252",
+                  "01255": "01250",
+                  "01256": "01289",
+                  "01259": "01302",
+                  "01263": "01341",
+                  "01264": "01316",
+                  "01265": "01281",
+                  "01267": "01268",
+                  "01269": "01295",
+                  "01271": "01335",
+                  "01273": "01336",
+                  "01274": "01334",
+                  "01276": "01287",
+                  "01278": "01294",
+                  "01280": "01292",
+                  "01282": "01299",
+                  "01284": "01266",
+                  "01286": "01290",
+                  "01288": "01342",
+                  "01289": "01307",
+                  "01290": "01291",
+                  "01292": "01329",
+                  "01293": "01301",
+                  "01294": "01269",
+                  "01296": "01321",
+                  "01297": "01304",
+                  "01298": "01327",
+                  "01299": "01296",
+                  "01301": "01276",
+                  "01305": "01300",
+                  "01306": "01347",
+                  "01307": "01333",
+                  "01308": "01272",
+                  "01310": "01297",
+                  "01312": "01328",
+                  "01313": "01303",
+                  "01315": "01280",
+                  "01317": "01345",
+                  "01318": "01325",
+                  "01319": "01331",
+                  "01320": "01370",
+                  "01321": "01265",
+                  "01322": "01315",
+                  "01323": "01305",
+                  "01325": "01344",
+                  "01326": "01322",
+                  "01327": "01348",
+                  "01328": "01326",
+                  "01329": "01323",
+                  "01330": "01273",
+                  "01332": "01298",
+                  "01334": "01320",
+                  "01335": "01360",
+                  "01336": "01271",
+                  "01337": "01306",
+                  "01338": "01267",
+                  "01340": "01293",
+                  "01341": "01263",
+                  "01344": "01288",
+                  "01345": "01262",
+                  "01348": "01284",
+                  "01350": "01337",
+                  "01351": "01283",
+                  "01352": "01270",
+                  "01354": "01285",
+                  "01355": "01366",
+                  "01356": "01324",
+                  "01357": "01279",
+                  "01359": "01371",
+                  "01360": "01330",
+                  "01361": "01264",
+                  "01362": "01311",
+                  "01364": "01310",
+                  "01367": "01286",
+                  "01369": "01356",
+                  "01370": "01278",
+                  "01372": "01339",
+                  "01373": "01319",
+                  "01374": "01349",
+                  "01375": "01364",
+                  "01376": "01277",
+                  "01377": "01275",
+                  "01378": "01359",
+                  "01379": "01313",
+                  "01381": "01367",
+                  "01382": "01282",
+                  "01383": "01357",
+                  "01384": "01318",
+                  "01385": "01368",
+                  "01386": "01352",
+                  "01387": "01343",
+                  "01388": "01308",
+                  "01389": "01354",
+                  "01390": "01351",
+                  "01391": "01362",
+                  "01392": "01369",
+                  "01393": "01350",
+                  "01394": "01317",
+                  "01395": "01372",
+                  "01396": "01353",
+                  "01397": "01365",
+                  "01398": "01312",
+                  "01400": "01340",
+                  "01401": "01309",
+                  "01403": "01355",
+                  "01404": "01314",
+                  "01405": "01358",
+                  "01406": "01346",
+                  "01407": "01338",
+                  "01408": "01274",
+                  "01409": "01363",
+                  "01410": "01361",
+                  "01414": "01332",
+                  "01419": "01385",
+                  "01420": "01377",
+                  "01421": "01413",
+                  "01422": "01409",
+                  "01423": "01391",
+                  "01424": "01412",
+                  "01425": "01411",
+                  "01426": "01410",
+                  "01427": "01408",
+                  "01428": "01407",
+                  "01429": "01406",
+                  "01430": "01405",
+                  "01431": "01404",
+                  "01432": "01403",
+                  "01433": "01397",
+                  "01434": "01394",
+                  "01435": "01398",
+                  "01436": "01378",
+                  "01437": "01389",
+                  "01438": "01379",
+                  "01439": "01401",
+                  "01440": "01402",
+                  "01441": "01400",
+                  "01442": "01399",
+                  "01443": "01396",
+                  "01444": "01395",
+                  "01445": "01393",
+                  "01446": "01392",
+                  "01447": "01390",
+                  "01448": "01388",
+                  "01449": "01387",
+                  "01450": "01386",
+                  "01451": "01384",
+                  "01452": "01383",
+                  "01453": "01382",
+                  "01454": "01381",
+                  "01455": "01380",
+                  "01456": "01373",
+                  "01457": "01373",
+                  "01458": "01374",
+                  "01459": "01374",
+                  "01460": "01375",
+                  "01461": "01375",
+                  "01462": "01376",
+                  "01463": "01376",
+                  "01464": "01414",
+                  "01465": "01414",
+                  "01466": "01415",
+                  "01467": "01415",
+                  "01468": "01416",
+                  "01469": "01416",
+                  "01470": "01417",
+                  "01471": "01417",
+                  "01472": "01418",
+                  "01473": "01418",
+                  "01474": "01419",
+                  "01475": "01419",
+                  "01476": "01420",
+                  "01477": "01420",
+                  "01478": "01421",
+                  "01479": "01421",
+                  "01480": "01422",
+                  "01481": "01422",
+                  "01482": "01423",
+                  "01483": "01423",
+                  "01484": "01424",
+                  "01485": "01424",
+                  "01486": "01425",
+                  "01487": "01425",
+                  "01488": "01426",
+                  "01489": "01426",
+                  "01490": "01427",
+                  "01491": "01427",
+                  "01492": "01428",
+                  "01493": "01428",
+                  "01494": "01429",
+                  "01495": "01429",
+                  "01496": "01430",
+                  "01497": "01430",
+                  "01498": "00001",
+                  "01499": "00002",
+                  "01500": "00003",
+                  "01501": "00004",
+                  "01502": "00005",
+                  "01503": "00006",
+                  "01504": "00007",
+                  "01505": "00008",
+                  "01506": "00009",
+                  "01507": "00010",
+                  "01508": "00011",
+                  "01509": "00012",
+                  "01510": "00013",
+                  "01511": "00014",
+                  "01512": "00015",
+                  "01513": "00016",
+                  "01514": "00017",
+                  "01515": "00018",
+                  "01516": "00019",
+                  "01517": "00020",
+                  "01518": "00021",
+                  "01519": "00022",
+                  "01520": "00023",
+                  "01521": "00024",
+                  "02215": "02215",
+                  "02230": "03347",
+                  "02234": "03349",
+                  "02235": "03346",
+                  "02241": "03345",
+                  "02245": "03352",
+                  "02247": "03355",
+                  "02247b": "03355",
+                  "02248": "03340",
+                  "02249": "03336",
+                  "02250": "03339",
+                  "02251": "03356",
+                  "02251b": "03356",
+                  "02252": "03313",
+                  "02253": "03251",
+                  "02254": "03252",
+                  "02255": "03253",
+                  "02256": "03254",
+                  "02257": "03255",
+                  "02258": "03257",
+                  "02259": "03256",
+                  "02260": "03270",
+                  "02261": "03259",
+                  "02262": "03260",
+                  "02263": "03261",
+                  "02264": "03262",
+                  "02265": "03263",
+                  "02266": "03264",
+                  "02267": "03265",
+                  "02268": "03266",
+                  "02269": "03267",
+                  "02270": "03268",
+                  "02271": "03269",
+                  "02272": "03258",
+                  "02273": "03296",
+                  "02275": "03314",
+                  "02276": "03330",
+                  "02277": "03351",
+                  "02278": "03343",
+                  "02279": "03275",
+                  "02281": "03285",
+                  "02283": "03272",
+                  "02286": "03274",
+                  "02288": "03291",
+                  "02292": "03286",
+                  "02295": "03341",
+                  "02296": "03329",
+                  "02297": "03350",
+                  "02298": "03348",
+                  "02299": "03305",
+                  "02300": "03284",
+                  "02303": "03283",
+                  "02304": "03295",
+                  "02305": "03287",
+                  "02307": "03292",
+                  "02309": "03327",
+                  "02310": "03309",
+                  "02311": "03308",
+                  "02312": "03271",
+                  "02314": "03310",
+                  "02315": "03323",
+                  "02316": "03335",
+                  "02317": "03293",
+                  "02318": "03353",
+                  "02319": "03332",
+                  "02320": "03322",
+                  "02321": "03316",
+                  "02322": "03277",
+                  "02325": "03278",
+                  "02328": "03300",
+                  "02329": "03315",
+                  "02330": "03290",
+                  "02332": "03294",
+                  "02333": "03328",
+                  "02334": "03288",
+                  "02335": "03306",
+                  "02336": "03307",
+                  "02337": "03289",
+                  "02339": "03281",
+                  "02340": "03282",
+                  "02341": "03279",
+                  "02343": "03280",
+                  "02345": "03299",
+                  "02346": "03302",
+                  "02347": "03301",
+                  "02348": "03303",
+                  "02349": "03304",
+                  "02350": "03298",
+                  "02351": "03297",
+                  "02353": "03317",
+                  "02354": "03326",
+                  "02355": "03324",
+                  "02356": "03325",
+                  "02357": "03318",
+                  "02358": "03319",
+                  "02359": "03320",
+                  "02360": "03342",
+                  "02361": "03354",
+                  "02363": "03344",
+                  "02364": "03273",
+                  "02366": "03276",
+                  "02367": "03321",
+                  "02368": "03333",
+                  "02369": "03331",
+                  "02370": "03337",
+                  "02371": "03334",
+                  "02372": "03338",
+                  "02373": "03311",
+                  "02374": "03312",
+                  "02375": "03248",
+                  "02376": "03248",
+                  "02377": "03249",
+                  "02378": "03249",
+                  "02379": "03250",
+                  "02380": "03250",
+                  "02381": "03357",
+                  "02382": "03357",
+                  "02383": "03358",
+                  "02384": "03358",
+                  "02385": "03359",
+                  "02386": "03359",
+                  "02387": "03360",
+                  "02388": "03360",
+                  "02389": "03361",
+                  "02390": "03361",
+                  "02391": "03362",
+                  "02392": "03362",
+                  "02393": "03363",
+                  "02394": "03363",
+                  "02395": "03364",
+                  "02396": "03364",
+                  "02397": "03365",
+                  "02398": "03365",
+                  "02399": "03366",
+                  "02400": "03366",
+                  "02401": "03367",
+                  "02402": "03367",
+                  "02403": "03368",
+                  "02404": "03368",
+                  "02405": "03369",
+                  "02406": "03369",
+                  "02407": "03370",
+                  "02408": "03370",
+                  "02409": "03371",
+                  "02410": "03371",
+                  "02411": "03372",
+                  "02412": "03372",
+                  "02413": "03373",
+                  "02414": "03373",
+                  "02415": "03374",
+                  "02416": "03374",
+                  "02417": "03375",
+                  "02418": "03375",
+                  "02419": "03376",
+                  "02420": "03376",
+                  "02421": "03377",
+                  "02422": "03377",
+                  "03206": "03211",
+                  "03207": "03212",
+                  "03208": "03210",
+                  "03209": "03217",
+                  "03210": "03218",
+                  "03211": "03213",
+                  "03212": "03214",
+                  "03213": "03215",
+                  "03214": "03209",
+                  "03215": "03207",
+                  "03216": "03208",
+                  "03217": "03216",
+                  "03218": "03002",
+                  "03219": "03002",
+                  "03220": "03005",
+                  "03221": "03005",
+                  "03222": "03011",
+                  "03223": "03011",
+                  "03224": "03016",
+                  "03225": "03016",
+                  "03226": "03061",
+                  "03227": "03061",
+                  "04206": "04017",
+                  "04207": "04018",
+                  "04208": "04016",
+                  "04209": "04015",
+                  "04210": "04014",
+                  "04211": "04013",
+                  "04212": "04005",
+                  "04213": "04028",
+                  "04214": "04024",
+                  "04215": "04023",
+                  "04216": "04027",
+                  "04217": "04022",
+                  "04218": "04026",
+                  "04219": "04021",
+                  "04220": "04025",
+                  "04221": "04006",
+                  "04223": "04007",
+                  "04224": "04008",
+                  "04226": "04009",
+                  "04227": "04010",
+                  "04229": "04019",
+                  "04230": "04020",
+                  "04231": "04029",
+                  "04232": "04011",
+                  "04234": "04012",
+                  "04236": "04002",
+                  "04237": "04004",
+                  "04238": "04003",
+                  "04239": "04001",
+                  "04240": "04030",
+                  "04241": "04030",
+                  "04242": "04031",
+                  "04243": "04031",
+                  "04244": "04032",
+                  "04245": "04032",
+                  "04246": "04033",
+                  "04247": "04033",
+                  "04248": "04034",
+                  "04249": "04034",
+                  "04250": "04035",
+                  "04251": "04035",
+                  "04252": "04005",
+                  "05201": "04111",
+                  "05202": "04112",
+                  "05203": "04113",
+                  "05204": "04114",
+                  "05205": "04115",
+                  "05206": "04075",
+                  "05207": "04076",
+                  "05208": "04077",
+                  "05209": "04078",
+                  "05210": "04079",
+                  "05211": "04080",
+                  "05212": "04081",
+                  "05213": "04103",
+                  "05214": "04103",
+                  "05215": "04104",
+                  "05216": "04104",
+                  "05217": "04105",
+                  "05218": "04105",
+                  "05219": "04106",
+                  "05220": "04106",
+                  "05221": "04107",
+                  "05222": "04107",
+                  "05223": "04108",
+                  "05224": "04108",
+                  "05225": "04109",
+                  "05226": "04109",
+                  "05227": "04087",
+                  "05230": "04089",
+                  "05231": "04090",
+                  "05232": "04091",
+                  "05233": "04088",
+                  "05234": "04092",
+                  "05235": "04093",
+                  "05236": "04094",
+                  "05237": "04095",
+                  "05238": "04097",
+                  "05239": "04098",
+                  "05240": "04099",
+                  "05241": "04096",
+                  "05242": "04100",
+                  "05243": "04102",
+                  "05244": "04101",
+                  "05245": "04082",
+                  "05246": "04083",
+                  "05248": "04084",
+                  "05250": "04085",
+                  "05252": "04086",
+                  "06001": "03414",
+                  "06002": "03413",
+                  "06003": "03412",
+                  "06004": "03408",
+                  "06005": "03411",
+                  "06006": "03407",
+                  "06007": "03410",
+                  "06008": "03406",
+                  "06009": "03409",
+                  "06010": "03405",
+                  "06011": "03404",
+                  "06012": "03400",
+                  "06013": "03403",
+                  "06014": "03399",
+                  "06015": "03402",
+                  "06016": "03398",
+                  "06017": "03401",
+                  "06018": "03397",
+                  "06019": "03394",
+                  "06020": "03390",
+                  "06021": "03384",
+                  "06022": "03396",
+                  "06023": "03389",
+                  "06024": "03383",
+                  "06025": "03388",
+                  "06026": "03395",
+                  "06027": "03392",
+                  "06028": "03382",
+                  "06029": "03391",
+                  "06030": "03381",
+                  "06031": "03387",
+                  "06032": "03393",
+                  "06033": "03386",
+                  "06034": "03385",
+                  "06035": null,
+                  "06036": null,
+                  "06037": null,
+                  "06038": null,
+                  "07001": "04074",
+                  "07002": "04042",
+                  "07003": "04046",
+                  "07004": "04043",
+                  "07005": "04047",
+                  "07006": "04044",
+                  "07007": "04048",
+                  "07008": "04045",
+                  "07009": "04049",
+                  "07010": "04066",
+                  "07011": "04070",
+                  "07012": "04067",
+                  "07013": "04071",
+                  "07014": "04068",
+                  "07015": "04072",
+                  "07016": "04069",
+                  "07017": "04073",
+                  "07018": "04050",
+                  "07019": "04054",
+                  "07020": "04051",
+                  "07021": "04055",
+                  "07022": "04052",
+                  "07023": "04056",
+                  "07024": "04053",
+                  "07025": "04057",
+                  "07026": "04058",
+                  "07027": "04062",
+                  "07028": "04059",
+                  "07029": "04063",
+                  "07030": "04060",
+                  "07031": "04064",
+                  "07032": "04061",
+                  "07033": "04065",
+                  "07034": null,
+                  "07035": null,
+                  "07036": null,
+                  "07037": null
+                }],
+                ["COND",
+                  ["IN_LIST", ["MAP_KEYS_TO_LIST", "$EB_TO_LOCAL_ID_MAP"], "$EB_CODE"],
+                  "$EB_TO_LOCAL_ID_MAP.{{$EB_CODE}}",
+                  true,
+                  "$EB_CODE"
+                ]
+            ]
+          }
+    }
+}
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+# Only the plugin definition is published: card database, card images and
+# work in progress stay local.
+/*
+!/.gitignore
+!/.gitattributes
+!/.github/
+!/README.md
+!/json/
+/json/*
+!/json/*.json

@@ -151,8 +151,14 @@
         "cardsPerRound": {
             "English": "Cards Per Round"
         },
+        "loadCampaign": {
+            "English": "Load Campaign"
+        },
         "pathCards":{
             "English": "Path Cards"
+        },
+        "noThanks": {
+            "English": "No, thanks."
         },
         "setup": {
             "English": "Setup"
@@ -380,7 +386,7 @@
             "English": "Path Deck 2"
         },
         "sharedPathDeck3": {
-            "English": "My Valley "
+            "English": "Valley/Arcology set"
         },
         "sharedExtra1": {
             "English": "Extra1"
@@ -425,7 +431,7 @@
             "English": "Traits"
         },
         "set": {
-            "English": ""
+            "English": "Set"
         },
         "quantity": {
             "English": "Quantity"
@@ -1009,6 +1015,9 @@
         "Glitterain": {
             "English": "Glitterain / Shimmering Runoff"
         },
+        "ShimmeringRunoff": {
+            "English": "Shimmering Runoff"
+        },
         "ArcologyMap": {
             "English": "Arcology Map"
         }, 
@@ -1049,7 +1058,7 @@
             "English": "Brookside"
         },
         "spire2":{
-            "English": "Spire"
+            "English": "Spire (Spire in Bloom)"
         },
         "WildGrowth":{
             "English": "Wild Growth"
@@ -1059,6 +1068,45 @@
         },
         "SpireinBloomMap":{
             "English": "Spire in Bloom Map"
+        },
+        "removedCards": {
+            "English": "Not Available Cards"
+        },
+        "2-handed": {
+            "English": "2-handed"
+        },
+        "Shadow of the Storm": {
+            "English": "Shadow of the Storm"
+        },
+        "nimbus": {
+            "English": "Nimbus"
+        },
+        "terra_lodge": {
+            "English": "Terra Lodge"
+        },
+        "the_otherwoods": {
+            "English": "The Otherwoods"
+        },
+        "crystal_basin": {
+            "English": "Crystal Basin"
+        },
+        "sentinel_peak": {
+            "English": "Sentinel Peak"
+        },
+        "arbor_mist": {
+            "English": "Arbor Mist"
+        },
+        "the_undergrove": {
+            "English": "The Undergrove"
+        },
+        "nimbus_facility": {
+            "English": "Nimbus Facility"
+        },
+        "pristine_snow": {
+            "English": "Pristine Snow / Bizzard"
+        },
+        "ShadowoftheStormMoments": {
+            "English": "Shadow of the Storm Moments"
         }
     }
 }

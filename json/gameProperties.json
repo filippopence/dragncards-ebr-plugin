@@ -1,0 +1,22 @@
+{
+    "gameProperties": {
+      "spire_in_bloom": {
+          "label": "id:Spire in Bloom",
+          "type": "boolean",
+          "default": true
+        },
+      "shadow_of_the_storm": {
+          "label": "id:Shadow of the Storm",
+          "type": "boolean",
+          "default": true
+        },
+      "removedCards": {
+          "type": "object",
+          "default": {}
+        },
+      "current_campaign": {
+          "type": "string",
+          "default": ""
+        }
+    } 
+}

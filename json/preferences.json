@@ -1,0 +1,6 @@
+{
+    "preferences": {
+        "game": ["spire_in_bloom", "shadow_of_the_storm"],
+        "player": ["rebalanced"] //, "current_campaing"]
+    }
+} 

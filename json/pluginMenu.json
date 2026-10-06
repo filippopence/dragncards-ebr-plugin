@@ -1,9 +1,13 @@
 {
     "pluginMenu": {
         "options": [
-            { 
+            {
                 "label": "id:cardsPerRound",
                 "actionList": "setCardsDrawn"
+            },
+            {
+                "label": "id:loadCampaign",
+                "actionList": "loadCampaign"
             }
         ]
     }

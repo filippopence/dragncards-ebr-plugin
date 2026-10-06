@@ -1,6 +1,6 @@
 {
     "cardMenu": {
-        "moveToGroupIds": ["sharedPathDeck", "sharedPathDeck2", "sharedLocation"],
+        "moveToGroupIds": ["sharedPathDeck", "sharedPathDeck2", "sharedLocation", "removedCards"],
         "options": [
             {
                 "label": "id:toggleExhaust",

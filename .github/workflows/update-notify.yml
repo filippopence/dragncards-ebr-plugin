@@ -1,0 +1,25 @@
+name: Notify server on update
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Archive JSON files
+        run: tar -czf jsons.tar.gz json
+
+      - name: Send files to server
+        env:
+          REPO_URL: ${{ github.event.repository.html_url }}
+        run: |
+          curl --fail-with-body -X POST https://beta.dragncards.com/api/plugin-repo-update \
+               -F "repo_url=${REPO_URL}" \
+               -F "file=@jsons.tar.gz"
